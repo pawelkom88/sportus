@@ -156,9 +156,31 @@
     max-width: 90rem;
   }
   #reviews-510 .cs-content {
+    position: relative;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
+  }
+  #reviews-510 .cs-item:nth-child(1)::after,
+  #reviews-510 .cs-item:nth-child(2)::after {
+    content: "";
+    position: absolute;
+    transform: rotate(10deg);
+    background-repeat: no-repeat;
+    background-size: 5rem;
+    width: 10rem;
+    height: 10rem;
+  }
+  #reviews-510 .cs-item:nth-child(2)::after {
+    right: -4rem;
+    top: 0.5rem;
+    background-image: url("../../assets/images/girl.webp");
+  }
+  #reviews-510 .cs-item:nth-child(1)::after {
+    content: "";
+    right: -4.5rem;
+    top: 0.7rem;
+    background-image: url("../../assets/images/boy.webp");
   }
   #reviews-510 .cs-title {
     margin: 0;
