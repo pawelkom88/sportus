@@ -46,18 +46,14 @@
   #hero-1946 .cs-button-solid {
     font-size: 1rem;
     font-weight: 700;
-    /* 46px - 56px */
     line-height: clamp(2.875rem, 5.5vw, 3.5rem);
     text-align: center;
     text-decoration: none;
     min-width: 9.375rem;
     margin: 0;
-    /* prevents padding from adding to the width */
     box-sizing: border-box;
-    /* 32px - 48px */
     padding: 0 clamp(2rem, 4vw, 3rem);
     background-color: var(--primary);
-    color: var(--bodyTextColorWhite);
     display: inline-block;
     position: relative;
     z-index: 1;

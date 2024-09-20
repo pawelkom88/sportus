@@ -1,9 +1,3 @@
-Title Tag: Make sure the page title includes your primary keyword, e.g., "Zajęcia sportowe dla dzieci w Gdańsku – Sportus".
-Meta Description: Add a descriptive meta tag that includes variations of your keywords: "Sportus oferuje zajęcia sportowe dla dzieci w Gdańsku. Ruch, zabawa i rozwój dla Twojego dziecka w profesjonalnej opiece!".
-
-Blogging: Write blog posts like "Why Sport is Important for Kids – Top Activities in Gdańsk" or "5 Benefits of Enrolling Your Child in Sports Classes in Gdańsk". This can help you rank for long-tail keywords.
-
-
 
 Dlaczego warto zapisać swoją pociechę na zajęcia sportowe dla dzieci w Gdańsku?
 Organizujemy zajęcia sportowe dla dzieci, które są okazją do:
@@ -36,3 +30,9 @@ Osobom szukających kolejnych standardowych zajęć dla dzieci
 To nie są kolejne zajęcia jak piłka, judo, siatkówka, pływalnia, ocr itp. Ponad wszystko cenimy pomaganie drugiemu człowiekowi, integrację, upowszechnianie wiedzy z zakresu psychologii, odchudzania, zdrowia oraz wychowania dzieci, ale przede wszystkim długoterminowe szczere relacje! 
 
 Będziemy Cię zarażać pasją do sportu i chęcią niesienia pomocy. Będziemy Cię zapraszać na zawody, ogniska, spotkania integracyjne oraz będziemy wysyłać Ci co tydzień dawkę wiedzy oraz wyzwania. Z potężnym zaangażowaniem podchodzimy do tego co robimy, znamy się z imion i nazwisk, wiemy o sobie bardzo dużo. Korzystając z naszych zajęć, dołączasz i zaczynasz tworzyć sportową społeczność Ninja. 
+
+Nagłówek H1: "Pozalekcyjne Zajęcia Piłki Nożnej dla Dzieci w Gdańsku - SPORTUŚ"
+
+Paragraf Wstępny: "SPORTUŚ oferuje profesjonalne treningi piłkarskie dla dzieci w Gdańsku. Nasze zajęcia sportowe dla dzieci w wieku od 5 do 12 lat to doskonała okazja do rozwoju fizycznego i społecznego Twojego dziecka."
+
+Sekcja O Nas: "Nasza akademia piłkarska dla dzieci w Gdańsku powstała z pasji do sportu i chęci przekazywania jej najmłodszym. Prowadzimy pozalekcyjne zajęcia sportowe, które kształtują charakter i umiejętności młodych sportowców."
