@@ -1,7 +1,7 @@
 ---
-import "./form.css"
-import team from  "../../assets/images/team.webp";
 import { Image } from "astro:assets";
+import team from "../../assets/images/team.webp";
+import "./form.css";
 ---
 
 <section id="contact-569">
@@ -11,7 +11,9 @@ import { Image } from "astro:assets";
         <span class="cs-topper">KONTAKT</span>
         <h2 class="cs-title">Masz pytania? Piłka jest po Twojej stronie!</h2>
         <p class="cs-text">
-          Masz pytania lub chcesz zapisać swoje dziecko na zajęcia? Skontaktuj się z nami już dziś! Jesteśmy do Twojej dyspozycji pod numerem telefonu, e-mailem lub poprzez formularz kontaktowy poniżej.
+          Masz pytania lub chcesz zapisać swoje dziecko na zajęcia? Skontaktuj się z nami
+          już dziś! Jesteśmy do Twojej dyspozycji pod numerem telefonu, e-mailem lub
+          poprzez formularz kontaktowy poniżej.
         </p>
       </div>
       <!--Form-->
@@ -73,11 +75,22 @@ import { Image } from "astro:assets";
       </form>
     </div>
     <div class="cs-right">
-       <Image src={team} alt="group of kids with a trainer listening to his speech" width="500" height="300" aria-hidden="true" />
+      <Image
+        src={team}
+        alt="group of kids with a trainer listening to his speech"
+        width="500"
+        height="300"
+        aria-hidden="true"
+      />
       <!--Address-->
       <div class="cs-flex">
         <span class="cs-header">Gdzie nas znajdziesz</span>
         <a href="" class="cs-link">123 Fake Mill Creek<br /> Bark, USA 98082</a>
+        <button class="xxx">Otworz mape</button>
+        <dialog>
+          <button autofocus>Close</button>
+          <p>This modal dialog has a groovy backdrop!</p>
+        </dialog>
       </div>
       <!--Contacts-->
       <div class="cs-flex">
@@ -89,3 +102,37 @@ import { Image } from "astro:assets";
     </div>
   </div>
 </section>
+
+<script>
+  function init() {
+    const mapButton = document.querySelector(".xxx") as HTMLButtonElement;
+    const dialog = document.querySelector("dialog") as HTMLDialogElement;
+    const closeButton = document.querySelector("dialog button") as HTMLButtonElement;
+
+    mapButton.addEventListener("click", (e) => {
+      // e.stopPropagation();
+      dialog.showModal();
+    });
+
+    closeButton.addEventListener("click", () => closeDialog());
+
+    // function clickOutside(e: MouseEvent) {
+    //   if (e.target !== dialog) {
+    //     closeDialog();
+    //   }
+    // }
+
+    function closeDialog() {
+      dialog.close();
+      // document.removeEventListener("click", clickOutside);
+    }
+
+    function closeByEsc(e: KeyboardEvent) {
+      if (e.key === "Escape") closeDialog();
+    }
+
+    document.addEventListener("keydown", closeByEsc);
+  }
+
+  init();
+</script>

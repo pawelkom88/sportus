@@ -54,6 +54,7 @@
     box-sizing: border-box;
     padding: 0 clamp(2rem, 4vw, 3rem);
     background-color: var(--primary);
+    color: var(--white);
     display: inline-block;
     position: relative;
     z-index: 1;

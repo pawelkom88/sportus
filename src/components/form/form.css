@@ -125,6 +125,7 @@
   }
   #contact-569 .cs-right img {
     width: 100%;
+    object-fit: cover;
   }
   #contact-569 .cs-flex {
     display: flex;
@@ -186,9 +187,7 @@
     flex: none;
   }
   #contact-569 .cs-right img {
-    object-fit: cover;
     border-radius: var(--radius);
-    width: 100%;
     display: block;
   }
   #contact-569 .cs-flex {
@@ -198,4 +197,13 @@
     /* adds an extra 16px + 48px row gap on the parent to make 64px space between */
     margin-top: 1rem;
   }
+}
+
+dialog {
+  border: none;
+}
+
+dialog::backdrop {
+  opacity: 0.4;
+  background-color: #222;
 }

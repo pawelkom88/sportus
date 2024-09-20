@@ -182,6 +182,14 @@
     top: 0.7rem;
     background-image: url("../../assets/images/boy.webp");
   }
+
+  @media only screen and (max-width: 1240px) {
+    #reviews-510 .cs-item:nth-child(1)::after,
+    #reviews-510 .cs-item:nth-child(2)::after {
+      display: none;
+    }
+  }
+
   #reviews-510 .cs-title {
     margin: 0;
   }
