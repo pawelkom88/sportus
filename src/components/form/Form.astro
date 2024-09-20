@@ -1,5 +1,7 @@
 ---
-import "./form.css";
+import "./form.css"
+import team from  "../../assets/images/team.webp";
+import { Image } from "astro:assets";
 ---
 
 <section id="contact-569">
@@ -72,7 +74,7 @@ import "./form.css";
       </form>
     </div>
     <div class="cs-right">
-       Obrazek tu
+       <Image src={team} alt="group of kids with a trainer listening to his speech" width="500" height="300" aria-hidden="true" />
       <!--Address-->
       <div class="cs-flex">
         <span class="cs-header">Gdzie nas znajdziesz</span>

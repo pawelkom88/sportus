@@ -32,14 +32,18 @@
     left: 50%;
     z-index: 10000;
     transform: translateX(-50%);
-    transition: top 0.3s, border-radius 0.3s, width 0.3s, max-width 0.3s;
+    transition:
+      top 0.3s,
+      border-radius 0.3s,
+      width 0.3s,
+      max-width 0.3s;
   }
   #cs-navigation:before {
     /* background color */
     content: "";
     width: 100%;
     height: 100%;
-    background: #fff;
+    background: var(--white);
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
     opacity: 1;
     /* 12px - 24px */
@@ -48,7 +52,9 @@
     top: 0;
     left: 50%;
     transform: translateX(-50%);
-    transition: transform 0.2s, border-radius 0.3s ease-in-out;
+    transition:
+      transform 0.2s,
+      border-radius 0.3s ease-in-out;
   }
   #cs-navigation.cs-active:before {
     transform: translateX(-50%) scale(1.03);
@@ -126,7 +132,7 @@
   #cs-navigation .cs-line {
     width: 100%;
     height: 2px;
-    background-color: #fff;
+    background-color: var(--white);
     border-radius: 2px;
     position: absolute;
     left: 50%;
@@ -134,7 +140,10 @@
   }
   #cs-navigation .cs-line1 {
     top: 0;
-    transition: transform 0.5s, top 0.3s, left 0.3s;
+    transition:
+      transform 0.5s,
+      top 0.3s,
+      left 0.3s;
     animation-duration: 0.7s;
     animation-timing-function: ease;
     animation-direction: normal;
@@ -144,7 +153,10 @@
   #cs-navigation .cs-line2 {
     top: 50%;
     transform: translateX(-50%) translateY(-50%);
-    transition: top 0.3s, left 0.3s, transform 0.5s;
+    transition:
+      top 0.3s,
+      left 0.3s,
+      transform 0.5s;
     animation-duration: 0.7s;
     animation-timing-function: ease;
     animation-direction: normal;
@@ -152,7 +164,9 @@
   }
   #cs-navigation .cs-line3 {
     bottom: 0;
-    transition: bottom 0.3s, opacity 0.3s;
+    transition:
+      bottom 0.3s,
+      opacity 0.3s;
   }
   #cs-navigation .cs-ul-wrapper {
     width: 100%;
@@ -190,7 +204,9 @@
     opacity: 0;
     /* transition from these values */
     transform: translateY(-70/16rem);
-    transition: transform 0.6s, opacity 0.9s;
+    transition:
+      transform 0.6s,
+      opacity 0.9s;
   }
   #cs-navigation .cs-li:nth-of-type(1) {
     transition-delay: 0.05s;
@@ -307,7 +323,12 @@
     align-items: center;
     gap: 0.75rem;
     overflow: hidden;
-    transition: padding 0.3s, margin 0.3s, height 0.3s, opacity 0.3s, visibility 0.3s;
+    transition:
+      padding 0.3s,
+      margin 0.3s,
+      height 0.3s,
+      opacity 0.3s,
+      visibility 0.3s;
   }
   #cs-navigation .cs-drop-li {
     list-style: none;
@@ -315,7 +336,7 @@
   #cs-navigation .cs-li-link.cs-drop-link {
     /* 14px - 16px */
     font-size: clamp(0.875rem, 2vw, 1.25rem);
-    color: #fff;
+    color: var(--white);
   }
 
   .cs-phone {
@@ -348,7 +369,7 @@
     min-width: 12.5rem;
     margin: 0;
     padding: 0;
-    background-color: #fff;
+    background-color: var(--white);
     box-shadow: inset rgba(149, 157, 165, 0.1) 0px 8px 10px;
     opacity: 0;
     border-bottom: 5px solid var(--primary);
@@ -360,7 +381,10 @@
     z-index: -100;
     overflow: hidden;
     transform: scaleY(0);
-    transition: transform 0.3s, visibility 0.3s, opacity 0.3s;
+    transition:
+      transform 0.3s,
+      visibility 0.3s,
+      opacity 0.3s;
     transform-origin: top;
   }
   #cs-navigation .cs-drop-li {
@@ -372,7 +396,9 @@
     opacity: 0;
     display: block;
     transform: translateY(-0.625rem);
-    transition: opacity 0.6s, transform 0.6s;
+    transition:
+      opacity 0.6s,
+      transform 0.6s;
   }
   #cs-navigation .cs-drop-li:nth-of-type(1) {
     transition-delay: 0.05s;
@@ -413,7 +439,9 @@
     padding: 0.75rem;
     color: var(--black);
     display: block;
-    transition: color 0.3s, background-color 0.3s;
+    transition:
+      color 0.3s,
+      background-color 0.3s;
   }
   #cs-navigation .cs-li-link.cs-drop-link:hover {
     color: var(--bodyTextColorWhite);
@@ -442,7 +470,7 @@
     box-sizing: border-box;
     /* 12px - 24px */
     padding: 0 clamp(0.75rem, 2vw, 1.5rem);
-    background-color: #fff;
+    background-color: var(--white);
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
     /* 12px - 24px */
     border-radius: clamp(0.75rem, 2vw, 1.5rem);
@@ -453,7 +481,11 @@
     left: 50%;
     z-index: 10000;
     transform: translateX(-50%);
-    transition: top 0.3s, border-radius 0.3s, width 0.3s, max-width 0.3s;
+    transition:
+      top 0.3s,
+      border-radius 0.3s,
+      width 0.3s,
+      max-width 0.3s;
   }
   #cs-navigation .cs-container {
     width: 100%;
@@ -480,7 +512,9 @@
     font-weight: bold;
     text-decoration: none;
     color: var(--black);
-    transition: opacity 0.3s, color 0.3s;
+    transition:
+      opacity 0.3s,
+      color 0.3s;
     margin-right: 2rem;
   }
 

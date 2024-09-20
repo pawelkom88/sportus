@@ -40,6 +40,7 @@ const { title } = Astro.props;
     --black: #1a1a1a;
     --bodyTextColor: #4e4b66;
     --bodyTextColorWhite: #fafbfc;
+    --white: #fff;
     /* 13px - 16px */
     --topperFontSize: clamp(0.8125rem, 1.6vw, 1rem);
     /* 31px - 49px */
@@ -47,6 +48,7 @@ const { title } = Astro.props;
     --bodyFontSize: clamp(1rem, 0.9443rem + 0.2548vw, 1.25rem);
     /* 60px - 100px top and bottom */
     --sectionPadding: clamp(3rem, 7.5vw, 6.25rem) 1rem;
+    --radius: 2rem;
   }
 
   body {
@@ -101,4 +103,13 @@ const { title } = Astro.props;
     margin: 0;
     color: var(--bodyTextColor);
   }
+  @keyframes rotate {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
 </style>

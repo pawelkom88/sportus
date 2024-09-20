@@ -5,12 +5,10 @@ import award from "../../assets/images/award.png";
 import teamwork from "../../assets/images/teamwork.png";
 import "./faq.css";
 import { getCollection } from "astro:content";
+import type { FAQ } from "../../content/config";
 
-type FAQ = { data: { order: number } };
 const faqItems = await getCollection("faq");
-const sortedFaqItems = faqItems.sort(
-  (a: FAQ, b: FAQ) => (a.data.order || 0) - (b.data.order || 0)
-);
+const sortedFaqItems = faqItems.sort((a, b) => (a.data.order || 0) - (b.data.order || 0));
 ---
 
 <section id="faq-1505">
@@ -32,7 +30,7 @@ const sortedFaqItems = faqItems.sort(
     <div class="cs-flex-group">
       <ul class="cs-faq-group">
         {
-          sortedFaqItems.map((item: typeof faqItems) => {
+          sortedFaqItems.map((item) => {
             return (
               <li class="cs-faq-item ">
                 <button class="cs-button">
@@ -44,82 +42,6 @@ const sortedFaqItems = faqItems.sort(
             );
           })
         }
-          <button class="cs-button">
-            <span class="cs-button-text">
-              What are the operating hours of Stitch Day Care Center?
-            </span>
-            <span class="cs-indicator" aria-hidden="true"></span>
-          </button>
-          <p class="cs-item-p">
-            Yes, we offer nutritious meals and snacks prepared onsite, taking into
-            consideration any dietary restrictions and allergies.
-          </p>
-        </li>
-        <li class="cs-faq-item">
-          <button class="cs-button">
-            <span class="cs-button-text">
-              What age groups does Stitch Day Care Center cater to?
-            </span>
-            <span class="cs-indicator" aria-hidden="true"></span>
-          </button>
-          <p class="cs-item-p">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sit convallis nunc
-            neque, bibendum pulvinar vitae commodo velit. Proin diam tortor sed malesuada
-            nunc, habitant. Dignissim ipsum porta enim, magna urna, quam.
-          </p>
-        </li>
-        <li class="cs-faq-item">
-          <button class="cs-button">
-            <span class="cs-button-text">
-              What safety measures are in place at Stitch Day Care Center?
-            </span>
-            <span class="cs-indicator" aria-hidden="true"></span>
-          </button>
-          <p class="cs-item-p">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sit convallis nunc
-            neque, bibendum pulvinar vitae commodo velit. Proin diam tortor sed malesuada
-            nunc, habitant. Dignissim ipsum porta enim, magna urna, quam.
-          </p>
-        </li>
-        <li class="cs-faq-item">
-          <button class="cs-button">
-            <span class="cs-button-text">
-              How can I enroll my child at Stitch Day Care Center?
-            </span>
-            <span class="cs-indicator" aria-hidden="true"></span>
-          </button>
-          <p class="cs-item-p">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sit convallis nunc
-            neque, bibendum pulvinar vitae commodo velit. Proin diam tortor sed malesuada
-            nunc, habitant. Dignissim ipsum porta enim, magna urna, quam.
-          </p>
-        </li>
-        <li class="cs-faq-item">
-          <button class="cs-button">
-            <span class="cs-button-text">
-              What are the operating hours of Stitch Day Care Center?
-            </span>
-            <span class="cs-indicator" aria-hidden="true"></span>
-          </button>
-          <p class="cs-item-p">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sit convallis nunc
-            neque, bibendum pulvinar vitae commodo velit. Proin diam tortor sed malesuada
-            nunc, habitant. Dignissim ipsum porta enim, magna urna, quam.
-          </p>
-        </li>
-        <li class="cs-faq-item">
-          <button class="cs-button">
-            <span class="cs-button-text">
-              What are the operating hours of Stitch Day Care Center?
-            </span>
-            <span class="cs-indicator" aria-hidden="true"></span>
-          </button>
-          <p class="cs-item-p">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sit convallis nunc
-            neque, bibendum pulvinar vitae commodo velit. Proin diam tortor sed malesuada
-            nunc, habitant. Dignissim ipsum porta enim, magna urna, quam.
-          </p>
-        </li> -->
       </ul>
     </div>
   </div>

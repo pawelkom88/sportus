@@ -1,0 +1,90 @@
+/* Mobile - 360px */
+@media only screen and (min-width: 0rem) {
+  #sbs-1125 {
+    padding-top: clamp(7rem, 15vw, 8rem);
+    position: relative;
+    z-index: 1;
+  }
+  #sbs-1125 .cs-container {
+    padding: var(--sectionPadding);
+    width: 100%;
+    max-width: 34.375rem;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  #sbs-1125 .cs-container:nth-child(2) {
+    padding: 0;
+  }
+  #sbs-1125 .cs-content {
+    width: 100%;
+    max-width: 32.625rem;
+    display: flex;
+    margin-top: 4rem;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  #sbs-1125 .cs-text {
+    margin-bottom: 1rem;
+    text-align: justify;
+  }
+  #sbs-1125 .cs-text:last-of-type {
+    margin-bottom: 2rem;
+  }
+  #sbs-1125 .cs-image-group {
+    font-size: min(1.9vw, 0.64em);
+    width: 41.0625em;
+    height: 42.25em;
+    margin-left: 6.75em;
+    position: relative;
+    z-index: 1;
+  }
+  #sbs-1125 .cs-picture {
+    width: 41.0625em;
+    height: 42.25em;
+    overflow: hidden;
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    border-radius: var(--radius);
+  }
+  #sbs-1125 .cs-picture1 {
+    position: absolute;
+    width: 21.0625em;
+    height: 22.25em;
+    bottom: -2rem;
+    left: -2rem;
+    border: 5px solid var(--white);
+    border-radius: var(--radius);
+  }
+  .football {
+    animation: rotate 10s linear infinite;
+  }
+}
+/* Desktop - 1024px */
+@media only screen and (min-width: 64rem) {
+  #sbs-1125 .cs-container {
+    max-width: 80rem;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+  }
+  #sbs-1125 .cs-container:nth-child(2) {
+    width: 100%;
+    max-width: 100vw;
+    padding: 0;
+    max-width: auto;
+    background-color: var(--primaryLight);
+  }
+  #sbs-1125 .cs-image-group {
+    font-size: min(1.2vw, 1em);
+    margin: 0;
+  }
+  #sbs-1125 .cs-content {
+    width: 45%;
+    flex: none;
+    margin-top: 0;
+  }
+}

@@ -57,7 +57,7 @@
     height: 2.5rem;
     padding: 0;
     padding-left: 1.5rem;
-    background-color: #fff;
+    background-color: var(--white);
     border: 1px solid #e0e0e0;
     /* prevents padding from adding to height and width */
     box-sizing: border-box;
@@ -93,7 +93,7 @@
     width: 100%;
     padding: 0 1.5rem;
     background-color: var(--primary);
-    color: #fff;
+    color: var(--white);
     display: inline-block;
     position: relative;
     z-index: 1;
@@ -114,7 +114,7 @@
     transition: width 0.3s;
   }
   #contact-569 .cs-submit:hover {
-    color: #fff;
+    color: var(--white);
     cursor: pointer;
   }
   #contact-569 .cs-submit:hover:before {
@@ -190,6 +190,10 @@
     flex-direction: column;
     /* prevent flexbox from squishing it */
     flex: none;
+  }
+  #contact-569 .cs-right img {
+    object-fit: cover;
+    border-radius: var(--radius);
   }
   #contact-569 .cs-flex {
     width: 100%;

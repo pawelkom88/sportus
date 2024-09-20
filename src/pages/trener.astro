@@ -1,0 +1,53 @@
+---
+import { Image } from "astro:assets";
+import Layout from "../layouts/Layout.astro";
+import History from "../components/history/History.astro";
+import "../styles/trener.css";
+---
+
+<Layout title="Timetable">
+  <section id="sbs-1125">
+    <div class="cs-container">
+      <!-- Left Image Section -->
+      <div class="cs-image-group">
+        <!--Main Image-->
+        <Image
+          class="cs-picture"
+          src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/People/charity-person1.jpg"
+          alt="person with box"
+          width="657"
+          height="676"
+          aria-hidden="true"
+        />
+        <Image
+          class="cs-picture1"
+          src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/People/charity-person1.jpg"
+          alt="person with box"
+          width="657"
+          height="676"
+          aria-hidden="true"
+        />
+      </div>
+      <!-- Right Content Section-->
+      <div class="cs-content">
+        <span class="cs-topper">PASJA I DOŚWIADCZENIE</span>
+        <h2 class="cs-title">Od piłkarskich boisk Lechii Gdańsk do pracy z dzieci</h2>
+        <p class="cs-text">
+          Witajcie! Nazywam się Krzysiek Iwanowksi i sport towarzyszy mi od najmłodszych
+          lat. Jako były zawodowy piłkarz miałem zaszczyt grać w różnych drużynach, w tym
+          w pierwszoligowej Lechii Gdańsk. Moja pasja do sportu przekłada się na chęć
+          dzielenia się wiedzą i doświadczeniem z najmłodszymi. Wierzę, że sport to nie
+          tylko sposób spędzania czasu, ale przede wszystkim narzędzie do kształtowania
+          charakteru i zdrowych nawyków. W dzisiejszych czasach, gdy technologia często
+          odciąga dzieci od ruchu, ważne jest, aby zachęcać je do aktywności fizycznej i
+          pokazywać, jak wiele radości może ona przynieść. Moim celem jest stworzenie
+          przyjaznej i motywującej atmosfery, w której każde dziecko poczuje się ważne i
+          docenione. Poprzez sport chcę przekazać wartości takie jak dyscyplina i
+          wytrwałość oraz poczucie przynależności do grupy. Zapraszam wszystkie dzieci do
+          wspólnej przygody ze sportem!
+        </p>
+      </div>
+    </div>
+  </section>
+  <History />
+</Layout>

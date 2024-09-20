@@ -11,3 +11,5 @@ const faqCollection = defineCollection({
 export const collections = {
   faq: faqCollection,
 };
+
+export type FAQ = typeof faqCollection
