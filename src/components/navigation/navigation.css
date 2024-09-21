@@ -80,7 +80,7 @@
   #cs-navigation .cs-logo {
     height: 4.5rem;
     position: relative;
-    padding-top: .7rem;
+    padding-top: 0.7rem;
   }
   #cs-navigation .cs-logo img {
     width: auto;
@@ -340,7 +340,7 @@
     color: var(--white);
   }
 
-  .cs-phone {
+  .cs-contact {
     display: none;
   }
 }
@@ -492,6 +492,14 @@
     width: auto;
     height: 5rem;
   }
+  .cs-contact {
+    text-align: right;
+  }
+  .cs-email {
+    text-decoration: none;
+    color: inherit;
+  }
+
   #cs-navigation .cs-container {
     width: 100%;
     max-width: 90rem;
@@ -507,34 +515,17 @@
 
   #cs-navigation .cs-phone {
     font-size: 1.2rem;
-    position: relative;
     font-weight: bold;
     text-decoration: none;
     color: var(--black);
     transition:
       opacity 0.3s,
       color 0.3s;
-    margin-right: 2rem;
   }
 
-  #cs-navigation .cs-phone:hover {
+  #cs-navigation .cs-phone:hover,
+  .cs-email:hover {
     color: var(--primaryDark);
-  }
-
-  #cs-navigation .cs-phone:hover::before {
-    animation: shake 0.5s;
-  }
-
-  #cs-navigation .cs-phone::before {
-    content: "";
-    position: absolute;
-    left: -1.8rem;
-    top: 0;
-    width: 1.5rem;
-    height: 1.5rem;
-    background-image: url("../../assets/icons/phone.svg");
-    background-size: cover;
-    transition: width 0.3s;
   }
 
   #cs-navigation .cs-ul-wrapper {
@@ -568,7 +559,7 @@
     flex: none;
   }
   #cs-navigation .cs-li-link {
-    font-size: 1.3rem;
+    font-size: 1.2rem;
     font-weight: bold;
     line-height: 1.5em;
     text-decoration: none;
@@ -583,23 +574,5 @@
   }
   #cs-navigation .cs-li-link.cs-active {
     color: var(--primaryDark);
-  }
-}
-
-@keyframes shake {
-  0% {
-    transform: translateX(0);
-  }
-  25% {
-    transform: translateX(0.2rem);
-  }
-  50% {
-    transform: translateX(-0.2rem);
-  }
-  75% {
-    transform: translateX(0.2rem);
-  }
-  100% {
-    transform: translateX(0);
   }
 }

@@ -3,33 +3,30 @@ import { Image } from "astro:assets";
 import "./navigation.css";
 import logo from "../../assets/images/SPORTUŚ-logo.webp";
 ---
+
 <header id="cs-navigation">
-    <div class="cs-container">
-        <a href="/" class="cs-logo" aria-label="back to home">
-            <Image src={logo} alt="SPORTUŚ logo" width="375" height="280" aria-hidden="true" >
-        </a>
-        <nav class="cs-nav" role="navigation">
-            <button class="cs-toggle" aria-label="mobile menu toggle">
-                <div class="cs-box" aria-hidden="true">
-                    <span class="cs-line cs-line1" aria-hidden="true"></span>
-                    <span class="cs-line cs-line2" aria-hidden="true"></span>
-                    <span class="cs-line cs-line3" aria-hidden="true"></span>
-                </div>
-            </button>
-            <!-- content collection map -->
-            <div class="cs-ul-wrapper">
-                <ul id="cs-expanded" class="cs-ul" aria-expanded="false">
-                    <li class="cs-li">
-                        <a href="/" class="cs-li-link cs-active">
-                            Strona główna
-                        </a>
-                    </li>
-                    <li class="cs-li">
-                        <a href="/plan-zajec" class="cs-li-link">
-                            Plan zajęć
-                        </a>
-                    </li>
-                    <!-- <li class="cs-li cs-dropdown" tabindex="0">
+  <div class="cs-container">
+    <a href="/" class="cs-logo" aria-label="back to home">
+      <Image src={logo} alt="SPORTUŚ logo" width="375" height="280" aria-hidden="true" />
+    </a>
+    <nav class="cs-nav" role="navigation">
+      <button class="cs-toggle" aria-label="mobile menu toggle">
+        <div class="cs-box" aria-hidden="true">
+          <span class="cs-line cs-line1" aria-hidden="true"></span>
+          <span class="cs-line cs-line2" aria-hidden="true"></span>
+          <span class="cs-line cs-line3" aria-hidden="true"></span>
+        </div>
+      </button>
+      <!-- content collection map -->
+      <div class="cs-ul-wrapper">
+        <ul id="cs-expanded" class="cs-ul" aria-expanded="false">
+          <li class="cs-li">
+            <a href="/" class="cs-li-link cs-active"> Strona główna </a>
+          </li>
+          <li class="cs-li">
+            <a href="/plan-zajec" class="cs-li-link"> Plan zajęć </a>
+          </li>
+          <!-- <li class="cs-li cs-dropdown" tabindex="0">
                         <span class="cs-li-link">
                             Services
                             <Image class="cs-drop-icon" src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Icons/down-gold.svg" alt="dropdown icon" width="15" height="15"  aria-hidden="true">
@@ -43,78 +40,75 @@ import logo from "../../assets/images/SPORTUŚ-logo.webp";
                             </li>
                         </ul>
                     </li> -->
-                    <li class="cs-li">
-                        <a href="/trener" class="cs-li-link">
-                            O trenerze
-                        </a>
-                    </li>
-                    <li class="cs-li">
-                        <a href="/blog" class="cs-li-link">
-                            Blog
-                        </a>
-                    </li>
-                    <li class="cs-li">
-                        <a href="/#contact-569" class="cs-li-link">
-                            Kontact
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
+          <li class="cs-li">
+            <a href="/trener" class="cs-li-link"> O trenerze </a>
+          </li>
+          <li class="cs-li">
+            <a href="/blog" class="cs-li-link"> Blog </a>
+          </li>
+          <li class="cs-li">
+            <a href="/#contact-569" class="cs-li-link"> Kontakt </a>
+          </li>
+        </ul>
     </div>
-        <a href="tel:+508131241" class="cs-phone">
-            +508131241
-        </a>
-</header>
-                                
+</nav>
+</div>
+<div class="cs-contact">
+  <a href="mailto:info@email.com" class="cs-email">info@email.com</a>
+  <hr>
+  <a href="tel:+508131241" class="cs-phone"> +508131241</a>
+</div>
 
-<script>
+  <script>
     // add classes for mobile navigation toggling
     const CSbody = document.querySelector("body") as HTMLBodyElement;
     const CSnavbarMenu = document.querySelector("#cs-navigation") as HTMLElement;
-    const CShamburgerMenu = document.querySelector("#cs-navigation .cs-toggle") as HTMLElement;
+    const CShamburgerMenu = document.querySelector(
+      "#cs-navigation .cs-toggle"
+    ) as HTMLElement;
 
-    CShamburgerMenu.addEventListener('click', function() {
-        CShamburgerMenu.classList.toggle("cs-active");
-        CSnavbarMenu.classList.toggle("cs-active");
-        CSbody.classList.toggle("cs-open");
-        // run the function to check the aria-expanded value
-        ariaExpanded();
+    CShamburgerMenu.addEventListener("click", function () {
+      CShamburgerMenu.classList.toggle("cs-active");
+      CSnavbarMenu.classList.toggle("cs-active");
+      CSbody.classList.toggle("cs-open");
+      // run the function to check the aria-expanded value
+      ariaExpanded();
     });
 
-    // checks the value of aria expanded on the cs-ul and changes it accordingly whether it is expanded or not 
+    // checks the value of aria expanded on the cs-ul and changes it accordingly whether it is expanded or not
     function ariaExpanded() {
-        const csUL = document.querySelector('#cs-expanded') as HTMLElement;
-        const csExpanded = csUL.getAttribute('aria-expanded');
+      const csUL = document.querySelector("#cs-expanded") as HTMLElement;
+      const csExpanded = csUL.getAttribute("aria-expanded");
 
-        if (csExpanded === 'false') {
-            csUL.setAttribute('aria-expanded', 'true');
-        } else {
-            csUL.setAttribute('aria-expanded', 'false');
-        }
+      if (csExpanded === "false") {
+        csUL.setAttribute("aria-expanded", "true");
+      } else {
+        csUL.setAttribute("aria-expanded", "false");
+      }
     }
 
-        // This script adds a class to the body after scrolling 100px
-    // and we used these body.scroll styles to create some on scroll 
+    // This script adds a class to the body after scrolling 100px
+    // and we used these body.scroll styles to create some on scroll
     // animations with the navbar
-    
-    document.addEventListener('scroll', (e) => { 
-        const scroll = document.documentElement.scrollTop;
-        if(scroll >= 100){
-    CSbody.classList.add('scroll')
-        } else {
-        CSbody.classList.remove('scroll')
-        }
+
+    document.addEventListener("scroll", (e) => {
+      const scroll = document.documentElement.scrollTop;
+      if (scroll >= 100) {
+        CSbody.classList.add("scroll");
+      } else {
+        CSbody.classList.remove("scroll");
+      }
     });
 
-
     // mobile nav toggle code
-    const dropDowns = Array.from(document.querySelectorAll('#cs-navigation .cs-dropdown'));
-        for (const item of dropDowns) {
-            const onClick = () => {
-            item.classList.toggle('cs-active')
-        }
-        item.addEventListener('click', onClick)
-        }
-                                
-</script>
+    const dropDowns = Array.from(
+      document.querySelectorAll("#cs-navigation .cs-dropdown")
+    );
+    for (const item of dropDowns) {
+      const onClick = () => {
+        item.classList.toggle("cs-active");
+      };
+      item.addEventListener("click", onClick);
+    }
+  </script>
+</header>
