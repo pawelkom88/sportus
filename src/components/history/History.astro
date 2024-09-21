@@ -8,7 +8,7 @@ import "./history.css";
     <div class="cs-container">
       <picture class="cs-picture">
         <Image
-          src="https://csimg.nyc3.cdn.digitaloceanspaces.com/SideBySide/room.jpg"
+          src="https://scontent-lhr8-2.xx.fbcdn.net/v/t39.30808-6/460328793_1005267034730376_8810630702635494876_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=127cfc&_nc_ohc=iGs6njt3mhwQ7kNvgGD3Z4M&_nc_ht=scontent-lhr8-2.xx&_nc_gid=AzHNYax0IXhNM3nJ8cjYZ7Q&oh=00_AYDbHMCNs1L0j3vPJAFichl3jBf73u9LAMmgRDNhknAN_g&oe=66F464BD"
           alt="room"
           width="494"
           height="700"
@@ -51,7 +51,7 @@ import "./history.css";
     <div class="cs-container">
       <picture class="cs-picture">
         <Image
-          src="https://csimg.nyc3.cdn.digitaloceanspaces.com/SideBySide/room.jpg"
+          src="https://s-trojmiasto.pl/zdj/c/n/1/3713/3000x0/3713784__kr.webp"
           alt="room"
           width="494"
           height="700"
@@ -59,7 +59,7 @@ import "./history.css";
       </picture>
       <div class="cs-content">
         <span class="cs-topper cs-toppper-big">02.</span>
-        <h2 class="cs-title">Jak to sie wszystko zaczelo ?</h2>
+        <h2 class="cs-title">Sport na profesjonalnym poziomie</h2>
         <p class="cs-text">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
           incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
@@ -95,7 +95,7 @@ import "./history.css";
     <div class="cs-container">
       <picture class="cs-picture">
         <Image
-          src="https://csimg.nyc3.cdn.digitaloceanspaces.com/SideBySide/room.jpg"
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR_wEESVwOqUhfT0LZJjH05O1LqkO7YRC4hIg&s"
           alt="room"
           width="494"
           height="700"
@@ -103,7 +103,7 @@ import "./history.css";
       </picture>
       <div class="cs-content">
         <span class="cs-topper">03.</span>
-        <h2 class="cs-title">House Painting Contractors For Oak Harbor</h2>
+        <h2 class="cs-title">Miłość do nauki</h2>
         <p class="cs-text">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
           incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
@@ -139,6 +139,8 @@ import "./history.css";
     top: 0;
     left: 50%;
     transform: translate(-50%, -50%);
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 1000;
   }
 
   @media (max-width: 1024px) {
@@ -156,3 +158,49 @@ import "./history.css";
     }
   }
 </style>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const svgs = document.querySelectorAll(".cs-bg");
+
+    const observerOptions = {
+      root: null,
+      threshold: 0,
+      rootMargin: "-100px 0px -100px 0px",
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        const svg = entry.target;
+        const path = svg.querySelector("path")!;
+        const pathLength = path?.getTotalLength();
+
+        // Set initial styles
+        path.style.strokeDasharray = `24 26`; 
+        path.style.strokeDashoffset = pathLength.toString();
+
+        const animatePath = () => {
+          const rect = svg.getBoundingClientRect();
+          const scrollPercentage = Math.max(
+            0,
+            Math.min(1, 1 - rect.bottom / (window.innerHeight + rect.height))
+          );
+          const drawLength = pathLength * scrollPercentage;
+          path.style.strokeDashoffset = (pathLength - drawLength).toString();
+        };
+
+        if (entry.isIntersecting) {
+          window.addEventListener("scroll", animatePath);
+          animatePath(); // Initial animation
+        } else {
+          window.removeEventListener("scroll", animatePath);
+        }
+      });
+    }, observerOptions);
+
+    // Observe each SVG
+    svgs.forEach((svg) => {
+      observer.observe(svg);
+    });
+  });
+</script>

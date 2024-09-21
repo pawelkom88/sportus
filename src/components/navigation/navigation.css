@@ -78,12 +78,13 @@
     gap: 1.5rem;
   }
   #cs-navigation .cs-logo {
+    height: 4.5rem;
     position: relative;
+    padding-top: .7rem;
   }
   #cs-navigation .cs-logo img {
-    margin-top: 0.7rem;
-    width: 203px;
-    height: 70px;
+    width: auto;
+    height: 100%;
     object-fit: cover;
   }
   #cs-navigation .cs-toggle {
@@ -487,6 +488,10 @@
       width 0.3s,
       max-width 0.3s;
   }
+  #cs-navigation .cs-logo img {
+    width: auto;
+    height: 5rem;
+  }
   #cs-navigation .cs-container {
     width: 100%;
     max-width: 90rem;
@@ -498,12 +503,6 @@
   }
   #cs-navigation .cs-toggle {
     display: none;
-  }
-
-  #cs-navigation .cs-logo img {
-    position: absolute;
-    top: 0.8rem;
-    left: 0.6rem;
   }
 
   #cs-navigation .cs-phone {

@@ -1,7 +1,7 @@
 /* Mobile - 360px */
 @media only screen and (min-width: 0rem) {
   #footer-1390 {
-    padding: var(--sectionPadding);
+    padding: 2rem 0 0 2rem;
     background-color: var(--primary);
     position: relative;
     z-index: 1;
@@ -19,7 +19,6 @@
     margin-bottom: 2.5rem;
     /* 24px - 64px */
     padding-bottom: clamp(1.5rem, 5vw, 4rem);
-    border-bottom: 1px solid var(--primaryDark);
     display: flex;
     flex-direction: column;
     align-items: center;
