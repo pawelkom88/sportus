@@ -9,6 +9,7 @@ import logo from "../../assets/images/SPORTUŚ-logo.webp";
     <a href="/" class="cs-logo" aria-label="back to home">
       <Image src={logo} alt="SPORTUŚ logo" width="375" height="280" aria-hidden="true" />
     </a>
+
     <nav class="cs-nav" role="navigation">
       <button class="cs-toggle" aria-label="mobile menu toggle">
         <div class="cs-box" aria-hidden="true">
@@ -20,11 +21,11 @@ import logo from "../../assets/images/SPORTUŚ-logo.webp";
       <!-- content collection map -->
       <div class="cs-ul-wrapper">
         <ul id="cs-expanded" class="cs-ul" aria-expanded="false">
-          <li class="cs-li">
+          <!-- <li class="cs-li">
             <a href="/" class="cs-li-link cs-active"> Strona główna </a>
-          </li>
+          </li> -->
           <li class="cs-li">
-            <a href="/plan-zajec" class="cs-li-link"> Plan zajęć </a>
+            <a href="/plan-zajec" class="cs-li-link">Plan zajęć</a>
           </li>
           <!-- <li class="cs-li cs-dropdown" tabindex="0">
                         <span class="cs-li-link">
@@ -41,23 +42,24 @@ import logo from "../../assets/images/SPORTUŚ-logo.webp";
                         </ul>
                     </li> -->
           <li class="cs-li">
-            <a href="/trener" class="cs-li-link"> O trenerze </a>
+            <a href="/trener" class="cs-li-link">O trenerze </a>
           </li>
           <li class="cs-li">
-            <a href="/blog" class="cs-li-link"> Blog </a>
+            <a href="/aktualnosci" class="cs-li-link">Aktualności</a>
           </li>
           <li class="cs-li">
-            <a href="/#contact-569" class="cs-li-link"> Kontakt </a>
+            <a href="/#contact-569" class="cs-li-link">Kontakt</a>
           </li>
         </ul>
+      </div>
+    </nav>
+
+    <div class="cs-contact">
+      <a href="mailto:info@email.com" class="cs-email">info@email.com</a>
+      <hr />
+      <a href="tel:+508131241" class="cs-phone"> +508131241</a>
     </div>
-</nav>
-</div>
-<div class="cs-contact">
-  <a href="mailto:info@email.com" class="cs-email">info@email.com</a>
-  <hr>
-  <a href="tel:+508131241" class="cs-phone"> +508131241</a>
-</div>
+  </div>
 
   <script>
     // add classes for mobile navigation toggling

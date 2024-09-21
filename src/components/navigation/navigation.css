@@ -81,6 +81,7 @@
     height: 4.5rem;
     position: relative;
     padding-top: 0.7rem;
+    order:1;
   }
   #cs-navigation .cs-logo img {
     width: auto;
@@ -102,8 +103,7 @@
     transition: transform 0.6s;
   }
   #cs-navigation .cs-nav {
-    /* sends it to the right in the 3rd position */
-    order: 3;
+    order: 2;
   }
   #cs-navigation .cs-contact-group {
     display: none;
@@ -376,7 +376,6 @@
     border-bottom: 5px solid var(--primary);
     border-radius: 0 0 1.5rem 1.5rem;
     visibility: hidden;
-    /* if you have 8 or more links in your dropdown nav, uncomment the columns property to make the list into 2 even columns. Change it to 3 or 4 if you need extra columns. Then remove the transition delays on the cs-drop-li so they don't have weird scattered animations */
     position: absolute;
     top: 100%;
     z-index: -100;
@@ -467,13 +466,10 @@
     width: 94%;
     max-width: 90rem;
     height: 6rem;
-    /* prevents padding from affecting height and width */
     box-sizing: border-box;
-    /* 12px - 24px */
     padding: 0 clamp(0.75rem, 2vw, 1.5rem);
     background-color: var(--white);
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-    /* 12px - 24px */
     border-radius: clamp(0.75rem, 2vw, 1.5rem);
     display: flex;
     align-items: center;
@@ -488,12 +484,17 @@
       width 0.3s,
       max-width 0.3s;
   }
+  #cs-navigation .cs-nav {
+    width: 100%;
+  }
   #cs-navigation .cs-logo img {
     width: auto;
     height: 5rem;
   }
   .cs-contact {
     text-align: right;
+    margin-right: 2rem;
+    order:3;
   }
   .cs-email {
     text-decoration: none;
@@ -512,7 +513,6 @@
   #cs-navigation .cs-toggle {
     display: none;
   }
-
   #cs-navigation .cs-phone {
     font-size: 1.2rem;
     font-weight: bold;
