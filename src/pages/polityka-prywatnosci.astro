@@ -1,0 +1,69 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "../layouts/Layout.astro";
+import "../styles/polityka.css";
+const contact = await getCollection("contact");
+---
+
+<Layout title="Polityka prywatnosci">
+  <section id="policy">
+    <h1>Polityka Prywatności i Warunki Korzystania ze Strony</h1>
+    <p>
+      Niniejsza Polityka Prywatności i Warunki Korzystania określają zasady korzystania ze
+      strony internetowej [Nazwa Strony], dotyczącej zajęć sportowych dla dzieci.
+    </p>
+    <h2>1. Brak Gromadzenia Danych Osobowych</h2>
+    <p>
+      Obecnie nie zbieramy żadnych danych osobowych użytkowników naszej strony
+      internetowej. Nie wykorzystujemy plików cookies ani innych technologii śledzących
+      aktywność użytkowników.
+    </p>
+    <h2>2. Bezpieczeństwo Strony</h2>
+    <p>
+      Dokładamy wszelkich starań, aby nasza strona internetowa była bezpieczna i wolna od
+      zagrożeń. Nie możemy jednak zagwarantować pełnego bezpieczeństwa ani ciągłego,
+      nieprzerwanego dostępu do strony.
+    </p>
+    <h2>3. Wyłączenie Odpowiedzialności</h2>
+    <p>
+      <strong>Treści na Stronie:</strong> Informacje zamieszczone na naszej stronie mają charakter
+      ogólny i informacyjny. Nie ponosimy odpowiedzialności za ich aktualność, dokładność ani
+      kompletność.
+    </p>
+    <p>
+      <strong>Linki Zewnętrzne</strong>awierać linki do innych stron internetowych. Nie
+      mamy kontroli nad ich treścią i nie ponosimy odpowiedzialności za materiały na nich
+      zamieszczone.
+    </p>
+    <p>
+      <strong>Szkody i Straty</strong>: Nie ponosimy odpowiedzialności za jakiekolwiek
+      szkody lub straty wynikłe z korzystania z naszej strony internetowej, w tym za
+      ewentualne wirusy lub inne szkodliwe oprogramowanie.
+    </p>
+    <h2>4. Zmiany w Polityce Prywatności i Warunkach Korzystania</h2>
+    <p>
+      Zastrzegamy sobie prawo do wprowadzania zmian w niniejszej Polityce Prywatności i
+      Warunkach Korzystania. Wszelkie zmiany będą publikowane na tej stronie i wchodzą w
+      życie z dniem ich zamieszczenia.
+    </p>
+    <h2>5. Kontakt</h2>
+    <p>
+      Jeśli mają Państwo pytania dotyczące naszej strony internetowej, prosimy o kontakt:
+    </p>
+    <ul>
+      <li>
+        E-mail: <a href=`mailto:${contact[0].data.email}`>{contact[0].data.email}</a>
+      </li>
+      <li>
+        Telefon: <a href=`tel:${contact[0].data.phone}`>{contact[0].data.phone}</a>
+      </li>
+      <li>
+        Dane firmy: <a
+          href=`${contact[0].data.company}`
+          target="_blank"
+          rel="noopener noreferrer">Ogólnopolska Wyszukiwarka Gospodarcza</a
+        >
+      </li>
+    </ul>
+  </section>
+</Layout>

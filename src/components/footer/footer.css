@@ -49,7 +49,7 @@
     transition: color 0.3s;
   }
   #footer-1390 .cs-link:hover {
-    color: var(--primary);
+    color: var(--primaryDark);
   }
   #footer-1390 .cs-logo {
     width: 100%;
@@ -88,21 +88,18 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    transition: background-color 0.3s;
+    transition: transform 0.3s;
   }
+
   #footer-1390 .cs-social-link:hover {
-    background-color: var(--primary);
-  }
-  #footer-1390 .cs-social-link:hover .cs-social-icon {
-    filter: grayscale(1) brightness(1000%);
-    opacity: 1;
+    transform: translateY(-5px);
   }
   #footer-1390 .cs-social-icon {
+    filter: grayscale(1) brightness(1000%);
     width: 0.75rem;
     height: auto;
     display: block;
-    opacity: 0.6;
-    transition: opacity 0.3s;
+    transition: transform 0.3s;
   }
   #footer-1390 .cs-copyright {
     font-size: 1rem;
@@ -120,7 +117,7 @@
   }
   #footer-1390 .cs-copyright-link:hover,
   #footer-1390 .cs-separater:hover {
-    color: var(--primary);
+    color: var(--primaryDark);
   }
   #footer-1390 .cs-separater {
     margin: 0 1rem;

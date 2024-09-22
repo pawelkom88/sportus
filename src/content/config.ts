@@ -8,8 +8,19 @@ const faqCollection = defineCollection({
   }),
 });
 
+const contactCollection = defineCollection({
+  schema: z.object({
+    name: z.string(),
+    email: z.string().email(),
+    phone: z.string(),
+    company: z.string(),
+  }),
+})
+
 export const collections = {
   faq: faqCollection,
+  contact: contactCollection
 };
 
 export type FAQ = typeof faqCollection
+export type Contact = typeof contactCollection

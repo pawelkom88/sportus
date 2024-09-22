@@ -2,6 +2,9 @@
 import { Image } from "astro:assets";
 import "./navigation.css";
 import logo from "../../assets/images/SPORTUŚ-logo.webp";
+import { getCollection } from "astro:content";
+
+const contact = await getCollection("contact");
 ---
 
 <header id="cs-navigation">
@@ -55,9 +58,11 @@ import logo from "../../assets/images/SPORTUŚ-logo.webp";
     </nav>
 
     <div class="cs-contact">
-      <a href="mailto:info@email.com" class="cs-email">info@email.com</a>
+      <a href=`mailto:${contact[0].data.email}` class="cs-email"
+        >{contact[0].data.email}</a
+      >
       <hr />
-      <a href="tel:+508131241" class="cs-phone"> +508131241</a>
+      <a href=`tel:${contact[0].data.phone}` class="cs-phone">{contact[0].data.phone}</a>
     </div>
   </div>
 

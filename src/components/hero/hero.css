@@ -2,7 +2,6 @@
 @media only screen and (min-width: 0rem) {
   #hero-1946 {
     padding: var(--sectionPadding);
-    /* 160px - 200px */
     padding-top: clamp(10rem, 20vw, 12.5rem);
     overflow: hidden;
     position: relative;

@@ -149,21 +149,22 @@
   }
   #why-choose-892 .cs-item:first-child {
     background-image: url("../../assets/images/bg3.svg");
-    background-size: 35%;
+    background-size: 30%;
   }
   #why-choose-892 .cs-item:nth-child(2) {
     background-image: url("../../assets/images/bg1.svg");
-    background-size: 35%;
+    background-size: 30%;
   }
   #why-choose-892 .cs-item:nth-child(3) {
     background-image: url("../../assets/images/bg2.svg");
-    background-size: 35%;
+    background-size: 30%;
   }
   #why-choose-892 .cs-item:nth-child(4) {
     background-image: url("../../assets/icons/mentor.svg");
-    background-size: 30%;
+    background-size: 25%;
     background-position: -5px -15px;
   }
+
   #why-choose-892 .cs-icon {
     width: 3rem;
     height: auto;
@@ -204,6 +205,28 @@
     transform: rotate(-66deg);
   }
 }
+
+@media only screen and (max-width: 575px) {
+  #why-choose-892 .cs-item:first-child {
+    background-size: 20%;
+  }
+  #why-choose-892 .cs-item:nth-child(2) {
+    background-size: 20%;
+  }
+  #why-choose-892 .cs-item:nth-child(3) {
+    background-size: 20%;
+  }
+  #why-choose-892 .cs-item:nth-child(4) {
+    background-size: 20%;
+  }
+  #why-choose-892 .cs-h3 {
+    max-width: 80%;
+  }
+  #why-choose-892 .cs-item-text {
+    max-width: 90%;
+  }
+}
+
 /* Tablet - 768px */
 @media only screen and (min-width: 48rem) {
   #why-choose-892 .cs-container {
