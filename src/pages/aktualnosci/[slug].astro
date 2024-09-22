@@ -1,3 +1,9 @@
 ---
-
+export function getStaticPaths() {
+  return [
+    { params: { slug: "1" } },
+    { params: { slug: "2" } },
+    { params: { slug: "3" } },
+  ];
+}
 ---

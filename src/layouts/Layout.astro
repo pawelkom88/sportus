@@ -1,23 +1,36 @@
 ---
+import "@fontsource-variable/anybody";
 import "@fontsource-variable/grandstander";
-import '@fontsource-variable/anybody';
 import Footer from "../components/footer/Footer.astro";
 import Navigation from "../components/navigation/Navigation.astro";
+import Seo from "../seo/Seo.astro";
 interface Props {
   title: string;
+  description: string;
+  image?: {
+    src: string;
+    alt: string;
+  };
+  jsonLDType?: string;
 }
 
-const { title } = Astro.props;
+const { title, description, image, jsonLDType = "website" } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="pl">
   <head>
     <meta charset="UTF-8" />
     <meta name="description" content="Astro description" />
     <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <meta name="msapplication-TileColor" content="#da532c" />
+    <meta name="theme-color" content="#ffffff" />
     <meta name="generator" content={Astro.generator} />
+    <Seo {title} {description} url={Astro.url} {image} jsonLDType={jsonLDType} />
     <title>{title}</title>
   </head>
   <body>
@@ -28,7 +41,6 @@ const { title } = Astro.props;
 </html>
 <style is:global>
   :root {
-
     --primary: hsl(200, 100%, 36%);
     --primaryLight: hsl(200, 100%, 96%);
     --primaryDark: hsl(342, 92%, 58%);
@@ -102,12 +114,11 @@ const { title } = Astro.props;
     margin: 0;
   }
   @keyframes rotate {
-  0% {
-    transform: rotate(0);
+    0% {
+      transform: rotate(0);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
   }
-  100% {
-    transform: rotate(360deg);
-  }
-}
-
 </style>
