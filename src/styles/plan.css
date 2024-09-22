@@ -2,10 +2,8 @@
 @media only screen and (min-width: 0rem) {
   #timetable-1731 {
     padding: var(--sectionPadding);
-    padding-top: clamp(7rem, 15vw, 12rem);
-
+    padding-top: clamp(10rem, 15vw, 12rem);
     position: relative;
-    /* remove the font family so the Stitch inherits the fonts from your global stylesheet */
   }
   #timetable-1731 .cs-container {
     width: 100%;
@@ -14,29 +12,24 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    /* 48px - 64px */
     gap: clamp(3rem, 6vw, 4rem);
   }
   #timetable-1731 .cs-content {
-    /* set text align to center if content needs to be centrally aligned */
     text-align: left;
     width: 100%;
     display: flex;
     flex-direction: column;
-    /* aligns content to the left, set to center to centrally align */
     align-items: flex-start;
   }
   #timetable-1731 .cs-button-solid {
     font-size: 1rem;
     font-weight: 700;
-    /* 46px - 56px */
     line-height: clamp(2.875rem, 5.5vw, 3.5rem);
     text-align: center;
     text-decoration: none;
     min-width: 9.375rem;
     max-height: 2.875rem;
     margin: 0;
-    /* prevents padding from adding to the width */
     box-sizing: border-box;
     color: #fff;
     background-color: #e8e8e8;
