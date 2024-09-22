@@ -73,7 +73,7 @@
     display: block;
   }
   #reviews-510 .cs-item-text {
-    font-size: clamp(0.875rem, 1.6vw, 1.5625rem);
+    font-size: clamp(1rem, 1.6vw, 1.5625rem);
     line-height: 1.5em;
     margin-bottom: clamp(1.5rem, 3vw, 2.75rem);
   }
@@ -110,7 +110,7 @@
     display: block;
   }
   #reviews-510 .cs-job {
-    font-size: clamp(0.875rem, 1.5vw, 1.25rem);
+    font-size: clamp(1rem, 1.5vw, 1.25rem);
     line-height: 1.5em;
     font-weight: 400;
     margin: 0;
