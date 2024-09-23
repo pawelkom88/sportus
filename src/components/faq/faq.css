@@ -262,6 +262,9 @@
     /* sends it to the right in the 2nd position */
     order: 2;
   }
+  #faq-1505 .cs-topperr {
+    color: #065884;
+  }
   #faq-1505 .cs-card-group {
     /* pushes up against the other flex items so it pushes to the bottom of the flexbox */
     margin-top: auto;
