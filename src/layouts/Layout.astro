@@ -56,7 +56,7 @@ const { title, description, image, jsonLDType = "website" } = Astro.props;
     --topperFontSize: clamp(0.8125rem, 1.6vw, 1rem);
     /* 31px - 49px */
     --headerFontSize: clamp(1.9375rem, 3.9vw, 3.0625rem);
-    --bodyFontSize: clamp(1rem, 0.9443rem + 0.2548vw, 1.25rem);
+    --bodyFontSize: clamp(1rem, 0.9443rem + 0.2548vw, 1.2rem);
     /* 60px - 100px top and bottom */
     --sectionPadding: clamp(3rem, 7.5vw, 6.25rem) 1rem;
     --radius: 2rem;
@@ -120,5 +120,8 @@ const { title, description, image, jsonLDType = "website" } = Astro.props;
     100% {
       transform: rotate(360deg);
     }
+  }
+  .underline {
+    text-decoration: underline;
   }
 </style>

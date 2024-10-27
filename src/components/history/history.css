@@ -99,6 +99,11 @@
     object-fit: cover;
     border-radius: var(--radius);
     border: 5px solid var(--white);
+    object-position: right;
+  }
+
+  #RTsbs-581 .cs-picture img {
+    object-position: center;
   }
 }
 /* Tablet - 768px */

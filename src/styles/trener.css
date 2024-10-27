@@ -36,7 +36,6 @@
     font-size: min(1.9vw, 0.64em);
     width: 41.0625em;
     height: 42.25em;
-    margin-left: 6.75em;
     position: relative;
     z-index: 1;
   }
@@ -49,20 +48,19 @@
     top: 0;
     right: 0;
     border-radius: var(--radius);
+    object-fit: cover;
+    object-position: right;
   }
-  #sbs-1125 .cs-picture1 {
-    position: absolute;
-    width: 21.0625em;
-    height: 22.25em;
-    bottom: -2rem;
-    left: -2rem;
-    border: 5px solid var(--white);
-    border-radius: var(--radius);
-  }
+
   .football {
     animation: rotate 10s linear infinite;
   }
+
+  .cs-bottom-group {
+    display: none;
+  }
 }
+
 /* Desktop - 1024px */
 @media only screen and (min-width: 64rem) {
   #sbs-1125 .cs-container {
@@ -86,5 +84,31 @@
     width: 45%;
     flex: none;
     margin-top: 0;
+  }
+
+  .cs-bottom-group {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+
+  .cs-bottom-small {
+    display: block;
+    width: 12.5321875em;
+    height: 13.23875em;
+    border-radius: var(--radius);
+    object-fit: cover;
+  }
+}
+
+@media only screen and (min-width: 1024px) and (max-width: 1288px) {
+  .last {
+    display: none;
+  }
+
+  .cs-bottom-small {
+    width: 93%;
   }
 }

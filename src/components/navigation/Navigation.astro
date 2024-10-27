@@ -10,7 +10,14 @@ const contact = await getCollection("contact");
 <header id="cs-navigation">
   <div class="cs-container">
     <a href="/" class="cs-logo" aria-label="back to home">
-      <Image src={logo} alt="SPORTUŚ logo" width="375" height="280" aria-hidden="true" />
+      <Image
+        loading="eager"
+        src={logo}
+        alt="SPORTUŚ logo"
+        width="375"
+        height="280"
+        aria-hidden="true"
+      />
     </a>
 
     <nav class="cs-nav">
@@ -27,6 +34,9 @@ const contact = await getCollection("contact");
           <!-- <li class="cs-li">
             <a href="/" class="cs-li-link cs-active"> Strona główna </a>
           </li> -->
+          <li class="cs-li">
+            <a href="/o-nas" class="cs-li-link">O nas</a>
+          </li>
           <li class="cs-li">
             <a href="/oferta" class="cs-li-link">Oferta</a>
           </li>
@@ -47,9 +57,7 @@ const contact = await getCollection("contact");
                             </li>
                         </ul>
                     </li> -->
-          <li class="cs-li">
-            <a href="/trener" class="cs-li-link">O trenerze </a>
-          </li>
+
           <li class="cs-li">
             <a href="/aktualnosci" class="cs-li-link">Aktualności</a>
           </li>
@@ -60,13 +68,13 @@ const contact = await getCollection("contact");
       </div>
     </nav>
 
-    <div class="cs-contact">
+    <!-- <div class="cs-contact">
       <a href=`mailto:${contact[0].data.email}` class="cs-email"
         >{contact[0].data.email}</a
       >
       <hr />
       <a href=`tel:${contact[0].data.phone}` class="cs-phone">{contact[0].data.phone}</a>
-    </div>
+    </div> -->
   </div>
 
   <script>
