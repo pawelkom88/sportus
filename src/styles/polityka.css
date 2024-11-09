@@ -6,6 +6,11 @@
   font-size: 1.2rem;
   line-height: 1.5em;
 }
+
+#policy h1 {
+  text-align: center;
+}
+
 #policy a {
-    text-decoration: underline;
+  text-decoration: underline;
 }

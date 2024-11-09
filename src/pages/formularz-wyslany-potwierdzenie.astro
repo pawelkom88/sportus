@@ -1,0 +1,48 @@
+---
+import Layout from "../layouts/Layout.astro";
+import "../styles/form-success.css";
+---
+
+<Layout
+  title="Sportuś - Dziękujemy za wysłanie formularza"
+  description="Potwierdzenie pomyślnego wysłania formularza na stronie Sportuś"
+>
+  <section id="success-form">
+    <svg
+      class="ft-green-tick"
+      xmlns="http://www.w3.org/2000/svg"
+      height="100"
+      width="100"
+      viewBox="0 0 48 48"
+      aria-hidden="true"
+    >
+      <circle class="circle" fill="#5bb543" cx="24" cy="24" r="22"></circle>
+      <path
+        class="tick"
+        fill="none"
+        stroke="#FFF"
+        stroke-width="6"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-miterlimit="10"
+        d="M14 27l5.917 4.917L34 17"></path>
+    </svg>
+    <h1>Dziękujemy za wysłanie zapytania do Sportuś!</h1>
+
+    <p>
+      Twoja wiadomość została pomyślnie wysłana. Nasz zespół dokładnie zapozna się z Twoim
+      zapytaniem i odpowie najszybciej jak to możliwe.
+    </p>
+
+    <p>
+      W międzyczasie zachęcamy do przejrzenia naszej strony, gdzie znajdziesz
+      najważniejsze informacje.
+    </p>
+
+    <p>
+      Jeszcze raz dziękujemy za zaufanie i zainteresowanie Sportusiem. Do usłyszenia
+      wkrótce!
+    </p>
+    <a href="/" class="cs-button-solid">Strona główna</a>
+  </section>
+</Layout>

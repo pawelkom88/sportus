@@ -1,0 +1,37 @@
+#success-form {
+  padding: var(--sectionPadding);
+  padding-top: clamp(10rem, 20vw, 12.5rem);
+  max-width: 80rem;
+  margin: auto;
+  font-size: 1.2rem;
+  line-height: 1.5em;
+  display: grid;
+  place-items: center;
+}
+
+#success-form a {
+  text-decoration: underline;
+}
+
+#success-form .cs-button-solid {
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: clamp(2.875rem, 5.5vw, 3.5rem);
+  text-align: center;
+  text-decoration: none;
+  min-width: 9.375rem;
+  margin: 0;
+  box-sizing: border-box;
+  padding: 0 clamp(2rem, 4vw, 3rem);
+  background-color: var(--primary);
+  color: var(--white);
+  display: inline-block;
+  position: relative;
+  z-index: 1;
+  transition: color 0.3s;
+  transition: background-color 0.3s;
+}
+#success-form .cs-button-solid:hover {
+  background-color: var(--primaryDark);
+  color: var(--white);
+}
