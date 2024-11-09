@@ -4,20 +4,13 @@ import "./navigation.css";
 import logo from "../../assets/images/SPORTUŚ-logo.webp";
 import { getCollection } from "astro:content";
 
-const contact = await getCollection("contact");
+// const contact = await getCollection("contact");
 ---
 
 <header id="cs-navigation">
   <div class="cs-container">
     <a href="/" class="cs-logo" aria-label="back to home">
-      <Image
-        loading="eager"
-        src={logo}
-        alt="SPORTUŚ logo"
-        width="375"
-        height="280"
-        aria-hidden="true"
-      />
+      <Image loading="eager" src={logo} alt="SPORTUŚ logo" width="375" height="280" />
     </a>
 
     <nav class="cs-nav">
@@ -34,6 +27,9 @@ const contact = await getCollection("contact");
           <!-- <li class="cs-li">
             <a href="/" class="cs-li-link cs-active"> Strona główna </a>
           </li> -->
+          <li class="cs-li">
+            <a href="/" class="cs-li-link">Strona główna</a>
+          </li>
           <li class="cs-li">
             <a href="/o-nas" class="cs-li-link">O nas</a>
           </li>

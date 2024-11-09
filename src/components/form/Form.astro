@@ -26,7 +26,8 @@ import "./form.css";
             type="text"
             id="name-569"
             name="name"
-            placeholder="Imię"
+            placeholder="np. Krzysztof"
+            autocomplete="given-name"
           />
         </label>
         <label for="name-570" class="cs-label">
@@ -37,7 +38,8 @@ import "./form.css";
             type="text"
             id="name-570"
             name="lastname"
-            placeholder="Nazwisko"
+            placeholder="np. Iwanowski"
+            autocomplete="family-name"
           />
         </label>
         <label for="phone-571" class="cs-label">
@@ -45,10 +47,11 @@ import "./form.css";
           <input
             class="cs-input"
             required
-            type="text"
+            type="tel"
             id="phone-571"
             name="phone"
-            placeholder="Telefon"
+            placeholder="np. +48 123 456 789"
+            autocomplete="tel"
           />
         </label>
         <label for="email-573" class="cs-label">
@@ -56,10 +59,16 @@ import "./form.css";
           <input
             class="cs-input"
             required
-            type="text"
+            type="email"
             id="email-573"
             name="email"
-            placeholder="E-mail"
+            placeholder="np. kontaktsportus@gmail"
+            autocomplete="email"
+          />
+          <input
+            type="hidden"
+            name="subject"
+            value="Zapytanie ogólne z formularza kontaktowego"
           />
         </label>
         <label for="message-574" class="cs-label cs-message">
@@ -71,7 +80,15 @@ import "./form.css";
             id="message-574"
             placeholder="Twoja wiadomość..."></textarea>
         </label>
-        <button class="cs-submit" type="submit">Wyslij</button>
+        <div class="cs-form-agreement">
+          <input type="checkbox" id="agreement" name="agreement" required />
+          <label for="agreement"
+            >Zgadzam się na przetwarzanie moich danych osobowych zgodnie z <a
+              href="/polityka-prywatnosci">polityką prywatności</a
+            >.</label
+          >
+        </div>
+        <button class="cs-submit" type="submit">Wyslij wiadomość</button>
       </form>
     </div>
     <div class="cs-right">
@@ -80,17 +97,11 @@ import "./form.css";
         alt="group of kids with a trainer listening to his speech"
         width="500"
         height="300"
-        aria-hidden="true"
       />
       <!--Address-->
       <div class="cs-flex">
         <span class="cs-header">Gdzie nas znajdziesz</span>
         <p>Gdańsk, Gdynia, Sopot, woj. pomorskie, Kaszuby</p>
-        <!-- <button class="xxx">Otworz mape</button>
-        <dialog>
-          <button autofocus>Close</button>
-          <p>This modal dialog has a groovy backdrop!</p>
-        </dialog> -->
       </div>
       <!--Contacts-->
       <div class="cs-flex">
@@ -104,37 +115,3 @@ import "./form.css";
     </div>
   </div>
 </section>
-
-<!-- <script>
-  function init() {
-    const mapButton = document.querySelector(".xxx") as HTMLButtonElement;
-    const dialog = document.querySelector("dialog") as HTMLDialogElement;
-    const closeButton = document.querySelector("dialog button") as HTMLButtonElement;
-
-    mapButton.addEventListener("click", (e) => {
-      // e.stopPropagation();
-      dialog.showModal();
-    });
-
-    closeButton.addEventListener("click", () => closeDialog());
-
-    // function clickOutside(e: MouseEvent) {
-    //   if (e.target !== dialog) {
-    //     closeDialog();
-    //   }
-    // }
-
-    function closeDialog() {
-      dialog.close();
-      // document.removeEventListener("click", clickOutside);
-    }
-
-    function closeByEsc(e: KeyboardEvent) {
-      if (e.key === "Escape") closeDialog();
-    }
-
-    document.addEventListener("keydown", closeByEsc);
-  }
-
-  init();
-</script> -->

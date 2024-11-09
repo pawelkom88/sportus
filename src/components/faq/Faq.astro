@@ -5,7 +5,7 @@ import award from "../../assets/images/award.png";
 import teamwork from "../../assets/images/teamwork.png";
 import "./faq.css";
 import { getCollection } from "astro:content";
-import type { FAQ } from "../../content/config";
+// import type { FAQ } from "../../content/config";
 
 const faqItems = await getCollection("faq");
 const sortedFaqItems = faqItems.sort((a, b) => (a.data.order || 0) - (b.data.order || 0));
