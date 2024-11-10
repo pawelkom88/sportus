@@ -43,7 +43,7 @@ import "./form.css";
             placeholder="np. Krzysztof"
             autocomplete="given-name"
           />
-          <strong>error msg</strong>
+          <!-- <strong>error msg</strong> -->
         </div>
 
         <div class="cs-label">
@@ -57,7 +57,7 @@ import "./form.css";
             placeholder="np. Iwanowski"
             autocomplete="family-name"
           />
-          <strong>error msg</strong>
+          <!-- <strong>error msg</strong> -->
         </div>
 
         <div class="cs-label">
@@ -71,7 +71,7 @@ import "./form.css";
             placeholder="np. 633 456 789"
             autocomplete="tel"
           />
-          <strong>error msg</strong>
+          <!-- <strong>error msg</strong> -->
         </div>
         <div class="cs-label">
           <label for="email-573" class="cs-email"> E-mail </label>
@@ -89,10 +89,10 @@ import "./form.css";
             name="subject"
             value="Zapytanie z formularza kontaktowego - Sportus"
           />
-          <strong>error msg</strong>
+          <!-- <strong>error msg</strong> -->
         </div>
 
-        <div class="cs-label">
+        <div class="cs-label cs-span-2">
           <label for="message-574" class="cs-message"> Wiadomość </label>
           <textarea
             class="cs-input cs-textarea"
@@ -100,16 +100,14 @@ import "./form.css";
             name="Wiadomość"
             id="message-574"
             placeholder="Twoja wiadomość..."></textarea>
-          <strong>error msg</strong>
+          <!-- <strong>error msg</strong> -->
         </div>
 
-        <div class="cs-label">
-          <div class="cs-checkbox-group">
-            <label for="agreement" class="cs-policy">
-              Zgadzam się na przetwarzanie moich danych osobowych zgodnie z
-              <a href="/polityka-prywatnosci">polityką prywatności</a>
-            </label>
-          </div>
+        <div class="cs-label cs-span-2 cs-policy">
+          <label for="agreement">
+            Zgadzam się na przetwarzanie moich danych osobowych zgodnie z
+            <a href="/polityka-prywatnosci">polityką prywatności</a>
+          </label>
           <input
             class="cs-checkbox"
             type="checkbox"
@@ -165,12 +163,6 @@ import "./form.css";
 
       errorElement.classList.add("error");
       errorElement.textContent = errorMsg;
-
-      const existingError = phoneInput.parentElement.querySelector(".error");
-
-      if (existingError) {
-        existingError.remove();
-      }
 
       if (errorMsg) {
         phoneInput.insertAdjacentElement("afterend", errorElement);

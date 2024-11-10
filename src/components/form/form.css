@@ -38,28 +38,23 @@
     column-gap: 1rem;
   }
 
-  .cs-checkbox-group {
-    grid-column: span 2;
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-  }
-
   #contact-569 .cs-label {
     display: grid;
     grid-template-rows: subgrid;
     grid-row: span 3;
-    margin: 0.5rem 0;
   }
 
-  #contact-569 .cs-label > :is(input, .cs-textarea) {
-    margin-top: 0.2rem;
+  #contact-569 .cs-policy {
+    display: flex;
+    margin-bottom: 0.5rem;
   }
 
   #contact-569 .cs-checkbox {
-    width: 3rem;
-    height: 3rem;
+    width: 1.4rem;
+    height: 1.4rem;
     border-radius: 0.2rem;
+    align-self: flex-start;
+    margin: 0;
   }
 
   #contact-569 .cs-input {
@@ -153,7 +148,7 @@
     display: block;
   }
   #contact-569 .cs-link {
-    font-size: clamp(0.875rem, 1.4vw, 1rem);
+    font-size: clamp(1rem, 1.5vw, 1.2rem);
     line-height: 1.5em;
     text-decoration: none;
     margin: 0;
@@ -173,7 +168,9 @@
     flex-direction: row;
     justify-content: space-between;
   }
-
+  #contact-569 .cs-span-2 {
+    grid-column: span 2;
+  }
   #contact-569 .cs-right {
     width: 35%;
     flex-direction: column;
@@ -191,10 +188,5 @@
 
   #contact-569 .cs-social {
     margin-top: 1rem;
-  }
-
-  #contact-569 .cs-checkbox {
-    width: 2rem;
-    height: 2rem;
   }
 }

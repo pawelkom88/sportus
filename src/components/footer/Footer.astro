@@ -11,6 +11,7 @@ const currentYear = new Date().getFullYear();
       <a aria-label="go back to home" class="cs-logo" href="/">
         <Image class="cs-logo-img" src={logo} alt="logo" width="209" height="40" />
       </a>
+
       <ul class="cs-ul">
         <li class="cs-li">
           <a href="/" class="cs-link">Strona główna</a>
@@ -28,17 +29,22 @@ const currentYear = new Date().getFullYear();
           <a href="/#contact-569" class="cs-link">Kontakt</a>
         </li>
       </ul>
+
       <div class="cs-bottom">
         <!--Social-->
         <ul class="cs-social">
           <li class="cs-social-li">
             <a
+              title="Sportus - profil na facebooku"
               href="https://www.facebook.com/sportus.gdansk/"
               class="cs-social-link"
               aria-label="facebook"
               target="_blank"
               rel="noopener"
+              aria-labelledby="facebook-icon-title"
             >
+              <title id="facebook-icon-title">Sportus - profil na facebooku</title>
+
               <svg
                 class="cs-social-icon cs-default"
                 width="12"
@@ -53,42 +59,60 @@ const currentYear = new Date().getFullYear();
               </svg>
             </a>
           </li>
-          <!-- <li class="cs-social-li">
+          <li class="cs-social-li">
+            <!-- TODO: google business -->
             <a
-              href=""
+              title="Sportus profil Google Business"
+              href="google business here"
               class="cs-social-link"
               aria-label="twitter"
               target="_blank"
               rel="noopener"
+              aria-labelledby="google-business-icon-title"
             >
               <svg
+                fill="currentColor"
                 class="cs-social-icon cs-default"
                 width="12"
                 height="12"
-                viewBox="0 0 12 12"
-                fill="none"
+                viewBox="0 0 48 48"
                 xmlns="http://www.w3.org/2000/svg"
               >
-                <path
-                  d="M10.5286 3.59033C10.5332 3.69593 10.5332 3.79673 10.5332 3.90233C10.5378 7.10394 8.18559 10.8 3.88396 10.8C2.61524 10.8 1.36967 10.4207 0.300049 9.71035C0.485264 9.73435 0.670479 9.74395 0.855695 9.74395C1.90679 9.74395 2.93011 9.37915 3.75894 8.70234C2.75878 8.68314 1.87901 8.00634 1.5734 7.01754C1.92531 7.08954 2.28648 7.07514 2.62913 6.97434C1.54099 6.75354 0.758457 5.75993 0.753826 4.60313C0.753826 4.59353 0.753826 4.58393 0.753826 4.57433C1.07795 4.76153 1.44375 4.86713 1.81418 4.87673C0.790869 4.16633 0.471373 2.75033 1.09184 1.64152C2.28185 3.15833 4.03214 4.07513 5.91207 4.17593C5.72223 3.33593 5.98153 2.45272 6.58811 1.85752C7.52807 0.94072 9.0098 0.98872 9.89883 1.96312C10.4221 1.85752 10.9268 1.65592 11.3852 1.37272C11.2092 1.93432 10.8434 2.40952 10.3572 2.71193C10.8203 2.65432 11.2741 2.52472 11.7 2.33272C11.3852 2.82233 10.987 3.24473 10.5286 3.59033Z"
-                  fill="#BABABA"></path>
-              </svg>
+                <title id="google-business-icon-title">
+                  Sportus profil Google Business
+                </title>
+                <polygon
+                  class="a"
+                  points="14.25 19.557 24 19.557 24 7.094 15.858 7.094 14.25 19.557"
+                ></polygon><path
+                  class="a"
+                  d="M15.8582,7.0938H9.1424A2,2,0,0,0,7.2006,8.6145L4.5,19.5573h9.75"
+                ></path><path class="a" d="M24,19.5573a4.875,4.875,0,0,1-9.75,0"
+                ></path><path class="a" d="M14.25,19.5573a4.875,4.875,0,0,1-9.75,0"
+                ></path><polygon
+                  class="a"
+                  points="33.75 19.557 24 19.557 24 7.094 32.142 7.094 33.75 19.557"
+                ></polygon><path
+                  class="a"
+                  d="M32.1418,7.0938h6.7158a2,2,0,0,1,1.9418,1.5207L43.5,19.5573H33.75"
+                ></path><path class="a" d="M24,19.5573a4.875,4.875,0,0,0,9.75,0"
+                ></path><path class="a" d="M33.75,19.5573a4.875,4.875,0,0,0,9.75,0"
+                ></path><path
+                  class="a"
+                  d="M7.3252,23.9768V38.9062a2,2,0,0,0,2,2h29.35a2,2,0,0,0,2-2V23.978"
+                ></path><path
+                  class="a"
+                  d="M33.4991,33.5687h3.9566a3.9771,3.9771,0,0,1-3.88,4.0721l-.0768.0012a4.0733,4.0733,0,1,1,0-8.1466,4.011,4.011,0,0,1,2.02.5357"
+                ></path></svg
+              >
             </a>
-          </li> -->
+          </li>
         </ul>
-        <span class="cs-copyright">
-          © Wszelkie prawa zastrzeżone {currentYear} - <a
-            href="/"
-            class="cs-copyright-link">Sportuś</a
-          >
-        </span>
-        <div class="cs-flex">
-          <a href="/polityka-prywatnosci" class="cs-copyright-link"
-            >Polityka prywatności</a
-          >
-          <!-- <span class="cs-separater">|</span> -->
-        </div>
       </div>
     </div>
+    <a href="/polityka-prywatnosci" class="cs-copyright-link">Polityka prywatności</a>
+    <p class="cs-copyright">
+      © Wszelkie prawa zastrzeżone {currentYear} - Sportuś
+    </p>
   </div>
 </footer>
