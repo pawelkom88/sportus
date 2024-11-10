@@ -1,5 +1,11 @@
 /* Mobile - 360px */
 @media only screen and (min-width: 0rem) {
+  .error {
+    display: block;
+    color: red;
+    font-size: 0.9rem;
+    margin-top: 0.1rem;
+  }
   #contact-569 {
     padding: var(--sectionPadding);
     background-color: #fafbfc;
@@ -21,38 +27,43 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    gap: 3rem;
+    gap: 1rem;
   }
-  #contact-569 .cs-content {
-    /* set text aling to left if content needs to be left aligned */
-    text-align: left;
+  #contact-569 .cs-form {
     width: 100%;
-    display: flex;
-    flex-direction: column;
-    /* centers content horizontally, set to flex-start to left align */
-    align-items: flex-start;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    row-gap: 0.5rem;
+    column-gap: 1rem;
   }
 
-  #contact-569 .cs-form {
+  .cs-checkbox-group {
+    grid-column: span 2;
     display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
     align-items: center;
     gap: 1rem;
   }
+
   #contact-569 .cs-label {
-    /* 14px - 16px */
-    font-size: clamp(1, 1.5vw, 1.25rem);
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
-    gap: 0.25rem;
+    display: grid;
+    grid-template-rows: subgrid;
+    grid-row: span 3;
+    margin: 0.5rem 0;
   }
+
+  #contact-569 .cs-label > :is(input, .cs-textarea) {
+    margin-top: 0.2rem;
+  }
+
+  #contact-569 .cs-checkbox {
+    width: 3rem;
+    height: 3rem;
+    border-radius: 0.2rem;
+  }
+
   #contact-569 .cs-input {
     font-size: 1rem;
-    width: 100%;
     height: 2.5rem;
     padding: 0;
     padding-left: 1.5rem;
@@ -153,36 +164,20 @@
   #contact-569 .cs-link:hover {
     color: var(--primaryDark);
   }
-  #contact-569 .cs-phone {
-    margin-top: -0.5rem;
-  }
 }
-/* Tablet - 650px */
-@media only screen and (min-width: 40.625rem) {
-  #contact-569 .cs-label {
-    width: 48.4%;
-  }
-  #contact-569 .cs-message {
-    width: 100%;
-  }
-}
+
 /* Small Desktop - 1024px */
 @media only screen and (min-width: 64rem) {
   #contact-569 .cs-container {
     max-width: 80rem;
     flex-direction: row;
     justify-content: space-between;
-    align-items: flex-end;
   }
-  #contact-569 .cs-left {
-    width: 60%;
-  }
-  #contact-569 .cs-submit {
-    width: 15rem;
-  }
+
   #contact-569 .cs-right {
     width: 35%;
     flex-direction: column;
+    align-items: flex-start;
     /* prevent flexbox from squishing it */
     flex: none;
   }
@@ -190,20 +185,16 @@
     border-radius: var(--radius);
     display: block;
   }
-  #contact-569 .cs-flex {
-    width: 100%;
+  #contact-569 .cs-form {
+    grid-template-columns: 1fr 1fr;
   }
+
   #contact-569 .cs-social {
-    /* adds an extra 16px + 48px row gap on the parent to make 64px space between */
     margin-top: 1rem;
   }
-}
 
-dialog {
-  border: none;
-}
-
-dialog::backdrop {
-  opacity: 0.4;
-  background-color: #222;
+  #contact-569 .cs-checkbox {
+    width: 2rem;
+    height: 2rem;
+  }
 }

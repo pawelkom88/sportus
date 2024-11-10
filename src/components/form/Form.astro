@@ -2,11 +2,6 @@
 import { Image } from "astro:assets";
 import team from "../../assets/images/team.webp";
 import "./form.css";
-
-// get url using vite env var
-const currentPath = Astro.url.pathname;
-console.log(currentPath);
-console.log(import.meta.env.BASE_URL);
 ---
 
 <section id="contact-569">
@@ -35,85 +30,99 @@ console.log(import.meta.env.BASE_URL);
           value="eb87ca39-5032-4242-87e8-05f25c6953d8"
         />
         <input type="checkbox" name="botcheck" class="hidden" style="display: none;" />
-        <!--  TODO set default url in config file -->
-        <input
-          type="hidden"
-          name="redirect"
-          value="zajecia-dla-dzieci-sportus.netlify.app/formularz-wyslany-potwierdzenie"
-        />
-        <label for="name-569" class="cs-label">
-          Imię
+        <input type="hidden" name="redirect" value="/formularz-wyslany-potwierdzenie" />
+
+        <div class="cs-label">
+          <label for="name-569" class="cs-name"> Imię </label>
           <input
             class="cs-input"
             required
             type="text"
             id="name-569"
-            name="name"
+            name="Imię"
             placeholder="np. Krzysztof"
             autocomplete="given-name"
           />
-        </label>
-        <label for="name-570" class="cs-label">
-          Nazwisko
+          <strong>error msg</strong>
+        </div>
+
+        <div class="cs-label">
+          <label for="name-570" class="cs-lastname"> Nazwisko </label>
           <input
             class="cs-input"
             required
             type="text"
             id="name-570"
-            name="lastname"
+            name="Nazwisko"
             placeholder="np. Iwanowski"
             autocomplete="family-name"
           />
-        </label>
-        <label for="phone-571" class="cs-label">
-          Telefon
+          <strong>error msg</strong>
+        </div>
+
+        <div class="cs-label">
+          <label for="phone-571" class="cs-phone"> Telefon </label>
           <input
             class="cs-input"
             required
             type="tel"
             id="phone-571"
-            name="phone"
-            placeholder="np. +48 123 456 789"
+            name="Telefon"
+            placeholder="np. 633 456 789"
             autocomplete="tel"
           />
-        </label>
-        <label for="email-573" class="cs-label">
-          E-mail
+          <strong>error msg</strong>
+        </div>
+        <div class="cs-label">
+          <label for="email-573" class="cs-email"> E-mail </label>
           <input
             class="cs-input"
             required
             type="email"
             id="email-573"
-            name="email"
+            name="E-mail"
             placeholder="np. kontaktsportus@gmail"
             autocomplete="email"
           />
           <input
             type="hidden"
             name="subject"
-            value="Zapytanie ogólne z formularza kontaktowego - Sportus"
+            value="Zapytanie z formularza kontaktowego - Sportus"
           />
-        </label>
-        <label for="message-574" class="cs-label cs-message">
-          Wiadomość
+          <strong>error msg</strong>
+        </div>
+
+        <div class="cs-label">
+          <label for="message-574" class="cs-message"> Wiadomość </label>
           <textarea
             class="cs-input cs-textarea"
             required
-            name="Message"
+            name="Wiadomość"
             id="message-574"
             placeholder="Twoja wiadomość..."></textarea>
-        </label>
-        <div class="cs-form-agreement">
-          <input type="checkbox" id="agreement" name="agreement" required />
-          <label for="agreement"
-            >Zgadzam się na przetwarzanie moich danych osobowych zgodnie z <a
-              href="/polityka-prywatnosci">polityką prywatności</a
-            >.</label
-          >
+          <strong>error msg</strong>
         </div>
+
+        <div class="cs-label">
+          <div class="cs-checkbox-group">
+            <label for="agreement" class="cs-policy">
+              Zgadzam się na przetwarzanie moich danych osobowych zgodnie z
+              <a href="/polityka-prywatnosci">polityką prywatności</a>
+            </label>
+          </div>
+          <input
+            class="cs-checkbox"
+            type="checkbox"
+            id="agreement"
+            name="Polityka prywatności"
+            required
+          />
+        </div>
+
         <button class="cs-submit" type="submit">Wyslij wiadomość</button>
       </form>
     </div>
+
     <div class="cs-right">
       <Image
         src={team}
@@ -137,4 +146,47 @@ console.log(import.meta.env.BASE_URL);
       <!--Social-->
     </div>
   </div>
+
+  <script>
+    const isPhoneValid = (phone: string): boolean => {
+      const phoneRegex = /^\d{9}$/;
+      return phoneRegex.test(phone);
+    };
+
+    const phoneInput = document.getElementById("phone-571") as HTMLInputElement;
+    const errorElement = document.createElement("strong");
+
+    phoneInput.addEventListener("blur", () => {
+      if (!phoneInput.value) return;
+
+      const errorMsg = isPhoneValid(phoneInput.value)
+        ? ""
+        : "Proszę wprowadzić poprawny numer telefonu (9 cyfr)";
+
+      errorElement.classList.add("error");
+      errorElement.textContent = errorMsg;
+
+      const existingError = phoneInput.parentElement.querySelector(".error");
+
+      if (existingError) {
+        existingError.remove();
+      }
+
+      if (errorMsg) {
+        phoneInput.insertAdjacentElement("afterend", errorElement);
+        phoneInput.classList.add("error");
+      } else {
+        phoneInput.classList.remove("error");
+      }
+    });
+
+    phoneInput.addEventListener("input", () => {
+      if (phoneInput.classList.contains("error")) {
+        phoneInput.classList.remove("error");
+        errorElement.remove();
+      }
+    });
+  </script>
+
+  <!-- TODO: find kevin powell input solution not to cause layput shift  -->
 </section>
