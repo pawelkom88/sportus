@@ -1,5 +1,5 @@
 ---
-import { Image } from "astro:assets";
+import { Image, Picture } from "astro:assets";
 import tennis from "../../assets/images/tennis.png";
 import award from "../../assets/images/award.png";
 import teamwork from "../../assets/images/teamwork.png";
@@ -30,7 +30,7 @@ const sortedFaqItems = faqItems.sort((a, b) => (a.data.order || 0) - (b.data.ord
     <div class="cs-flex-group">
       <ul class="cs-faq-group">
         {
-          sortedFaqItems.map((item) => {
+          sortedFaqItems.map((item: any) => {
             return (
               <li class="cs-faq-item ">
                 <button class="cs-button">
