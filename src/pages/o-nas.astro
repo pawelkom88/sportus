@@ -30,33 +30,51 @@ import "../styles/trener.css";
         </div>
 
         <div class="cs-bottom-group">
-          <Picture
-            fallbackFormat="jpg"
-            class="cs-bottom-small"
-            formats={["avif", "webp"]}
-            src={image5}
-            width="1080"
-            height="720"
-            alt="Piłkarz w czerwono-białym pasiastym stroju (Krzysztof Iwanowsk) próbujący wykonać kopnięcie podczas meczu. Zbliża się zawodnik przeciwnika w zielonym stroju. Akcja rozgrywa się na trawiastym boisku, z bramką i rozmytymi kibicami w tle."
-          />
-          <Picture
-            fallbackFormat="jpg"
-            class="cs-bottom-small"
-            formats={["avif", "webp"]}
-            src={image4}
-            width="1079"
-            height="720"
-            alt="Grupa piłkarzy i sędziów stojących na boisku przed rozpoczęciem meczu. Dwóch zawodników, jeden w żółtym (Krzysztof Iwanowsk), drugi w czerwono-białych pasach, stoi obok trzech sędziów w żółtych koszulkach. W tle widać drzewa i jasną, plenerową atmosferę."
-          />
-          <Picture
-            fallbackFormat="jpg"
-            class="cs-bottom-small last"
-            formats={["avif", "webp"]}
-            src={image3}
-            width="1024"
-            height="623"
-            alt="Piłkarz w żółtym stroju (Krzysztof Iwanowsk) prowadzący piłkę podczas meczu, z naciskiem na jego ruch. W tle widać boisko i kilku kibiców, a słoneczna pogoda dodaje jasności do sceny."
-          />
+          <button
+            aria-label="kliknij aby powiększyć"
+            title="kliknij aby powiększyć"
+            class="cs-image-btn"
+          >
+            <Picture
+              fallbackFormat="jpg"
+              class="cs-bottom-small"
+              formats={["avif", "webp"]}
+              src={image5}
+              width="1080"
+              height="720"
+              alt="Piłkarz w czerwono-białym pasiastym stroju (Krzysztof Iwanowsk) próbujący wykonać kopnięcie podczas meczu. Zbliża się zawodnik przeciwnika w zielonym stroju. Akcja rozgrywa się na trawiastym boisku, z bramką i rozmytymi kibicami w tle."
+            />
+          </button>
+          <button
+            aria-label="kliknij aby powiększyć"
+            title="kliknij aby powiekszyc"
+            class="cs-image-btn"
+          >
+            <Picture
+              fallbackFormat="jpg"
+              class="cs-bottom-small"
+              formats={["avif", "webp"]}
+              src={image4}
+              width="1079"
+              height="720"
+              alt="Grupa piłkarzy i sędziów stojących na boisku przed rozpoczęciem meczu. Dwóch zawodników, jeden w żółtym (Krzysztof Iwanowsk), drugi w czerwono-białych pasach, stoi obok trzech sędziów w żółtych koszulkach. W tle widać drzewa i jasną, plenerową atmosferę."
+            />
+          </button>
+          <button
+            aria-label="kliknij aby powiększyć"
+            title="kliknij aby powiekszyc"
+            class="cs-image-btn"
+          >
+            <Picture
+              fallbackFormat="jpg"
+              class="cs-bottom-small last"
+              formats={["avif", "webp"]}
+              src={image3}
+              width="1024"
+              height="623"
+              alt="Piłkarz w żółtym stroju (Krzysztof Iwanowsk) prowadzący piłkę podczas meczu, z naciskiem na jego ruch. W tle widać boisko i kilku kibiców, a słoneczna pogoda dodaje jasności do sceny."
+            />
+          </button>
         </div>
       </div>
       <!-- Right Content Section-->
@@ -90,6 +108,96 @@ import "../styles/trener.css";
         </p>
       </div>
     </div>
+
+    <dialog aria-hidden="true" class="cs-dialog">
+      <div class="cs-dialog-content">
+        <button class="cs-dialog-close">Zamknij</button>
+        <img class="cs-dialog-img" src="" alt="" />
+      </div>
+      <button class="left">Poprzedni</button>
+      <button class="right">Następny</button>
+    </dialog>
   </section>
   <!-- <History /> -->
 </Layout>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const imagesContainer = document.querySelector(".cs-bottom-group") as HTMLElement;
+    const images = Array.from(
+      imagesContainer.querySelectorAll(".cs-bottom-small")
+    ) as HTMLImageElement[];
+
+    imagesContainer.addEventListener("click", (event: MouseEvent) => {
+      (event.target as HTMLElement).classList.add("active");
+
+      const dialog = document.querySelector(".cs-dialog") as HTMLDialogElement;
+      dialog.setAttribute("aria-hidden", "false");
+      const dialogImg = dialog.querySelector("img") as HTMLImageElement;
+      const csDialogClose = document.querySelector(
+        ".cs-dialog-close"
+      ) as HTMLButtonElement;
+
+      if ((event.target as HTMLElement)?.classList.contains("active")) {
+        dialogImg.src = (event.target as HTMLImageElement).src;
+        dialog.showModal();
+        csDialogClose.focus();
+
+        csDialogClose.addEventListener("click", () => {
+          dialog.close();
+          (event.target as HTMLElement)?.classList.remove("active");
+        });
+
+        let currentImage = images.indexOf(event.target as HTMLImageElement);
+        const nextButton = dialog.querySelector(".right") as HTMLButtonElement;
+        const prevButton = dialog.querySelector(".left") as HTMLButtonElement;
+
+        document.addEventListener("keydown", (e) => {
+          if (e.key === "ArrowRight") {
+            currentImage++;
+            dialogImg.src = images[currentImage].src;
+            updateButtonStates(currentImage, images, nextButton, prevButton);
+          } else if (e.key === "ArrowLeft") {
+            currentImage--;
+            dialogImg.src = images[currentImage].src;
+            updateButtonStates(currentImage, images, nextButton, prevButton);
+          }
+        });
+
+        updateButtonStates(currentImage, images, nextButton, prevButton);
+
+        nextButton.addEventListener("click", () => {
+          currentImage++;
+          dialogImg.src = images[currentImage].src;
+          updateButtonStates(currentImage, images, nextButton, prevButton);
+        });
+
+        prevButton.addEventListener("click", () => {
+          currentImage--;
+          dialogImg.src = images[currentImage].src;
+          updateButtonStates(currentImage, images, nextButton, prevButton);
+        });
+      }
+
+      document.addEventListener("click", (e) => {
+        if (e.target === dialog) {
+          dialog.close();
+          (event.target as HTMLElement)?.classList.remove("active");
+        }
+      });
+    });
+  });
+
+  function updateButtonStates(
+    currentImage: number,
+    images: HTMLImageElement[],
+    nextButton: HTMLButtonElement,
+    prevButton: HTMLButtonElement
+  ) {
+    const hasNext = currentImage < images.length - 1;
+    const hasPrev = currentImage > 0;
+
+    nextButton.disabled = !hasNext;
+    prevButton.disabled = !hasPrev;
+  }
+</script>

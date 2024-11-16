@@ -59,6 +59,74 @@
   .cs-bottom-group {
     display: none;
   }
+
+  .cs-image-btn {
+    border: none;
+    background: none;
+    transition: transform 0.3s ease;
+  }
+
+  .cs-image-btn:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+    transition: transform 0.3s ease;
+  }
+  .cs-dialog[closed] {
+    display: none;
+  }
+  .cs-dialog[open] {
+    position: relative;
+    display: block;
+    border: none;
+    border-radius: 1rem;
+    padding: 2.2rem;
+  }
+  .left,
+  .right {
+    position: absolute;
+    top: 50%;
+    border: none;
+    background: var(--primary);
+    color: var(--white);
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+  }
+  .left:hover,
+  .right:hover {
+    background: var(--primaryDark);
+  }
+  .left:disabled,
+  .right:disabled {
+    background: grey;
+    cursor: not-allowed;
+  }
+  .right {
+    right: 0.5rem;
+  }
+  .left {
+    left: 0.5rem;
+  }
+  .cs-dialog-img {
+    border-radius: 1rem;
+  }
+  ::backdrop {
+    background: rgba(0, 0, 0, 0.5);
+    opacity: 0.75;
+  }
+  .cs-dialog-close {
+    position: absolute;
+    top: 0.6rem;
+    right: 0.6rem;
+    font-size: 1rem;
+    font-weight: bold;
+    border: none;
+    background: none;
+    cursor: pointer;
+  }
+  .cs-dialog-close:hover {
+    text-decoration: underline;
+  }
 }
 
 /* Desktop - 1024px */
@@ -90,14 +158,13 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 1rem;
     margin-top: 2rem;
   }
 
   .cs-bottom-small {
     display: block;
-    width: 12.5321875em;
-    height: 13.23875em;
+    width: 15em;
+    height: 13.5em;
     border-radius: var(--radius);
     object-fit: cover;
   }

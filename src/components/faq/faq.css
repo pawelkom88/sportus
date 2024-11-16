@@ -118,8 +118,6 @@
   }
   #faq-1505 .cs-faq-item.active .cs-item-p {
     height: auto;
-    /* 20px - 24px bottom */
-    /* 16px - 24px left & right */
     padding: 0 clamp(1rem, 2vw, 1.5rem) clamp(1.25rem, 1.3vw, 1.5rem);
     opacity: 1;
   }
@@ -191,16 +189,12 @@
     display: block;
   }
   #faq-1505 .cs-item-p {
-    /* 14px - 16px */
-    font-size: clamp(1, 1.5vw, 1.25rem);
+    font-size: clamp(1.1rem, 1.5vw, 1.3rem);
     line-height: 1.5em;
-    width: 90%;
     height: 0;
     margin: 0;
-    /* 16px - 24px */
     padding: 0 clamp(1rem, 2vw, 1.5rem);
     opacity: 0;
-    /* clips the text so it doesn't show up */
     overflow: hidden;
     transition:
       opacity 0.3s,
@@ -263,7 +257,7 @@
     order: 2;
   }
   #faq-1505 .cs-topperr {
-    color: #064A6F;
+    color: #064a6f;
   }
   #faq-1505 .cs-card-group {
     /* pushes up against the other flex items so it pushes to the bottom of the flexbox */
@@ -278,5 +272,8 @@
 @media only screen and (min-width: 100rem) {
   #faq-1505 .cs-floater {
     display: block;
+  }
+  #faq-1505 .cs-item-p {
+    width: 90%;
   }
 }

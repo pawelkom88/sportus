@@ -18,6 +18,7 @@ import "./form.css";
       </div>
       <!--Form-->
       <form
+        name="Formularz kontaktowy"
         class="cs-form"
         id="cs-form-569"
         name="Contact Form"
@@ -39,6 +40,7 @@ import "./form.css";
         <div class="cs-label">
           <label for="name-569" class="cs-name"> Imię </label>
           <input
+            pattern="^[a-zA-Z]+$"
             class="cs-input"
             required
             type="text"
@@ -47,12 +49,12 @@ import "./form.css";
             placeholder="np. Krzysztof"
             autocomplete="given-name"
           />
-          <!-- <strong>error msg</strong> -->
         </div>
 
         <div class="cs-label">
           <label for="name-570" class="cs-lastname"> Nazwisko </label>
           <input
+            pattern="^[a-zA-Z]+$"
             class="cs-input"
             required
             type="text"
@@ -61,7 +63,6 @@ import "./form.css";
             placeholder="np. Iwanowski"
             autocomplete="family-name"
           />
-          <!-- <strong>error msg</strong> -->
         </div>
 
         <div class="cs-label">
@@ -72,16 +73,16 @@ import "./form.css";
             type="tel"
             id="phone-571"
             name="Telefon"
-            placeholder="np. 633 456 789"
+            placeholder="np. 633456789"
             autocomplete="tel"
           />
-          <!-- <strong>error msg</strong> -->
         </div>
         <div class="cs-label">
           <label for="email-573" class="cs-email"> E-mail </label>
           <input
             class="cs-input"
             required
+            pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
             type="email"
             id="email-573"
             name="E-mail"
@@ -93,7 +94,6 @@ import "./form.css";
             name="subject"
             value="Zapytanie z formularza kontaktowego - Sportus"
           />
-          <!-- <strong>error msg</strong> -->
         </div>
 
         <div class="cs-label cs-span-2">
@@ -104,21 +104,20 @@ import "./form.css";
             name="Wiadomość"
             id="message-574"
             placeholder="Twoja wiadomość..."></textarea>
-          <!-- <strong>error msg</strong> -->
         </div>
 
-        <div class="cs-label cs-span-2 cs-policy">
-          <label for="agreement">
+        <div class="cs-label cs-span-2">
+          <label class="cs-policy" for="agreement">
             Zgadzam się na przetwarzanie moich danych osobowych zgodnie z
             <a href="/polityka-prywatnosci">polityką prywatności</a>
+            <input
+              class="cs-checkbox"
+              type="checkbox"
+              id="agreement"
+              name="Polityka prywatności"
+              required
+            />
           </label>
-          <input
-            class="cs-checkbox"
-            type="checkbox"
-            id="agreement"
-            name="Polityka prywatności"
-            required
-          />
         </div>
 
         <button class="cs-submit" type="submit">Wyslij wiadomość</button>
@@ -134,7 +133,7 @@ import "./form.css";
       />
       <!--Address-->
       <div class="cs-flex">
-        <span class="cs-header">Gdzie nas znajdziesz</span>
+        <span class="cs-header">Gdzie nas znajdziesz?</span>
         <p>Gdańsk, Gdynia, Sopot, woj. pomorskie, Kaszuby</p>
       </div>
       <!--Contacts-->
@@ -143,46 +142,100 @@ import "./form.css";
         <a href="mailto:kontakt.sportus@gmail.com" class="cs-link"
           >kontakt.sportus@gmail.com</a
         >
-        <a href="tel:+48 609-385-361" class="cs-link cs-phone">+48 609-385-361</a>
+        <a href="tel:+48609385361" class="cs-link cs-phone">+48 609-385-361</a>
       </div>
       <!--Social-->
     </div>
   </div>
 
   <script>
-    const isPhoneValid = (phone: string): boolean => {
-      const phoneRegex = /^\d{9}$/;
-      return phoneRegex.test(phone);
-    };
+    const isPhoneValid = (phone: string): boolean => /^\d{9}$/.test(phone);
+    const isEmailValid = (email: string): boolean =>
+      /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(email);
+    const isNameValid = (name: string): boolean => /^[a-zA-Z]+$/.test(name);
 
     const phoneInput = document.getElementById("phone-571") as HTMLInputElement;
-    const errorElement = document.createElement("strong");
+    const nameInput = document.getElementById("name-569") as HTMLInputElement;
+    const emailInput = document.getElementById("email-573") as HTMLInputElement;
+    const lastnameInput = document.getElementById("name-570") as HTMLInputElement;
+    const errorElement = document.createElement("strong") as HTMLElement;
 
-    phoneInput.addEventListener("blur", () => {
-      if (!phoneInput.value) return;
+    validateInput(phoneInput, isPhoneValid, "Wymagany format to 9cyfr - np. 603603603");
 
-      const errorMsg = isPhoneValid(phoneInput.value)
-        ? ""
-        : "Proszę wprowadzić poprawny numer telefonu (9 cyfr)";
+    removeError(phoneInput);
 
-      errorElement.classList.add("error");
-      errorElement.textContent = errorMsg;
+    validateInput(nameInput, isNameValid, "Prosimy wprowadzić swoje imię");
 
-      if (errorMsg) {
-        phoneInput.insertAdjacentElement("afterend", errorElement);
-        phoneInput.classList.add("error");
+    removeError(nameInput);
+
+    validateInput(emailInput, isEmailValid, "Prosimy wprowadzić prawidłowy adres e-mail");
+
+    validateInput(lastnameInput, isNameValid, "Prosimy wprowadzić swoje nazwisko");
+
+    removeError(lastnameInput);
+
+    function removeError(input: HTMLInputElement): void {
+      input.addEventListener("input", () => {
+        if (input.classList.contains("error")) {
+          input.classList.remove("error");
+          errorElement.remove();
+        }
+      });
+    }
+
+    function validateInput(
+      input: HTMLInputElement,
+      callback: (value: string) => boolean,
+      errorMessage = ""
+    ): boolean {
+      let isValid = false;
+      let errorMsg = "";
+
+      const validate = () => {
+        if (!input.value) return;
+
+        isValid = callback(input.value);
+        errorMsg = isValid ? "" : errorMessage;
+
+        errorElement.classList.add("error");
+        errorElement.textContent = errorMsg;
+        input.setAttribute("aria-invalid", isValid ? "false" : "true");
+        input.setAttribute("aria-describedby", errorMessage);
+        input.setAttribute("aria-errormessage", errorMessage);
+        errorElement.setAttribute("id", errorMessage);
+        errorElement.setAttribute("aria-live", "polite");
+
+        if (errorMsg) {
+          input.insertAdjacentElement("afterend", errorElement);
+          input.classList.add("error");
+        }
+      };
+
+      input.addEventListener("blur", () => {
+        validate();
+        input.style.borderColor = errorMsg ? "red" : "";
+        input.style.animation = errorMsg ? "shake 0.3s ease" : "";
+      });
+
+      return isValid;
+    }
+
+    const form = document.getElementById("cs-form-569") as HTMLFormElement;
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+
+      if (form.checkValidity()) {
+        form.submit();
       } else {
-        phoneInput.classList.remove("error");
-      }
-    });
+        errorElement.classList.add("error");
+        errorElement.textContent = "Formularz zawiera błędy";
+        form.insertAdjacentElement("afterend", errorElement);
 
-    phoneInput.addEventListener("input", () => {
-      if (phoneInput.classList.contains("error")) {
-        phoneInput.classList.remove("error");
-        errorElement.remove();
+        const firstInputWithError = form.querySelector(".error");
+        if (firstInputWithError) {
+          (firstInputWithError as HTMLInputElement).focus();
+        }
       }
     });
   </script>
-
-  <!-- TODO: find kevin powell input solution not to cause layput shift  -->
 </section>

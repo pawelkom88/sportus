@@ -45,8 +45,12 @@
   }
 
   #contact-569 .cs-policy {
-    display: flex;
-    margin-bottom: 0.5rem;
+    line-height: 1.5rem;
+  }
+
+  #contact-569 .cs-policy input[type="checkbox"] {
+    margin-left: 0.5rem;
+    vertical-align: middle;
   }
 
   #contact-569 .cs-checkbox {
@@ -64,14 +68,13 @@
     padding-left: 1.5rem;
     background-color: var(--white);
     border: 1px solid #e0e0e0;
-    /* prevents padding from adding to height and width */
     box-sizing: border-box;
     transition: border-color 0.3s;
   }
-  #contact-569 .cs-input:hover {
-    border-color: var(--primaryDark);
-  }
   #contact-569 .cs-input:focus {
+    outline: 2px solid var(--primary);
+  }
+  #contact-569 .cs-input.error:focus {
     outline: 1px solid var(--primaryDark);
   }
   #contact-569 .cs-input::placeholder {
@@ -188,5 +191,26 @@
 
   #contact-569 .cs-social {
     margin-top: 1rem;
+  }
+}
+
+@keyframes shake {
+  0% {
+    transform: translateX(0);
+  }
+  20% {
+    transform: translateX(-10px);
+  }
+  40% {
+    transform: translateX(10px);
+  }
+  60% {
+    transform: translateX(-10px);
+  }
+  80% {
+    transform: translateX(10px);
+  }
+  100% {
+    transform: translateX(0);
   }
 }

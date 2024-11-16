@@ -61,35 +61,23 @@
   .sport-icon {
     height: auto;
     margin-top: -8px;
-    margin-left: -5px;
-    margin-right: 1px;
     animation: rotate 10s linear infinite;
-  }
-
-  @media (max-width: 768px) {
-    .sport-icon {
-      width: 24px;
-      height: 24px;
-      margin-top: -4px;
-    }
   }
 
   .sport {
     color: var(--primary);
   }
-  .sport:first-child {
-    margin-right: 0.5rem;
-  }
+
   .us {
     color: var(--primaryDark);
   }
 
   #why-choose-892 .cs-text {
     max-width: 62.5rem;
+    text-align: justify;
   }
   #why-choose-892 .cs-button-solid {
     font-size: 1rem;
-    /* 46px - 56px */
     line-height: clamp(2.875rem, 5.5vw, 3.5rem);
     text-decoration: none;
     font-weight: 700;
@@ -103,7 +91,6 @@
     display: inline-block;
     position: relative;
     z-index: 1;
-    /* prevents padding from adding to the width */
     box-sizing: border-box;
   }
   #why-choose-892 .cs-button-solid:before {
@@ -172,7 +159,6 @@
     display: block;
   }
   #why-choose-892 .cs-text-group {
-    /* subgrid ?? */
     display: flex;
     flex-direction: column;
     align-items: flex-end;
@@ -227,6 +213,14 @@
   }
 }
 
+@media (max-width: 768px) {
+  .sport-icon {
+    width: 24px;
+    height: 24px;
+    margin-top: -4px;
+  }
+}
+
 /* Tablet - 768px */
 @media only screen and (min-width: 48rem) {
   #why-choose-892 .cs-container {
@@ -237,5 +231,25 @@
   }
   #why-choose-892 .cs-floater {
     display: block;
+  }
+
+  .cs-sport-group {
+    width: 100%;
+    display: inline;
+  }
+
+  .sport-icon {
+    margin-left: -5px;
+    margin-right: 1px;
+  }
+
+  .sport {
+    color: var(--primary);
+    margin-left: -8px;
+  }
+
+  .us {
+    color: var(--primaryDark);
+    margin-left: -14px;
   }
 }

@@ -32,7 +32,7 @@ const sortedFaqItems = faqItems.sort((a, b) => (a.data.order || 0) - (b.data.ord
         {
           sortedFaqItems.map((item: any) => {
             return (
-              <li class="cs-faq-item ">
+              <li class="cs-faq-item">
                 <button class="cs-button">
                   <span class="cs-button-text">{item.data.question}</span>
                   <span class="cs-indicator" aria-hidden="true" />
