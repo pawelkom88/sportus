@@ -1,27 +1,108 @@
 ---
 import Layout from "../../layouts/Layout.astro";
 import { contentfulClient } from "../../lib/contentful";
+import { documentToHtmlString } from "@contentful/rich-text-html-renderer";
+import { Picture } from "astro:assets";
+import type { Entry } from "contentful";
+import type { EntrySkeletonType } from "contentful";
 
 export async function getStaticPaths() {
   const data = await contentfulClient.getEntries({
     content_type: "cardArticle",
   });
-  //todo parse
-  console.log(data.items);
 
-  return data.items.map((article) => {
+  return data.items.map((article: Entry<EntrySkeletonType>) => {
     return {
       params: { slug: article.fields.slug },
       props: {
         heading: article.fields.heading,
+        content: documentToHtmlString(article.fields.text as any),
+        date: new Date(article.fields.date as any).toLocaleDateString("pl-PL", {
+          year: "numeric",
+          month: "long",
+          day: "numeric",
+        }),
+        image: {
+          width: (article.fields.image as any)?.fields.file.details.image.width,
+          height: (article.fields.image as any)?.fields.file.details.image
+            .height,
+          url: (article.fields.image as any)?.fields.file.url || "",
+        },
+        imageAlt: article.fields.imageAlt as string,
+        SEOtitle: article.fields.seOtitle as string,
+        SEOdescription: article.fields.seOdescription as string,
       },
     };
   });
 }
 
-const { heading } = Astro.props;
+const { heading, content, date, image, SEOtitle, SEOdescription, imageAlt } =
+  Astro.props;
 ---
 
-<Layout title="" description="">
-  <h1>{heading}</h1>
+<Layout title={SEOtitle} description={SEOdescription}>
+  <section class="article-container">
+    <article>
+      <header>
+        <h1 class="cs-title">{heading}</h1>
+      </header>
+      <Picture
+        class="article-image"
+        width={image.width}
+        height={image.height}
+        fallbackFormat="jpg"
+        formats={["avif", "webp"]}
+        src={`https://${image.url}`}
+        alt={imageAlt}
+      />
+      <div class="content-wrapper">
+        <slot set:html={content} />
+      </div>
+      <time class="article-date" datetime={date}>Opublikowano: {date}</time>
+    </article>
+  </section>
 </Layout>
+
+<style>
+  .article-container {
+    padding-top: clamp(10rem, 20vw, 12.5rem);
+    padding-inline: 1rem;
+    width: 100%;
+    max-width: 90ch;
+    margin: 0 auto 2rem;
+
+  }
+
+  .article-image {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 1rem;
+  }
+
+  .content-wrapper {
+    margin: 2rem 0;
+  }
+
+  .content-wrapper :global(ul) {
+    list-style-type:circle;
+  }
+
+  .content-wrapper :global(p) {
+    font-size: var(--bodyFontSize);
+    line-height: 1.5em;
+    text-align: justify;
+    width: 100%;
+    margin: 0;
+    text-justify: inter-word;
+    text-wrap: pretty;
+  }
+
+  .content-wrapper :global(h2) {
+  }
+
+  .article-date {
+    margin-top: 2rem;
+    font-style: italic;
+  }
+</style>

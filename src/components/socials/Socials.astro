@@ -1,11 +1,11 @@
 ---
-const { isHidden } = Astro.props;
+const { isHidden, isFooterMobile = false } = Astro.props;
 const isHiddenClass = isHidden ? `cs-hidden-${isHidden}` : "";
 
-const xxx = isHidden === "desktop" ? "cs-border" : "";
+const custom = isHidden === "desktop" ? "cs-custom" : "";
 ---
 
-<ul class=`cs-social ${isHiddenClass} ${xxx}`>
+<ul class=`cs-social ${isHiddenClass} ${custom} ${isFooterMobile ? "cs-footer-mobile" : ""}`>
   <li class="cs-social-li">
     <a
       href="https://www.facebook.com/sportus.gdansk/"
@@ -83,7 +83,7 @@ const xxx = isHidden === "desktop" ? "cs-border" : "";
 </ul>
 
 <style>
-  .cs-border {
+  .cs-custom, .cs-footer-mobile {
     display: flex;
     column-gap: 3rem;
     justify-content: center;

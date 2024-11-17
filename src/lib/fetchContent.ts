@@ -23,7 +23,7 @@ export function parseContentfulArticle(article: any) {
     date: new Date(article.fields.date).toLocaleDateString(),
     slug: article.fields.slug,
     authorImage: parseContentfulContentImage(article.fields.authorImage),
-    image: parseContentfulContentImage(article.fields.images),
+    image: parseContentfulContentImage(article.fields.image),
   };
 }
 
