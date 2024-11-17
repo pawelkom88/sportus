@@ -1,10 +1,9 @@
 ---
-import Layout from "../../layouts/Layout.astro";
-import { contentfulClient } from "../../lib/contentful";
 import { documentToHtmlString } from "@contentful/rich-text-html-renderer";
 import { Picture } from "astro:assets";
-import type { Entry } from "contentful";
-import type { EntrySkeletonType } from "contentful";
+import type { Entry, EntrySkeletonType } from "contentful";
+import Layout from "../../layouts/Layout.astro";
+import { contentfulClient } from "../../lib/contentful";
 
 export async function getStaticPaths() {
   const data = await contentfulClient.getEntries({
@@ -24,8 +23,7 @@ export async function getStaticPaths() {
         }),
         image: {
           width: (article.fields.image as any)?.fields.file.details.image.width,
-          height: (article.fields.image as any)?.fields.file.details.image
-            .height,
+          height: (article.fields.image as any)?.fields.file.details.image.height,
           url: (article.fields.image as any)?.fields.file.url || "",
         },
         imageAlt: article.fields.imageAlt as string,
@@ -36,8 +34,7 @@ export async function getStaticPaths() {
   });
 }
 
-const { heading, content, date, image, SEOtitle, SEOdescription, imageAlt } =
-  Astro.props;
+const { heading, content, date, image, SEOtitle, SEOdescription, imageAlt } = Astro.props;
 ---
 
 <Layout title={SEOtitle} description={SEOdescription}>
@@ -70,7 +67,6 @@ const { heading, content, date, image, SEOtitle, SEOdescription, imageAlt } =
     width: 100%;
     max-width: 90ch;
     margin: 0 auto 2rem;
-
   }
 
   .article-image {
@@ -85,7 +81,7 @@ const { heading, content, date, image, SEOtitle, SEOdescription, imageAlt } =
   }
 
   .content-wrapper :global(ul) {
-    list-style-type:circle;
+    list-style-type: circle;
   }
 
   .content-wrapper :global(p) {

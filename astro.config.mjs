@@ -8,6 +8,6 @@ export default defineConfig({
   base: "/",
   integrations: [sitemap()],
   image: {
-    domains: ["https://csimg.nyc3.cdn.digitaloceanspaces.com"],
+    domains: ["https://images.ctfassets.net"],
   },
 });
