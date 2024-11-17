@@ -1,16 +1,22 @@
 ---
-import { Image } from "astro:assets";
+import { Picture } from "astro:assets";
 import "./navigation.css";
-import logo from "../../assets/images/SPORTUŚ-logo.webp";
-// import { getCollection } from "astro:content";
-
-// const contact = await getCollection("contact");
+import logo from "../../assets/images/SPORTUŚ-logo-2.png";
+import Socials from "../socials/Socials.astro";
 ---
 
 <header id="cs-navigation">
   <div class="cs-container">
     <a href="/" class="cs-logo" aria-label="back to home">
-      <Image loading="eager" src={logo} alt="SPORTUŚ logo" width="375" height="280" />
+      <Picture
+        formats={["avif", "webp"]}
+        fallbackFormat="png"
+        loading="eager"
+        src={logo}
+        alt="SPORTUŚ logo"
+        width="348"
+        height="292"
+      />
     </a>
 
     <nav class="cs-nav">
@@ -36,24 +42,6 @@ import logo from "../../assets/images/SPORTUŚ-logo.webp";
           <li class="cs-li">
             <a href="/oferta" class="cs-li-link">Oferta</a>
           </li>
-          <!-- <li class="cs-li">
-            <a href="/plan-zajec" class="cs-li-link">Plan zajęć</a>
-          </li> -->
-          <!-- <li class="cs-li cs-dropdown" tabindex="0">
-                        <span class="cs-li-link">
-                            Services
-                            <Image class="cs-drop-icon" src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Icons/down-gold.svg" alt="dropdown icon" width="15" height="15"  aria-hidden="true">
-                        </span>
-                        <ul class="cs-drop-ul">
-                            <li class="cs-drop-li">
-                                <a href="" class="cs-li-link cs-drop-link">Registration</a>
-                            </li>
-                            <li class="cs-drop-li">
-                                <a href="" class="cs-li-link cs-drop-link">Our Classes</a>
-                            </li>
-                        </ul>
-                    </li> -->
-
           <li class="cs-li">
             <a href="/aktualnosci" class="cs-li-link">Aktualności</a>
           </li>
@@ -61,16 +49,10 @@ import logo from "../../assets/images/SPORTUŚ-logo.webp";
             <a href="/#contact-569" class="cs-li-link">Kontakt</a>
           </li>
         </ul>
+        <Socials isHidden="desktop" />
       </div>
     </nav>
-
-    <!-- <div class="cs-contact">
-      <a href=`mailto:${contact[0].data.email}` class="cs-email"
-        >{contact[0].data.email}</a
-      >
-      <hr />
-      <a href=`tel:${contact[0].data.phone}` class="cs-phone">{contact[0].data.phone}</a>
-    </div> -->
+    <Socials isHidden="mobile" />
   </div>
 
   <script>
@@ -101,11 +83,7 @@ import logo from "../../assets/images/SPORTUŚ-logo.webp";
       }
     }
 
-    // This script adds a class to the body after scrolling 100px
-    // and we used these body.scroll styles to create some on scroll
-    // animations with the navbar
-
-    document.addEventListener("scroll", (e) => {
+    document.addEventListener("scroll", () => {
       const scroll = document.documentElement.scrollTop;
       if (scroll >= 100) {
         CSbody.classList.add("scroll");
@@ -124,5 +102,15 @@ import logo from "../../assets/images/SPORTUŚ-logo.webp";
       };
       item.addEventListener("click", onClick);
     }
+
+    const linksContainer = document.getElementById("cs-expanded") as HTMLElement;
+    linksContainer.addEventListener("click", (e) => {
+      const target = e.target as HTMLElement;
+      if (target.tagName === "A") {
+        CShamburgerMenu.classList.remove("cs-active");
+        CSnavbarMenu.classList.remove("cs-active");
+        CSbody.classList.remove("cs-open");
+      }
+    });
   </script>
 </header>

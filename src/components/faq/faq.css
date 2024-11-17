@@ -126,7 +126,6 @@
     line-height: 1.2em;
     text-align: left;
     font-weight: bold;
-    /* 16px - 24px */
     padding: clamp(1rem, 2vw, 1.5rem);
     background-color: var(--white);
     border: none;
@@ -144,6 +143,12 @@
   #faq-1505 .cs-button:hover {
     cursor: pointer;
   }
+
+  #faq-1505 .cs-button:focus-visible {
+    background-color: yellow;
+    border: 4px dashed var(--primaryDark);
+  }
+
   #faq-1505 .cs-button .cs-indicator {
     /* 40px - 48px */
     width: clamp(2.5rem, 4vw, 3rem);

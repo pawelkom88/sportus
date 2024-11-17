@@ -1,21 +1,11 @@
 ---
-import News from "../components/news/News.astro";
 import Layout from "../layouts/Layout.astro";
+import { fetchContent, parseContentfulArticle } from "../lib/fetchContent";
 import "../styles/aktualnosci.css";
+import News from "../components/news/News.astro";
 
-const news = [
-  {
-    slug: "/aktualnosci/costam",
-    alt: "news",
-    img: "https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/People/daycare1.jpg",
-    title: "Najnowsze nowe informacje o Akademii",
-    text: "Najnowsze informacje o Akademii",
-    date: "2022.04.10",
-    author: "John Doe",
-    authorImg:
-      "https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/People/charity-person1.jpg",
-  },
-];
+const news = await fetchContent("cardArticle", parseContentfulArticle);
+console.log(news, "news");
 ---
 
 <Layout

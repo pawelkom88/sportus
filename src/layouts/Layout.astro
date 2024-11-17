@@ -63,6 +63,11 @@ const { title, description, image, jsonLDType = "website" } = Astro.props;
     --radius: 2rem;
   }
 
+  html {
+    scroll-padding-top: 7rem;
+    text-rendering: optimizeLegibility;
+  }
+
   body {
     margin: 0;
     padding: 0;
@@ -70,6 +75,13 @@ const { title, description, image, jsonLDType = "website" } = Astro.props;
     color: var(--black);
   }
 
+  *:focus-visible {
+    outline-style: dashed;
+    outline-width: 4px;
+    outline-color: var(--primaryDark);
+    background-color: yellow;
+    padding: 0.5rem;
+  }
   h1,
   h2,
   h3 {
@@ -113,6 +125,8 @@ const { title, description, image, jsonLDType = "website" } = Astro.props;
     width: 100%;
     max-width: 40.625rem;
     margin: 0;
+    text-justify: inter-word;
+    text-wrap: pretty;
   }
   @keyframes rotate {
     0% {

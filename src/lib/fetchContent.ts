@@ -1,96 +1,47 @@
-// import {
-//   parseContentfulContentImage,
-//   parseContentfulContentImages,
-// } from "./contentImage";
+import { documentToHtmlString } from "@contentful/rich-text-html-renderer";
+import { BLOCKS, MARKS } from "@contentful/rich-text-types";
+import { contentfulClient } from "./contentful";
+import { parseContentfulContentImage } from "./contentImage";
 
-// export function parseContentfulPolicy(policy) {
-//   if (!policy) {
-//     return null;
-//   }
+const options = {
+  renderMark: {
+    [MARKS.BOLD]: (text: string) => `<custom-bold>${text}<custom-bold>`,
+  },
+  renderNode: {
+    [BLOCKS.PARAGRAPH]: (node: any, next: any) =>
+      `<custom-paragraph>${next(node.content)}</custom-paragraph>`,
+  },
+};
 
-//   return {
-//     heading: policy.fields.heading || "",
-//     content: policy.fields.content || "",
-//   };
-// }
+export function parseContentfulArticle(article: any) {
+  if (!article) {
+    return null;
+  }
+  return {
+    heading: article.fields.heading,
+    text: documentToHtmlString(article.fields.text, options),
+    date: new Date(article.fields.date).toLocaleDateString(),
+    slug: article.fields.slug,
+    authorImage: parseContentfulContentImage(article.fields.authorImage),
+    image: parseContentfulContentImage(article.fields.images),
+  };
+}
 
-// export function parseContentfulArticle(article) {
-//   if (!article) {
-//     return null;
-//   }
-//   return {
-//     title: article.fields.title || "",
-//     slug: article.fields.slug,
-//     description: article.fields.description || null,
-//     duration: article.fields.duration || null,
-//     price: article.fields.price || null,
-//     images: parseContentfulContentImages(article.fields.images),
-//   };
-// }
+export async function fetchContent(
+  content_type: string,
+  parseFunction: typeof parseContentfulArticle
+) {
+  const result = await contentfulClient.getEntries({ content_type });
 
-// export function parseContentfulOpeningHours(hours) {
-//   if (!hours) {
-//     return null;
-//   }
+  return result?.items?.map(parseFunction) || [];
+}
 
-//   return {
-//     day: hours.fields.day || "",
-//     start: hours.fields.start,
-//     finish: hours.fields.finish || null,
-//   };
-// }
+export async function fetchArticle({ slug, content_type }: any) {
+  const ArticleResult = await contentfulClient.getEntries({
+    content_type,
+    "fields.slug": slug,
+    include: 2,
+  });
 
-// export function parseContentfulPrices(prices) {
-//   if (!prices) {
-//     return null;
-//   }
-
-//   return {
-//     intro: prices.fields.intro || "",
-//     price: prices.fields.price,
-//     duration: prices.fields.duration || null,
-//     treatmentName: prices.fields.treatmentName || "",
-//     content: prices.fields.content || "",
-//   };
-// }
-
-// export function parseContentfulHeroContent(content) {
-//   if (!content) {
-//     return null;
-//   }
-//   return {
-//     image: parseContentfulContentImage(content.fields.heroImage) || null,
-//     heading: content.fields.heading || "",
-//     content: content.fields.content || "",
-//   };
-// }
-
-// export function parseContentfulPromotion(content) {
-//   if (!content) {
-//     return null;
-//   }
-//   return {
-//     heading: content.fields.heading || "",
-//     content: content.fields.content || "",
-//   };
-// }
-
-// export async function fetchContent({ preview }, content_type, parseFunction) {
-//   const contentful = contentfulClient({ preview });
-
-//   const result = await contentful.getEntries({ content_type });
-
-//   return result?.items?.map(parseFunction) || [];
-// }
-
-// export async function fetchArticle({ slug, preview, content_type }) {
-//   const contentful = contentfulClient({ preview });
-
-//   const ArticleResult = await contentful.getEntries({
-//     content_type,
-//     "fields.slug": slug,
-//     include: 2,
-//   });
-
-//   return parseContentfulArticle(ArticleResult.items[0]);
-// }
+  return parseContentfulArticle(ArticleResult.items[0]);
+}

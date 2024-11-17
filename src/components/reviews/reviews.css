@@ -73,9 +73,7 @@
     display: block;
   }
   #reviews-510 .cs-item-text {
-    max-width: 95%;
-    text-wrap: balance;
-    font-size: clamp(1rem, 1.6vw, 1.5625rem);
+    font-size: clamp(1.05rem, 1.6vw, 1.5625rem);
     text-align: justify;
     line-height: 1.5em;
     margin-bottom: clamp(1.5rem, 3vw, 2.75rem);
@@ -204,5 +202,8 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: stretch;
+  }
+  #reviews-510 .cs-item-text {
+    max-width: 90%;
   }
 }

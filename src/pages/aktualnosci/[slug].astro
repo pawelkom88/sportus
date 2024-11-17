@@ -1,9 +1,27 @@
 ---
-export function getStaticPaths() {
-  return [
-    { params: { slug: "1" } },
-    { params: { slug: "2" } },
-    { params: { slug: "3" } },
-  ];
+import Layout from "../../layouts/Layout.astro";
+import { contentfulClient } from "../../lib/contentful";
+
+export async function getStaticPaths() {
+  const data = await contentfulClient.getEntries({
+    content_type: "cardArticle",
+  });
+  //todo parse
+  console.log(data.items);
+
+  return data.items.map((article) => {
+    return {
+      params: { slug: article.fields.slug },
+      props: {
+        heading: article.fields.heading,
+      },
+    };
+  });
 }
+
+const { heading } = Astro.props;
 ---
+
+<Layout title="" description="">
+  <h1>{heading}</h1>
+</Layout>

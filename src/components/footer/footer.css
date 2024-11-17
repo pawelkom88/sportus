@@ -36,6 +36,9 @@
   #footer-1390 .cs-link:hover {
     color: var(--primaryDark);
   }
+  #footer-1390 .cs-link:focus-visible {
+    color: var(--black);
+  }
   #footer-1390 .cs-logo {
     width: 100%;
     max-width: 11.0625rem;
@@ -47,38 +50,6 @@
     width: 100%;
     height: auto;
     display: block;
-  }
-  #footer-1390 .cs-social {
-    margin: 1rem;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 1rem;
-  }
-  #footer-1390 .cs-social-li {
-    list-style: none;
-  }
-  #footer-1390 .cs-social-link {
-    width: 2.5rem;
-    height: 2.5rem;
-    background-color: var(--primaryDark);
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transition: transform 0.3s;
-  }
-
-  #footer-1390 .cs-social-link:hover {
-    transform: translateY(-5px);
-  }
-  #footer-1390 .cs-social-icon {
-    filter: grayscale(1) brightness(1000%);
-    width: 1rem;
-    height: auto;
-    display: block;
-    transition: transform 0.3s;
   }
   #footer-1390 .cs-copyright {
     text-align: center;
@@ -98,6 +69,9 @@
   #footer-1390 .cs-copyright-link:hover {
     color: var(--primaryDark);
   }
+  #footer-1390 .cs-copyright-link:focus-visible {
+    color: var(--black);
+  }
 }
 /* Tablet - 768px */
 @media only screen and (min-width: 48rem) {
@@ -114,10 +88,5 @@
 
   #footer-1390 .cs-bottom {
     flex-direction: row;
-  }
-
-  #footer-1390 .cs-social {
-    /* sends it to the right in the 3rd position */
-    order: 3;
   }
 }

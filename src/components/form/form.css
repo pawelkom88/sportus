@@ -22,6 +22,9 @@
     flex-direction: column;
     gap: 3rem;
   }
+  #contact-569 .cs-text {
+    text-align: justify;
+  }
   #contact-569 .cs-left {
     max-width: 39.375rem;
     display: flex;
@@ -44,8 +47,15 @@
     grid-row: span 3;
   }
 
+  #contact-569 input:focus-visible::placeholder,
+  #contact-569 textarea:focus-visible::placeholder {
+    opacity: 1;
+    font-weight: bold;
+  }
+
   #contact-569 .cs-policy {
     line-height: 1.5rem;
+    font-size: 0.8rem;
   }
 
   #contact-569 .cs-policy input[type="checkbox"] {
@@ -191,6 +201,10 @@
 
   #contact-569 .cs-social {
     margin-top: 1rem;
+  }
+
+  #contact-569 .cs-policy {
+    font-size: 1rem;
   }
 }
 

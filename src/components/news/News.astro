@@ -6,9 +6,15 @@ const { news } = Astro.props;
 ---
 
 <li class="cs-item">
-  <a href={news.slug} class="cs-link">
+  <a href={`/aktualnosci/${news.slug}`} class="cs-link">
     <div class="cs-picture-group">
-      <Image class="cs-picture" alt={news.alt} src={news.img} width="365" height="201" />
+      <!-- <Image
+        class="cs-picture"
+        alt={news.image.alt}
+        src={news.image}
+        width={news.image.width}
+        height={news.image.height}
+      /> -->
       <svg
         class="cs-mask"
         width="369"
@@ -60,7 +66,7 @@ const { news } = Astro.props;
           {news.date}
         </span>
       </div>
-      <h3 class="cs-h3">{news.title}</h3>
+      <h3 class="cs-h3">{news.heading}</h3>
       <p class="cs-item-text">
         {news.text}
       </p>
@@ -69,7 +75,7 @@ const { news } = Astro.props;
           <picture class="cs-profile">
             <Image
               alt="people"
-              src={news.authorImg}
+              src={news.authorImage.src}
               alt="profile"
               width="50"
               height="50"
