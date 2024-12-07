@@ -1,5 +1,7 @@
 ---
-import { Image } from "astro:assets";
+import { Picture } from "astro:assets";
+import offer from "../assets/images/hero-image.webp";
+import offer2 from "../assets/images/offer-image-small.webp";
 import Layout from "../layouts/Layout.astro";
 import "../styles/oferta.css";
 ---
@@ -12,18 +14,22 @@ import "../styles/oferta.css";
     <div class="cs-container">
       <div class="cs-image-group">
         <!--Top left image-->
-        <Image
+        <Picture
+          fallbackFormat="jpg"
+          formats={["avif", "webp"]}
           class="cs-picture cs-picture1"
-          src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/People/child6.jpg"
-          alt="kid"
+          src={offer}
+          alt="Troje dzieci bawiących się na świeżym podwórku."
           width="647"
           height="600"
         />
         <!--Middle image-->
-        <Image
+        <Picture
+          fallbackFormat="jpg"
+          formats={["avif", "webp"]}
           class="cs-picture cs-picture2"
-          src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/People/kids5.jpg"
-          alt="kid"
+          src={offer2}
+          alt="Dzieci bawiące się w przedszkolu"
           width="320"
           height="320"
         />

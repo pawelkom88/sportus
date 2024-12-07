@@ -13,6 +13,7 @@ export async function getStaticPaths() {
   return data.items.map((article: Entry<EntrySkeletonType>) => {
     return {
       params: { slug: article.fields.slug },
+      // params: { id: article.fields.slug },
       props: {
         heading: article.fields.heading,
         content: documentToHtmlString(article.fields.text as any),

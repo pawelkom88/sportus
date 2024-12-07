@@ -48,6 +48,7 @@ import "./form.css";
             placeholder="np. Krzysztof"
             autocomplete="given-name"
           />
+          <span></span>
         </div>
 
         <div class="cs-label">
@@ -62,6 +63,7 @@ import "./form.css";
             placeholder="np. Iwanowski"
             autocomplete="family-name"
           />
+          <span></span>
         </div>
 
         <div class="cs-label">
@@ -75,7 +77,9 @@ import "./form.css";
             placeholder="np. 633456789"
             autocomplete="tel"
           />
+          <span></span>
         </div>
+
         <div class="cs-label">
           <label for="email-573" class="cs-email"> E-mail </label>
           <input
@@ -88,6 +92,7 @@ import "./form.css";
             placeholder="np. kontaktsportus@gmail"
             autocomplete="email"
           />
+          <span></span>
           <input
             type="hidden"
             name="subject"
@@ -158,6 +163,13 @@ import "./form.css";
     const emailInput = document.getElementById("email-573") as HTMLInputElement;
     const lastnameInput = document.getElementById("name-570") as HTMLInputElement;
     const errorElement = document.createElement("strong") as HTMLElement;
+    const allInputs = document.querySelectorAll(
+      ".cs-input"
+    ) as NodeListOf<HTMLInputElement>;
+
+    for (const input of allInputs) {
+      removeValid(input);
+    }
 
     validateInput(phoneInput, isPhoneValid, "Wymagany format to 9cyfr - np. 603603603");
 
@@ -172,6 +184,15 @@ import "./form.css";
     validateInput(lastnameInput, isNameValid, "Prosimy wprowadzić swoje nazwisko");
 
     removeError(lastnameInput);
+
+    function removeValid(input: HTMLInputElement): void {
+      input.addEventListener("input", () => {
+        if (input.classList.contains("valid")) {
+          input.classList.remove("valid");
+          input.setAttribute("aria-invalid", "false");
+        }
+      });
+    }
 
     function removeError(input: HTMLInputElement): void {
       input.addEventListener("input", () => {
@@ -198,6 +219,7 @@ import "./form.css";
 
         errorElement.classList.add("error");
         errorElement.textContent = errorMsg;
+        input.classList.add("valid");
         input.setAttribute("aria-invalid", isValid ? "false" : "true");
         input.setAttribute("aria-describedby", errorMessage);
         input.setAttribute("aria-errormessage", errorMessage);
@@ -207,6 +229,7 @@ import "./form.css";
         if (errorMsg) {
           input.insertAdjacentElement("afterend", errorElement);
           input.classList.add("error");
+          input.classList.remove("valid");
         }
       };
 

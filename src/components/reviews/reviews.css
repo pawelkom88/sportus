@@ -26,8 +26,9 @@
   }
 
   #reviews-510 .cs-text {
-    opacity: 0.8;
     text-align: justify;
+    text-wrap: balance;
+    letter-spacing: 1px;
   }
   #reviews-510 .cs-card-group {
     width: 100%;
@@ -43,18 +44,19 @@
     list-style: none;
     text-align: left;
     max-width: 44.375rem;
-    padding: clamp(1rem, 3.15vw, 2.5rem) clamp(1rem, 5vw, 3.75rem);
+    padding: clamp(1rem, 3.15vw, 2.5rem) clamp(1rem, 5vw, 0.75rem);
     padding-bottom: clamp(1.5rem, 6vw, 3rem);
     background-color: var(--primaryLight);
     border-radius: clamp(0.75rem, 1.5vw, 1.25rem);
     box-sizing: border-box;
     overflow: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    flex-direction: column;
+    flex: 1;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr auto;
     position: relative;
   }
+
   #reviews-510 .cs-item:before {
     content: "";
     width: 100%;
@@ -72,9 +74,11 @@
     margin-bottom: clamp(1rem, 2vw, 2rem);
     display: block;
   }
+
   #reviews-510 .cs-item-text {
-    font-size: clamp(1.05rem, 1.6vw, 1.5625rem);
+    width: 100%;
     text-align: justify;
+    text-wrap: balance;
     line-height: 1.5em;
     margin-bottom: clamp(1.5rem, 3vw, 2.75rem);
   }
@@ -203,7 +207,10 @@
     justify-content: space-between;
     align-items: stretch;
   }
+}
+
+@media only screen and (min-width: 1240px) {
   #reviews-510 .cs-item-text {
-    max-width: 90%;
+    max-width: 85%;
   }
 }

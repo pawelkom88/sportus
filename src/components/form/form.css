@@ -42,6 +42,7 @@
   }
 
   #contact-569 .cs-label {
+    position: relative;
     display: grid;
     grid-template-rows: subgrid;
     grid-row: span 3;
@@ -81,12 +82,35 @@
     box-sizing: border-box;
     transition: border-color 0.3s;
   }
+
+  #contact-569 .cs-label span {
+    position: absolute;
+    top: 2rem;
+    right: 0.5rem;
+  }
+
+  #contact-569 .cs-input:valid:not(:focus) {
+    border: 2px solid #3ac08f;
+  }
+
+  /* #contact-569 .cs-input:valid + span::before {
+    content: "✓";
+    color: green;
+  } */
+
+  .valid + span::before {
+    content: "✓";
+    color: green;
+  }
+
   #contact-569 .cs-input:focus {
     outline: 2px solid var(--primary);
   }
+
   #contact-569 .cs-input.error:focus {
     outline: 1px solid var(--primaryDark);
   }
+
   #contact-569 .cs-input::placeholder {
     opacity: 0.6;
     font-size: 0.875rem;
