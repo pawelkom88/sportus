@@ -1,7 +1,7 @@
 {
   "title": "Sportuś - Zajęcia sportowe dla dzieci w Gdańsku",
   "description": "Sportuś to profesjonalne zajęcia sportowe dla dzieci w Gdańsku, które rozwijają sprawność fizyczną, koordynację i umiejętności zespołowe. Zapisz swoje dziecko na sportowe przygody z najlepszymi instruktorami w Gdańsku!",
-  "url": "https://zajecia-dla-dzieci-sportus.netlify.app",
+  "url": "https://sportus.com.pl",
   "keywords": [
     "zajęcia sportowe dla dzieci",
     "sport dla dzieci Gdańsk",
@@ -22,7 +22,7 @@
   "postalCode": "",
   "country": "Polska",
   "image": {
-    "src": "https://zajecia-dla-dzieci-sportus.netlify.app/social-media-card.webp",
+    "src": "https://sportus.com.pl/social-media-card.webp",
     "alt": "Sportuś - Zajęcia sportowe dla dzieci w Gdańsku"
   }
 }

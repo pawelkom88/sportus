@@ -4,7 +4,7 @@ import { defineConfig } from "astro/config";
 import sitemap from "@astrojs/sitemap";
 // https://astro.build/config
 export default defineConfig({
-  site: "https://zajecia-dla-dzieci-sportus.netlify.app/",
+  site: "https://sportus.com.pl",
   base: "/",
   integrations: [sitemap()],
   image: {
