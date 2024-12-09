@@ -1,11 +1,15 @@
 ---
+import "./socials.css";
+
 const { isHidden, isFooterMobile = false } = Astro.props;
 const isHiddenClass = isHidden ? `cs-hidden-${isHidden}` : "";
 
 const custom = isHidden === "desktop" ? "cs-custom" : "";
 ---
 
-<ul class=`cs-social ${isHiddenClass} ${custom} ${isFooterMobile ? "cs-footer-mobile" : ""}`>
+<ul
+  class=`cs-social ${isHiddenClass} ${custom} ${isFooterMobile ? "cs-footer-mobile" : ""}`
+>
   <li class="cs-social-li">
     <a
       href="https://www.facebook.com/sportus.gdansk/"
@@ -81,60 +85,3 @@ const custom = isHidden === "desktop" ? "cs-custom" : "";
     </a>
   </li>
 </ul>
-
-<style>
-  .cs-custom, .cs-footer-mobile {
-    display: flex;
-    column-gap: 3rem;
-    justify-content: center;
-    padding: 0;
-  }
-
-  .cs-hidden-mobile {
-    display: none;
-  }
-
-  .cs-social-li {
-    list-style: none;
-  }
-  .cs-social-link {
-    width: 2.5rem;
-    height: 2.5rem;
-    background-color: var(--primaryDark);
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transition: transform 0.3s;
-  }
-
-  .cs-social-link:hover {
-    transform: translateY(-5px);
-  }
-  .cs-social-icon {
-    filter: grayscale(1) brightness(1000%);
-    width: 1rem;
-    height: auto;
-    display: block;
-    transition: transform 0.3s;
-  }
-
-  @media only screen and (min-width: 1024px) {
-    .cs-social {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 1rem;
-    }
-
-    .cs-hidden-desktop {
-      display: none;
-    }
-  }
-
-  @media only screen and (min-width: 48rem) {
-    #footer-1390 .cs-social {
-      order: 3;
-    }
-  }
-</style>
