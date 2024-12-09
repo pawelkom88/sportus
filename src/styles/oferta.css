@@ -34,6 +34,8 @@
   }
   #why-choose-1485 .cs-text:last-of-type {
     margin-bottom: 2rem;
+    text-wrap: pretty;
+    font-weight: 500;
   }
   #why-choose-1485 .cs-ul {
     width: 100%;
