@@ -31,9 +31,7 @@ export default function jsonLDGenerator({
         },
         "headline": "${post.title}",
         "description": "${post.description}",
-        "image": "${
-          post.image?.src || "https://sportus.com.pl/social-media-card.webp"
-        }",
+        "image": "${post.image?.src || "https://sportus.com.pl/social-media-card.webp"}",
         "author": {
           "@type": "Person",
           "name": "${post.author}",
@@ -46,30 +44,25 @@ export default function jsonLDGenerator({
   if (type === "website")
     return `<script type="application/ld+json">
       {
-      "@context": "https://schema.org/",
-      "@type": "WebSite",
-      "name": "${siteData.title}",
+        "@context": "https://schema.org/",
+        "@type": "WebSite",
+        "name": "${siteData.title}",
         "url": "${siteData.url}",
         "logo": "${siteData.url}/_astro/sub-logistic-logo.ryrZlyYN_Z1AmXDn.webp",
         "image": "${siteData.url}/social-media-card.png",
         "description": "${siteData.description}",  
         "address": {
           "@type": "PostalAddress",
-          "addressLocality": "${siteData.streetAddress}",
-          "addressRegion": "Pomorskie",
+          "addressLocality": "${siteData.city}",
+          "addressRegion": "${siteData.region}",
           "addressCountry": "Polska",
-          "postalCode": "${siteData.postalCode}",
-          "addressCountryCode": "PL",
-          "city": "${siteData.city}",
-          "region": "${siteData.region}",
-          "streetAddress": "${siteData.streetAddress}"
         },
         "contactPoint": {
           "@type": "ContactPoint",
           "telephone": "${siteData.telephone}",
           "contactType": "customer support",
           "areaServed": "PL",
-          "availableLanguage": "en-GB, pl-PL",
+          "availableLanguage": ["pl-PL"]
         }
       }
     </script>`;
