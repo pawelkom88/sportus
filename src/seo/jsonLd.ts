@@ -48,8 +48,8 @@ export default function jsonLDGenerator({
         "@type": "WebSite",
         "name": "${siteData.title}",
         "url": "${siteData.url}",
-        "logo": "${siteData.url}/_astro/sub-logistic-logo.ryrZlyYN_Z1AmXDn.webp",
-        "image": "${siteData.url}/social-media-card.png",
+        "logo": "https://sportus.com.pl/_astro/SPORTUŚ-logo-2.D3-O3gO0_Zu0CqY.avif",
+        "image": "${siteData.image.src}",
         "description": "${siteData.description}",  
         "address": {
           "@type": "PostalAddress",

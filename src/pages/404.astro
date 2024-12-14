@@ -1,0 +1,35 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout
+  title="404 - Strona nie została znaleziona"
+  description="404 - Strona nie została znaleziona"
+>
+  <div class="cs-container">
+    <h1 class="cs-title">404 - Strona nie została znaleziona</h1>
+    <p class="cs-text">Przepraszamy, jednak ta strona nie została znaleziona</p>
+    <a class="cs-link" href="/">Strona głoówna</a>
+  </div>
+</Layout>
+
+<style>
+  .cs-container {
+    padding-top: clamp(10rem, 20vw, 12.5rem);
+    padding-inline: 1rem;
+    width: 100%;
+    min-height: 80vh;
+    max-width: 90ch;
+    text-align: center;
+    margin: 0 auto 2rem;
+  }
+
+  .cs-title {
+    margin: 0 0 1rem 0;
+  }
+
+  .cs-link {
+    display: inline-block;
+    margin-top: 1rem;
+  }
+</style>
