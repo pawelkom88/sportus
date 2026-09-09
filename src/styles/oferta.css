@@ -24,6 +24,24 @@
     flex-direction: column;
     align-items: flex-start;
   }
+  #why-choose-1485 .cs-full-container {
+    width: 100%;
+    max-width: 36.5rem;
+    margin: clamp(2.5rem, 5vw, 4rem) auto 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  #why-choose-1485 .cs-full-content {
+    text-align: left;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  #why-choose-1485 .cs-full-content .cs-text {
+    max-width: 100%;
+  }
   #why-choose-1485 .cs-title {
     max-width: 20ch;
     text-wrap: pretty;
@@ -157,11 +175,18 @@
     overflow: hidden;
     box-sizing: border-box;
     position: absolute;
+    display: block;
+  }
+  #why-choose-1485 .cs-picture img,
+  #why-choose-1485 .cs-picture source {
+    max-width: none;
   }
   #why-choose-1485 .cs-picture img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    object-position: center;
+    display: block;
     position: absolute;
     top: 0;
     left: 0;
@@ -173,6 +198,9 @@
     left: 0;
     z-index: -1;
   }
+  #why-choose-1485 .cs-picture1 img {
+    object-position: center 20%;
+  }
   #why-choose-1485 .cs-picture2 {
     width: 20em;
     height: 20em;
@@ -182,6 +210,9 @@
     bottom: 0;
     right: 0;
     z-index: 10;
+  }
+  #why-choose-1485 .cs-picture2 img {
+    object-position: center center;
   }
   #why-choose-1485 .cs-flower {
     width: 9.5625em;
@@ -230,6 +261,9 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+  }
+  #why-choose-1485 .cs-full-container {
+    max-width: 80rem;
   }
   #why-choose-1485 .cs-image-group {
     font-size: min(1.2vw, 1em);
