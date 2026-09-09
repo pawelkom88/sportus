@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sportuś API Documentation</title>
+  <style>
+    body { font-family: system-ui, -apple-system, sans-serif; line-height: 1.6; max-width: 800px; margin: 0 auto; padding: 2rem; color: #222; }
+    h1, h2 { color: #0077b6; }
+    code { background: #f1f5f9; padding: 0.2rem 0.4rem; border-radius: 4px; font-size: 0.9em; }
+    pre { background: #0f172a; color: #f8fafc; padding: 1rem; border-radius: 6px; overflow-x: auto; }
+    .endpoint { margin-bottom: 2rem; border-left: 4px solid #0077b6; padding-left: 1rem; }
+    .badge { display: inline-block; padding: 0.2rem 0.5rem; background: #0077b6; color: #fff; border-radius: 4px; font-weight: bold; font-size: 0.8rem; }
+  </style>
+</head>
+<body>
+  <h1>Sportuś API Documentation</h1>
+  <p>Official public API documentation for Sportuś sports academy in Gdańsk.</p>
+  
+  <h2>API Catalog & OpenAPI</h2>
+  <ul>
+    <li>OpenAPI 3.0 Specification: <a href="/api/openapi.json"><code>/api/openapi.json</code></a></li>
+    <li>RFC 9727 API Catalog: <a href="/.well-known/api-catalog"><code>/.well-known/api-catalog</code></a></li>
+    <li>Health Status: <a href="/api/health"><code>/api/health</code></a></li>
+  </ul>
+
+  <h2>Endpoints</h2>
+  <div class="endpoint">
+    <p><span class="badge">GET</span> <code>/api/health</code></p>
+    <p>Returns service operational status.</p>
+  </div>
+
+  <div class="endpoint">
+    <p><span class="badge">GET</span> <code>/api/classes</code></p>
+    <p>Returns sports programs, target age groups, and descriptions.</p>
+  </div>
+
+  <div class="endpoint">
+    <p><span class="badge">GET</span> <code>/api/schedule</code></p>
+    <p>Returns weekly timetable of all sports classes across Gdańsk locations.</p>
+  </div>
+</body>
+</html>

@@ -1,0 +1,97 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Sportuś Public API",
+    "description": "API for discovering sports activities, schedules, and registering inquiries for children's sports classes in Gdańsk.",
+    "version": "1.0.0",
+    "contact": {
+      "name": "Sportuś Gdańsk",
+      "url": "https://sportus.com.pl",
+      "email": "kontakt@sportus.com.pl"
+    }
+  },
+  "servers": [
+    {
+      "url": "https://sportus.com.pl",
+      "description": "Production Server"
+    }
+  ],
+  "paths": {
+    "/api/health": {
+      "get": {
+        "summary": "Health Check",
+        "description": "Returns operational status of the service",
+        "responses": {
+          "200": {
+            "description": "Service is healthy",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": { "type": "string", "example": "ok" },
+                    "timestamp": { "type": "string", "format": "date-time" }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/classes": {
+      "get": {
+        "summary": "Get Sports Classes",
+        "description": "List all sports activities and age categories offered by Sportuś",
+        "responses": {
+          "200": {
+            "description": "List of available sports classes",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": { "type": "string" },
+                      "name": { "type": "string" },
+                      "ageGroup": { "type": "string" },
+                      "description": { "type": "string" }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/schedule": {
+      "get": {
+        "summary": "Get Schedule",
+        "description": "Get timetable of all sports classes and locations across Gdańsk",
+        "responses": {
+          "200": {
+            "description": "Weekly schedule of classes",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "dayOfWeek": { "type": "string" },
+                      "time": { "type": "string" },
+                      "location": { "type": "string" },
+                      "group": { "type": "string" }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

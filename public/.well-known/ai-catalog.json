@@ -1,0 +1,42 @@
+{
+  "specVersion": "1.0",
+  "host": {
+    "displayName": "Sportuś Gdańsk",
+    "identifier": "did:web:sportus.com.pl"
+  },
+  "entries": [
+    {
+      "identifier": "urn:air:sportus.com.pl:server:mcp",
+      "displayName": "Sportuś MCP Server",
+      "type": "application/mcp-server-card+json",
+      "url": "https://sportus.com.pl/.well-known/mcp/server-card.json",
+      "representativeQueries": [
+        "zajęcia sportowe dla dzieci w Gdańsku",
+        "sprawdź plan zajęć sportus",
+        "sportus mcp server capabilities"
+      ]
+    },
+    {
+      "identifier": "urn:air:sportus.com.pl:api:openapi",
+      "displayName": "Sportuś OpenAPI Service Description",
+      "type": "application/vnd.oai.openapi+json;version=3.0",
+      "url": "https://sportus.com.pl/api/openapi.json",
+      "representativeQueries": [
+        "harmonogram zajęć sportowych Gdańsk",
+        "jak zapisać dziecko na zajęcia sportuś",
+        "sport classes api gdansk"
+      ]
+    },
+    {
+      "identifier": "urn:air:sportus.com.pl:skill:sports-classes",
+      "displayName": "Sportuś Sports Classes Agent Skill",
+      "type": "text/markdown",
+      "url": "https://sportus.com.pl/.well-known/agent-skills/sports-classes/SKILL.md",
+      "representativeQueries": [
+        "sportus oferta dla dzieci",
+        "zajęcia ogólnorozwojowe Gdańsk",
+        "sportus agent skill"
+      ]
+    }
+  ]
+}

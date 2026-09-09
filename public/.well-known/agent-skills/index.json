@@ -1,0 +1,12 @@
+{
+  "$schema": "https://schemas.agentskills.io/discovery/0.2.0/schema.json",
+  "skills": [
+    {
+      "name": "sports-classes",
+      "type": "skill-md",
+      "description": "Look up children's sports classes, timetable schedule, locations in Gdańsk, and enrollment procedures for Sportuś.",
+      "url": "https://sportus.com.pl/.well-known/agent-skills/sports-classes/SKILL.md",
+      "digest": "sha256:8bc864abc2419f3e1114a42fb92c5bd5040f6583783e0e7d3ba199fdf270b21a"
+    }
+  ]
+}

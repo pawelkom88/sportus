@@ -1,0 +1,16 @@
+{
+  "resource": "https://sportus.com.pl",
+  "authorization_servers": [
+    "https://sportus.com.pl"
+  ],
+  "scopes_supported": [
+    "read:classes",
+    "read:schedule",
+    "read:news",
+    "write:inquiry"
+  ],
+  "bearer_methods_supported": [
+    "header"
+  ],
+  "resource_documentation": "https://sportus.com.pl/docs/api.html"
+}

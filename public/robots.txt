@@ -1,4 +1,6 @@
 User-agent: *
 Allow: /
+Content-Signal: ai-train=no, search=yes, ai-input=yes
 
+Agentmap: https://sportus.com.pl/.well-known/ai-catalog.json
 Sitemap: https://sportus.com.pl/sitemap-index.xml

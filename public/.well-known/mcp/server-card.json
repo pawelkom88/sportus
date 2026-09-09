@@ -1,0 +1,24 @@
+{
+  "$schema": "https://modelcontextprotocol.io/schema/server-card.json",
+  "serverInfo": {
+    "name": "sportus-mcp-server",
+    "version": "1.0.0",
+    "description": "Sportuś Children Sports Academy MCP Server in Gdańsk"
+  },
+  "transport": {
+    "type": "streamable-http",
+    "endpoint": "https://sportus.com.pl/mcp"
+  },
+  "capabilities": {
+    "tools": {
+      "listChanged": false
+    },
+    "resources": {
+      "subscribe": false,
+      "listChanged": false
+    },
+    "prompts": {
+      "listChanged": false
+    }
+  }
+}

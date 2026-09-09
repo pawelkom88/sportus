@@ -1,0 +1,57 @@
+# DNS-AID (DNS for AI Discovery) & ARD DNS Configuration for sportus.com.pl
+
+Publish these DNS records under your domain (`sportus.com.pl`) in your DNS provider (e.g. Cloudflare, Netlify DNS, OVH, Route53, etc.) to pass the DNS-AID and ARD DNS discovery checks.
+
+---
+
+## 1. DNS-AID Entrypoint Records (SVCB / HTTPS)
+
+DNS-AID uses ServiceMode SVCB or HTTPS records under the `_agents` subdomain namespace:
+
+### Record 1: Agent Index (_index._agents)
+- **Type**: `HTTPS` (or `SVCB`)
+- **Name / Host**: `_index._agents.sportus.com.pl.`
+- **TTL**: `3600`
+- **Priority**: `1`
+- **Target**: `sportus.com.pl.`
+- **Value / Parameters**: `alpn="h2,h3" port=443`
+
+BIND Zonefile syntax:
+```dns
+_index._agents.sportus.com.pl. 3600 IN HTTPS 1 sportus.com.pl. alpn="h2,h3" port=443
+```
+
+### Record 2: Agent-to-Agent Endpoint (_a2a._agents)
+- **Type**: `SVCB`
+- **Name / Host**: `_a2a._agents.sportus.com.pl.`
+- **TTL**: `3600`
+- **Priority**: `1`
+- **Target**: `sportus.com.pl.`
+- **Value / Parameters**: `alpn="a2a" port=443 mandatory=alpn,port`
+
+BIND Zonefile syntax:
+```dns
+_a2a._agents.sportus.com.pl. 3600 IN SVCB 1 sportus.com.pl. alpn="a2a" port=443 mandatory=alpn,port
+```
+
+---
+
+## 2. ARD Manifest Discovery Record (TXT)
+
+Allows agents to discover the Agentic Resource Discovery manifest via DNS:
+
+- **Type**: `TXT`
+- **Name / Host**: `_catalog._agents.sportus.com.pl.`
+- **TTL**: `3600`
+- **Value**: `"url=https://sportus.com.pl/.well-known/ai-catalog.json"`
+
+BIND Zonefile syntax:
+```dns
+_catalog._agents.sportus.com.pl. 3600 IN TXT "url=https://sportus.com.pl/.well-known/ai-catalog.json"
+```
+
+---
+
+## 3. Enable DNSSEC
+
+Ensure that **DNSSEC** is turned on in your DNS provider / registrar for `sportus.com.pl` so validating resolvers return authenticated and tamper-proof DNS responses.
