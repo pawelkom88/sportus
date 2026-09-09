@@ -7,7 +7,14 @@ export default defineConfig({
   site: "https://sportus.com.pl",
   base: "/",
   integrations: [sitemap()],
+  compressHTML: true,
   image: {
-    domains: ["https://images.ctfassets.net"],
+    domains: ["images.ctfassets.net"],
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "images.ctfassets.net",
+      },
+    ],
   },
 });

@@ -1,5 +1,6 @@
 import { glob } from 'astro/loaders';
-import { defineCollection, z } from 'astro:content';
+import { defineCollection } from 'astro:content';
+import { z } from 'astro/zod';
 
 const faqCollection = defineCollection({
   loader: glob({ pattern: '**\/[^_]*.md', base: "./src/data/faq" }),
@@ -14,7 +15,7 @@ const contactCollection = defineCollection({
   loader: glob({ pattern: '**\/[^_]*.md', base: "./src/data/contact" }),
   schema: z.object({
     name: z.string(),
-    email: z.string().email(),
+    email: z.email(),
     phone: z.string(),
     company: z.string(),
   }),

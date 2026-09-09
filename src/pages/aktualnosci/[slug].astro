@@ -6,32 +6,37 @@ import Layout from "../../layouts/Layout.astro";
 import { contentfulClient } from "../../lib/contentful";
 
 export async function getStaticPaths() {
-  const data = await contentfulClient.getEntries({
-    content_type: "cardArticle",
-  });
+  try {
+    const data = await contentfulClient.getEntries({
+      content_type: "cardArticle",
+    });
 
-  return data.items.map((article: Entry<EntrySkeletonType>) => {
-    return {
-      params: { slug: article.fields.slug },
-      props: {
-        heading: article.fields.heading,
-        content: documentToHtmlString(article.fields.text as any),
-        date: new Date(article.fields.date as any).toLocaleDateString("pl-PL", {
-          year: "numeric",
-          month: "long",
-          day: "numeric",
-        }),
-        image: {
-          width: (article.fields.image as any)?.fields.file.details.image.width,
-          height: (article.fields.image as any)?.fields.file.details.image.height,
-          url: (article.fields.image as any)?.fields?.file?.url || "",
+    return data.items.map((article: Entry<EntrySkeletonType>) => {
+      return {
+        params: { slug: article.fields.slug },
+        props: {
+          heading: article.fields.heading,
+          content: documentToHtmlString(article.fields.text as any),
+          date: new Date(article.fields.date as any).toLocaleDateString("pl-PL", {
+            year: "numeric",
+            month: "long",
+            day: "numeric",
+          }),
+          image: {
+            width: (article.fields.image as any)?.fields.file.details.image.width,
+            height: (article.fields.image as any)?.fields.file.details.image.height,
+            url: (article.fields.image as any)?.fields?.file?.url || "",
+          },
+          imageAlt: article.fields.imageAlt as string,
+          SEOtitle: article.fields.seOtitle as string,
+          SEOdescription: article.fields.seOdescription as string,
         },
-        imageAlt: article.fields.imageAlt as string,
-        SEOtitle: article.fields.seOtitle as string,
-        SEOdescription: article.fields.seOdescription as string,
-      },
-    };
-  });
+      };
+    });
+  } catch (error) {
+    console.warn("[Contentful] Could not fetch articles for getStaticPaths:", error);
+    return [];
+  }
 }
 
 const { heading, content, date, image, SEOtitle, SEOdescription, imageAlt } = Astro.props;

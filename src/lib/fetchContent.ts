@@ -5,7 +5,7 @@ import { parseContentfulContentImage } from "./contentImage";
 
 const options = {
   renderMark: {
-    [MARKS.BOLD]: (text: string) => `<custom-bold>${text}<custom-bold>`,
+    [MARKS.BOLD]: (text: string) => `<custom-bold>${text}</custom-bold>`,
   },
   renderNode: {
     [BLOCKS.PARAGRAPH]: (node: any, next: any) =>
@@ -31,17 +31,26 @@ export async function fetchContent(
   content_type: string,
   parseFunction: typeof parseContentfulArticle
 ) {
-  const result = await contentfulClient.getEntries({ content_type });
-
-  return result?.items?.map(parseFunction) || [];
+  try {
+    const result = await contentfulClient.getEntries({ content_type });
+    return result?.items?.map(parseFunction) || [];
+  } catch (error) {
+    console.warn(`[Contentful] Could not fetch content for ${content_type}:`, error);
+    return [];
+  }
 }
 
 export async function fetchArticle({ slug, content_type }: any) {
-  const ArticleResult = await contentfulClient.getEntries({
-    content_type,
-    "fields.slug": slug,
-    include: 2,
-  });
+  try {
+    const ArticleResult = await contentfulClient.getEntries({
+      content_type,
+      "fields.slug": slug,
+      include: 2,
+    });
 
-  return parseContentfulArticle(ArticleResult.items[0]);
+    return parseContentfulArticle(ArticleResult.items[0]);
+  } catch (error) {
+    console.warn(`[Contentful] Could not fetch article ${slug}:`, error);
+    return null;
+  }
 }
