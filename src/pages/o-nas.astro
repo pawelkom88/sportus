@@ -6,6 +6,21 @@ import image4 from "../assets/images/Krzysztof-Iwanowski-2.jpg";
 import image5 from "../assets/images/Krzysztof-Iwanowski-3.jpg";
 import Layout from "../layouts/Layout.astro";
 import "../styles/trener.css";
+
+const calculateAge = (birthDate: Date) => {
+  const today = new Date();
+  let age = today.getFullYear() - birthDate.getFullYear();
+  const m = today.getMonth() - birthDate.getMonth();
+  if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+    age--;
+  }
+  return age;
+};
+
+// Maja: 7 lat w 2026 r. (ur. 2019)
+// Marika: 2 lata w 2026 r. (ur. wiosna 2024)
+const majaAge = calculateAge(new Date("2019-05-01"));
+const marikaAge = calculateAge(new Date("2024-04-01"));
 ---
 
 <Layout
@@ -102,7 +117,7 @@ import "../styles/trener.css";
           Wychowania Fizycznego i Sportu w Gdańsku, licencjonowanego trenera piłki nożnej
           oraz zawodowego piłkarza, który swoje sportowe doświadczenie zdobywał, grając
           m.in. w takich klubach jak Lechia Gdańsk, Olimpia Elbląg czy Bałtyk Gdynia. Jako
-          tata 5-letniej Mai i półrocznej Mariki doskonale rozumie, jak ważne jest
+          tata {majaAge}-letniej Mai i {marikaAge}-letniej Mariki doskonale rozumie, jak ważne jest
           zaszczepienie dzieciom pasji do ruchu już od najmłodszych lat oraz jak głęboko
           aktywność fizyczna wpływa na ich rozwój i dobre samopoczucie.
         </p>
