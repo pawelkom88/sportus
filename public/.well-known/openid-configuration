@@ -28,5 +28,34 @@
     "read:schedule",
     "read:news",
     "write:inquiry"
-  ]
+  ],
+  "agent_auth": {
+    "skill": "https://sportus.com.pl/auth.md",
+    "register_uri": "https://sportus.com.pl/agent/register",
+    "identity_types_supported": [
+      "identity_assertion",
+      "anonymous"
+    ],
+    "identity_assertion": {
+      "assertion_types_supported": [
+        "urn:ietf:params:oauth:token-type:id-jag",
+        "verified_email"
+      ],
+      "credential_types_supported": [
+        "bearer"
+      ],
+      "revocation_uri": "https://sportus.com.pl/oauth/revoke",
+      "events_supported": [
+        "https://schemas.openid.net/secevent/oauth/event-type/token-revocation"
+      ],
+      "claim_uri": "https://sportus.com.pl/agent/claim"
+    },
+    "anonymous": {
+      "credential_types_supported": [
+        "bearer",
+        "api_key"
+      ],
+      "claim_uri": "https://sportus.com.pl/agent/claim"
+    }
+  }
 }

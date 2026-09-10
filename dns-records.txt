@@ -1,10 +1,10 @@
 # DNS-AID (DNS for AI Discovery) & ARD DNS Configuration for sportus.com.pl
 
-Publish these DNS records under your domain (`sportus.com.pl`) in your DNS provider (e.g. Cloudflare, Netlify DNS, OVH, Route53, etc.) to pass the DNS-AID and ARD DNS discovery checks.
+All records below have been published in Netlify DNS for `sportus.com.pl` (Zone ID: `6755bc60baebdba88c79078b`).
 
 ---
 
-## 1. DNS-AID Entrypoint Records (SVCB / HTTPS)
+## 1. DNS-AID Entrypoint Records (HTTPS / SVCB ServiceMode)
 
 DNS-AID uses ServiceMode SVCB or HTTPS records under the `_agents` subdomain namespace:
 
@@ -12,9 +12,10 @@ DNS-AID uses ServiceMode SVCB or HTTPS records under the `_agents` subdomain nam
 - **Type**: `HTTPS` (or `SVCB`)
 - **Name / Host**: `_index._agents.sportus.com.pl.`
 - **TTL**: `3600`
-- **Priority**: `1`
+- **Priority / Weight**: `1`
+- **Port**: `443`
 - **Target**: `sportus.com.pl.`
-- **Value / Parameters**: `alpn="h2,h3" port=443`
+- **Parameters**: `alpn="h2,h3"`
 
 BIND Zonefile syntax:
 ```dns
@@ -22,21 +23,52 @@ _index._agents.sportus.com.pl. 3600 IN HTTPS 1 sportus.com.pl. alpn="h2,h3" port
 ```
 
 ### Record 2: Agent-to-Agent Endpoint (_a2a._agents)
-- **Type**: `SVCB`
+- **Type**: `HTTPS` (or `SVCB`)
 - **Name / Host**: `_a2a._agents.sportus.com.pl.`
 - **TTL**: `3600`
-- **Priority**: `1`
+- **Priority / Weight**: `1`
+- **Port**: `443`
 - **Target**: `sportus.com.pl.`
-- **Value / Parameters**: `alpn="a2a" port=443 mandatory=alpn,port`
+- **Parameters**: `alpn="a2a"`
 
 BIND Zonefile syntax:
 ```dns
-_a2a._agents.sportus.com.pl. 3600 IN SVCB 1 sportus.com.pl. alpn="a2a" port=443 mandatory=alpn,port
+_a2a._agents.sportus.com.pl. 3600 IN HTTPS 1 sportus.com.pl. alpn="a2a" port=443
+```
+
+### Record 3: Model Context Protocol Endpoint (_mcp._agents)
+- **Type**: `HTTPS` (or `SVCB`)
+- **Name / Host**: `_mcp._agents.sportus.com.pl.`
+- **TTL**: `3600`
+- **Priority / Weight**: `1`
+- **Port**: `443`
+- **Target**: `sportus.com.pl.`
+- **Parameters**: `alpn="mcp"`
+
+BIND Zonefile syntax:
+```dns
+_mcp._agents.sportus.com.pl. 3600 IN HTTPS 1 sportus.com.pl. alpn="mcp" port=443
 ```
 
 ---
 
-## 2. ARD Manifest Discovery Record (TXT)
+## 2. DNS-AID TXT Fallback Index Record
+
+Allows agent discovery clients that do not yet query SVCB/HTTPS records to discover agents:
+
+- **Type**: `TXT`
+- **Name / Host**: `_index._agents.sportus.com.pl.`
+- **TTL**: `3600`
+- **Value**: `"agents=a2a:https,mcp:https"`
+
+BIND Zonefile syntax:
+```dns
+_index._agents.sportus.com.pl. 3600 IN TXT "agents=a2a:https,mcp:https"
+```
+
+---
+
+## 3. ARD Manifest Discovery Record (TXT)
 
 Allows agents to discover the Agentic Resource Discovery manifest via DNS:
 
@@ -52,6 +84,10 @@ _catalog._agents.sportus.com.pl. 3600 IN TXT "url=https://sportus.com.pl/.well-k
 
 ---
 
-## 3. Enable DNSSEC
+## 4. DNSSEC Note
 
-Ensure that **DNSSEC** is turned on in your DNS provider / registrar for `sportus.com.pl` so validating resolvers return authenticated and tamper-proof DNS responses.
+The DNS-AID IETF specification (draft-01+) expects DNSSEC validation (`AD=true`).
+- **Current DNS Provider**: Netlify DNS (`dns1.p08.nsone.net`).
+- Netlify DNS does not currently support DNSSEC signing.
+- If strict DNSSEC validation is required by the scanner/resolver, delegate the zone to a DNS provider that supports DNSSEC (e.g. Cloudflare DNS or Route 53) and add the DS record at the registrar.
+

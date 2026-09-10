@@ -2,60 +2,115 @@
 
 Welcome to the AI Agent Authentication and Registration Guide for Sportuś (`sportus.com.pl`).
 
-This document describes how autonomous AI agents, personal assistants, and automated clients can register, authenticate, and interact with Sportuś resources and APIs.
+This document provides both a machine-readable contract and step-by-step instructions for autonomous AI agents, personal assistants, and automated clients to register, obtain credentials, and interact with Sportuś resources and APIs.
 
-## Discovery Metadata
+---
+
+## 1. Audience
+
+This interface is intended for:
+- Autonomous AI agents seeking sports schedules, swimming lessons, gymnastics, and class information on behalf of parents or students.
+- Search, calendar, and booking assistant agents operating in Gdańsk and surrounding regions.
+- Automated indexing systems conforming to agent discovery standards.
+
+---
+
+## 2. Discovery Metadata
 
 Sportuś publishes RFC-standardized discovery documents:
 
-- **OAuth Protected Resource Metadata (RFC 9728)**: [`/.well-known/oauth-protected-resource`](/.well-known/oauth-protected-resource)
-- **OAuth Authorization Server Metadata (RFC 8414)**: [`/.well-known/oauth-authorization-server`](/.well-known/oauth-authorization-server)
-- **OpenID Connect Configuration**: [`/.well-known/openid-configuration`](/.well-known/openid-configuration)
-- **API Catalog (RFC 9727)**: [`/.well-known/api-catalog`](/.well-known/api-catalog)
-- **Agent Resource Discovery (ARD)**: [`/.well-known/ai-catalog.json`](/.well-known/ai-catalog.json)
+- **OAuth Protected Resource Metadata (RFC 9728)**: [`/.well-known/oauth-protected-resource`](https://sportus.com.pl/.well-known/oauth-protected-resource)
+- **OAuth Authorization Server Metadata (RFC 8414)**: [`/.well-known/oauth-authorization-server`](https://sportus.com.pl/.well-known/oauth-authorization-server)
+- **OpenID Connect Configuration**: [`/.well-known/openid-configuration`](https://sportus.com.pl/.well-known/openid-configuration)
+- **API Catalog (RFC 9727)**: [`/.well-known/api-catalog`](https://sportus.com.pl/.well-known/api-catalog)
+- **Agent Resource Discovery (ARD)**: [`/.well-known/ai-catalog.json`](https://sportus.com.pl/.well-known/ai-catalog.json)
 
-## Audience
+---
 
-This interface is intended for:
-- AI agents seeking sports schedules and class information on behalf of parents or students.
-- Search and booking assistant agents operating in Gdańsk and surrounding regions.
-- Automated indexing systems conforming to agent discovery standards.
-
-## Registration Endpoints
-
-Agents can register dynamically or request access credentials:
+## 3. Endpoints Summary
 
 - **Registration URI**: `https://sportus.com.pl/agent/register`
-- **Claim URI**: `https://sportus.com.pl/agent/claim`
+- **Identity Endpoint**: `https://sportus.com.pl/agent/register`
+- **Claim URI / Endpoint**: `https://sportus.com.pl/agent/claim`
+- **Token Endpoint**: `https://sportus.com.pl/oauth/token`
 - **Revocation URI**: `https://sportus.com.pl/oauth/revoke`
-- **Agent Skill**: `https://sportus.com.pl/.well-known/agent-skills/sports-classes/SKILL.md`
+- **Agent Skill Manifest**: `https://sportus.com.pl/auth.md`
 
-## Supported Identity & Credential Types
+---
 
-### 1. Identity Assertion (ID-JAG)
-- **Assertion Type**: `urn:ietf:params:oauth:token-type:id-jag`
-- **Credential Type**: `bearer`
-- **Revocation**: Supported via `https://sportus.com.pl/oauth/revoke` with event `https://schemas.openid.net/secevent/oauth/event-type/token-revocation`
+## 4. Step-by-Step Registration Flow
 
-### 2. Verified Email
-- **Assertion Type**: `verified_email`
-- **Credential Type**: `bearer`
-- **Claim URI**: `https://sportus.com.pl/agent/claim`
+Follow these steps in order to register and obtain credentials:
 
-### 3. Anonymous
-- **Credential Types**: `bearer`, `api_key`
-- **Claim URI**: `https://sportus.com.pl/agent/claim`
+### Step 1: Discover
+Fetch `/.well-known/oauth-protected-resource` or inspect the `WWW-Authenticate` header returned on any 401 response to obtain the authorization server location and supported scopes.
 
-## Scopes Supported
+### Step 2: Choose Registration Method
 
-- `read:classes`: Read sports programs, age criteria, and course descriptions.
-- `read:schedule`: Query weekly schedule and training locations in Gdańsk.
-- `read:news`: Fetch news and updates.
-- `write:inquiry`: Submit enrollment contact forms and inquiries on behalf of users.
+Select one of the following methods supported by Sportuś:
 
-## Bearer Methods
+1. **Identity Assertion (ID-JAG)** (Recommended for user-delegated agents):
+   - **Assertion Type**: `urn:ietf:params:oauth:token-type:id-jag`
+   - **Credential Type**: `bearer`
+   - Your agent IdP mints an identity assertion with `aud = "https://sportus.com.pl"`.
+   - Submit assertion to `POST https://sportus.com.pl/agent/register`.
 
-- **Header**: Requests must send access credentials via HTTP Authorization header:
-  ```http
-  Authorization: Bearer <token>
-  ```
+2. **Verified Email**:
+   - **Assertion Type**: `verified_email`
+   - **Credential Type**: `bearer`
+   - Submit user's verified email to `POST https://sportus.com.pl/agent/register` and complete confirmation at `https://sportus.com.pl/agent/claim`.
+
+3. **Anonymous Agent**:
+   - **Credential Types**: `bearer`, `api_key`
+   - Call `POST https://sportus.com.pl/agent/register` without user assertion to obtain a scoped client credential. User can claim ownership later via `https://sportus.com.pl/agent/claim`.
+
+### Step 3: Register or Claim
+Send a registration request to the `register_uri`:
+```http
+POST /agent/register HTTP/1.1
+Host: sportus.com.pl
+Content-Type: application/json
+
+{
+  "client_name": "FamilyAssistantBot",
+  "identity_type": "anonymous",
+  "requested_scopes": ["read:classes", "read:schedule"]
+}
+```
+
+### Step 4: Token Exchange & API Access
+Exchange your issued assertion or client credentials at `https://sportus.com.pl/oauth/token` for a Bearer access token:
+```http
+POST /oauth/token HTTP/1.1
+Host: sportus.com.pl
+Content-Type: application/x-www-form-urlencoded
+
+grant_type=client_credentials&scope=read:classes%20read:schedule
+```
+
+Send the received Bearer token in the HTTP `Authorization` header on all API calls:
+```http
+GET /api/classes HTTP/1.1
+Host: sportus.com.pl
+Authorization: Bearer <access_token>
+```
+
+### Step 5: Revocation
+To revoke an issued token or session, make a POST request to `https://sportus.com.pl/oauth/revoke`:
+```http
+POST /oauth/revoke HTTP/1.1
+Host: sportus.com.pl
+Content-Type: application/x-www-form-urlencoded
+
+token=<access_token>&token_type_hint=access_token
+```
+Revocation events are emitted via `https://schemas.openid.net/secevent/oauth/event-type/token-revocation`.
+
+---
+
+## 5. Supported Scopes
+
+- `read:classes`: Browse sports activities, descriptions, age brackets, and locations in Gdańsk.
+- `read:schedule`: Query class schedules, hours, and trainer information.
+- `read:news`: Read announcements and news articles.
+- `write:inquiry`: Submit enrollment inquiries and contact messages.

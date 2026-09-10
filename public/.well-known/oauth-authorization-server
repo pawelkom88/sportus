@@ -26,7 +26,7 @@
     "none"
   ],
   "agent_auth": {
-    "skill": "https://sportus.com.pl/.well-known/agent-skills/sports-classes/SKILL.md",
+    "skill": "https://sportus.com.pl/auth.md",
     "register_uri": "https://sportus.com.pl/agent/register",
     "identity_types_supported": [
       "identity_assertion",
