@@ -5,6 +5,6 @@ export const contentfulClient = contentful.createClient({
   accessToken:
     (import.meta.env.DEV
       ? import.meta.env.CONTENTFUL_PREVIEW_TOKEN
-      : import.meta.env.CONTENTFUL_DELIVERY_TOKEN) || "mock_token",
+      : (import.meta.env.CONTENTFUL_DELIVERY_TOKEN || import.meta.env.CONTENTFUL_ACCESS_TOKEN)) || "mock_token",
   host: import.meta.env.DEV ? "preview.contentful.com" : "cdn.contentful.com",
 });
