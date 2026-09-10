@@ -32,6 +32,10 @@
   "agent_auth": {
     "skill": "https://sportus.com.pl/auth.md",
     "register_uri": "https://sportus.com.pl/agent/register",
+    "identity_endpoint": "https://sportus.com.pl/agent/register",
+    "claim_uri": "https://sportus.com.pl/agent/claim",
+    "claim_endpoint": "https://sportus.com.pl/agent/claim",
+    "revocation_uri": "https://sportus.com.pl/oauth/revoke",
     "identity_types_supported": [
       "identity_assertion",
       "anonymous"
@@ -44,9 +48,15 @@
       "credential_types_supported": [
         "bearer"
       ],
+      "claim_uri": "https://sportus.com.pl/agent/claim",
       "revocation_uri": "https://sportus.com.pl/oauth/revoke",
       "events_supported": [
         "https://schemas.openid.net/secevent/oauth/event-type/token-revocation"
+      ]
+    },
+    "verified_email": {
+      "credential_types_supported": [
+        "bearer"
       ],
       "claim_uri": "https://sportus.com.pl/agent/claim"
     },
