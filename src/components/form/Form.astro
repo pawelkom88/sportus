@@ -33,13 +33,13 @@ import "./form.css";
         <input
           type="hidden"
           name="redirect"
-          value="https://zajecia-dla-dzieci-sportus.netlify.app/formularz-wyslany-potwierdzenie"
+          value="https://sportus.com.pl/formularz-wyslany-potwierdzenie/"
         />
 
         <div class="cs-label">
           <label for="name-569" class="cs-name"> Imię </label>
           <input
-            pattern="^[a-zA-Z]+$"
+            pattern="^[a-zA-ZąćęłńóśźżĄĆĘŁŃÓŚŹŻ\\s\\-]+$"
             class="cs-input"
             required
             type="text"
@@ -54,7 +54,7 @@ import "./form.css";
         <div class="cs-label">
           <label for="name-570" class="cs-lastname"> Nazwisko </label>
           <input
-            pattern="^[a-zA-Z]+$"
+            pattern="^[a-zA-ZąćęłńóśźżĄĆĘŁŃÓŚŹŻ\\s\\-]+$"
             class="cs-input"
             required
             type="text"
@@ -112,8 +112,8 @@ import "./form.css";
 
         <div class="cs-label cs-span-2">
           <label class="cs-policy" for="agreement">
-            Zgadzam się na przetwarzanie moich danych osobowych zgodnie z
-            <a href="/polityka-prywatnosci">polityką prywatności</a>
+            Zgadzam się na przetwarzanie moich danych osobowych zgodnie z{" "}
+            <a href="/polityka-prywatnosci/">polityką prywatności</a>
             <input
               class="cs-checkbox"
               type="checkbox"
@@ -124,14 +124,14 @@ import "./form.css";
           </label>
         </div>
 
-        <button class="cs-submit" type="submit">Wyslij wiadomość</button>
+        <button class="cs-submit" type="submit">Wyślij wiadomość</button>
       </form>
     </div>
 
     <div class="cs-right">
       <Image
         src={team}
-        alt="group of kids with a trainer listening to his speech"
+        alt="Grupa dzieci uważnie słuchająca wskazówek trenera podczas zajęć Sportuś"
         width="500"
         height="300"
       />
@@ -153,10 +153,10 @@ import "./form.css";
   </div>
 
   <script>
-    const isPhoneValid = (phone: string): boolean => /^\d{9}$/.test(phone);
+    const isPhoneValid = (phone: string): boolean => /^\d{9}$/.test(phone.replace(/\s+/g, ""));
     const isEmailValid = (email: string): boolean =>
       /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(email);
-    const isNameValid = (name: string): boolean => /^[a-zA-Z]+$/.test(name);
+    const isNameValid = (name: string): boolean => /^[a-zA-ZąćęłńóśźżĄĆĘŁŃÓŚŹŻ\s\-]+$/.test(name.trim());
 
     const phoneInput = document.getElementById("phone-571") as HTMLInputElement;
     const nameInput = document.getElementById("name-569") as HTMLInputElement;

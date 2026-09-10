@@ -19,7 +19,7 @@ const sortedFaqItems = faqItems.sort((a, b) => (a.data.order || 0) - (b.data.ord
         <picture class="cs-picture">
           <Image
             src={teamwork}
-            alt="team gathered in a circle and each team member put a hand in the middle of the circle before game in order to cheer the team up"
+            alt="Dzieci zebrane w kręgu z trenerem przed rozpoczęciem gry zespołowej"
             width="586"
             height="376"
           />
@@ -29,14 +29,23 @@ const sortedFaqItems = faqItems.sort((a, b) => (a.data.order || 0) - (b.data.ord
     <div class="cs-flex-group">
       <ul class="cs-faq-group">
         {
-          sortedFaqItems.map((item: any) => {
+          sortedFaqItems.map((item: any, index: number) => {
+            const questionId = `faq-q-${index}`;
+            const answerId = `faq-a-${index}`;
             return (
               <li class="cs-faq-item">
-                <button class="cs-button">
+                <button
+                  class="cs-button"
+                  aria-expanded="false"
+                  aria-controls={answerId}
+                  id={questionId}
+                >
                   <span class="cs-button-text">{item.data.question}</span>
                   <span class="cs-indicator" aria-hidden="true" />
                 </button>
-                <p class="cs-item-p">{item.data.answer}</p>
+                <p class="cs-item-p" id={answerId} role="region" aria-labelledby={questionId}>
+                  {item.data.answer}
+                </p>
               </li>
             );
           })
@@ -48,7 +57,7 @@ const sortedFaqItems = faqItems.sort((a, b) => (a.data.order || 0) - (b.data.ord
   <Image
     class="cs-floater cs-floater1"
     src={award}
-    alt="graphic"
+    alt=""
     width="312"
     height="222"
     aria-hidden="true"
@@ -57,7 +66,7 @@ const sortedFaqItems = faqItems.sort((a, b) => (a.data.order || 0) - (b.data.ord
   <Image
     class="cs-floater cs-floater2"
     src={tennis}
-    alt="graphic"
+    alt=""
     width="207"
     height="211"
     aria-hidden="true"
@@ -91,18 +100,24 @@ const sortedFaqItems = faqItems.sort((a, b) => (a.data.order || 0) - (b.data.ord
 </section>
 
 <script>
-  const faqItems = Array.from(document.querySelectorAll(".cs-faq-item"));
+  const faqButtons = Array.from(document.querySelectorAll<HTMLButtonElement>(".cs-faq-item .cs-button"));
 
-  faqItems.forEach((item) => {
-    item.addEventListener("click", () => {
-      // Remove 'active' class from all FAQ items
-      faqItems.forEach((otherItem) => {
-        if (otherItem !== item) {
-          otherItem.classList.remove("active");
+  faqButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const item = button.closest(".cs-faq-item");
+      const isExpanded = button.getAttribute("aria-expanded") === "true";
+
+      // Close all other items
+      faqButtons.forEach((otherButton) => {
+        if (otherButton !== button) {
+          otherButton.setAttribute("aria-expanded", "false");
+          otherButton.closest(".cs-faq-item")?.classList.remove("active");
         }
       });
-      // Toggle 'active' class on the clicked FAQ item
-      item.classList.toggle("active");
+
+      // Toggle current item
+      button.setAttribute("aria-expanded", String(!isExpanded));
+      item?.classList.toggle("active", !isExpanded);
     });
   });
 </script>

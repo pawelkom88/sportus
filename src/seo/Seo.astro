@@ -2,30 +2,71 @@
 import jsonLDGenerator from "./jsonLd";
 import siteData from "./siteData.json";
 
-const { title, description, url = Astro.url, image, jsonLDType } = Astro.props;
+interface Props {
+  title: string;
+  description: string;
+  url?: URL | string;
+  image?: {
+    src: string;
+    alt: string;
+  };
+  jsonLDType?: string;
+  noindex?: boolean;
+  faqData?: any;
+  post?: any;
+}
+
+const {
+  title,
+  description,
+  url = Astro.url,
+  image,
+  jsonLDType = "website",
+  noindex = false,
+  faqData,
+  post,
+} = Astro.props;
+
+const isArticle = jsonLDType === "post" || Astro.url.pathname.startsWith("/aktualnosci/");
+const ogImage = image?.src || siteData.image.src;
+const ogImageAlt = image?.alt || siteData.image.alt;
+const ogImageType = ogImage.endsWith(".webp") ? "image/webp" : "image/jpeg";
+
+const canonicalUrl = typeof url === "string" ? url : url.href;
 
 const jsonLD = jsonLDGenerator({
-  type: "website",
-  post: jsonLDType,
-  url,
+  type: jsonLDType,
+  post,
+  url: canonicalUrl,
+  faqData,
 });
 ---
 
-<!-- SEO -->
-<link rel="canonical" href={url} />
+<!-- SEO & Robots -->
+<meta name="description" content={description} />
+<meta name="robots" content={noindex ? "noindex, nofollow" : "index, follow"} />
+<link rel="canonical" href={canonicalUrl} />
 
 <!-- Open Graph -->
 <meta property="og:site_name" content="Sportuś - Zajęcia sportowe dla dzieci w Gdańsku" />
+<meta property="og:type" content={isArticle ? "article" : "website"} />
 <meta property="og:title" content={title} />
 <meta property="og:description" content={description} />
-<meta property="og:url" content={url} />
-<meta property="og:image" content={image?.src || siteData.image.src} />
-<meta property="og:image:url" content={image?.src || siteData.image.src} />
-<meta property="og:image:secure_url" content={image?.src || siteData.image.src} />
-<meta property="og:image:type" content="image/jpeg" />
+<meta property="og:url" content={canonicalUrl} />
+<meta property="og:image" content={ogImage} />
+<meta property="og:image:url" content={ogImage} />
+<meta property="og:image:secure_url" content={ogImage} />
+<meta property="og:image:type" content={ogImageType} />
 <meta property="og:image:width" content="1200" />
-<meta property="og:image:height" content="600" />
-<meta property="og:image:alt" content={image?.alt || siteData.image.alt} />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content={ogImageAlt} />
+
+<!-- Twitter / X -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={ogImage} />
+<meta name="twitter:image:alt" content={ogImageAlt} />
 
 <!-- JSON LD -->
 <Fragment set:html={jsonLD} />

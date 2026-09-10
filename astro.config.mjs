@@ -5,9 +5,13 @@ import sitemap from "@astrojs/sitemap";
 // https://astro.build/config
 export default defineConfig({
   site: "https://sportus.com.pl",
-  base: "/",
-  integrations: [sitemap()],
-  compressHTML: true,
+  integrations: [
+    sitemap({
+      filter: (page) =>
+        !page.includes("formularz-wyslany-potwierdzenie") &&
+        !page.includes("404"),
+    }),
+  ],
   image: {
     domains: ["images.ctfassets.net"],
     remotePatterns: [

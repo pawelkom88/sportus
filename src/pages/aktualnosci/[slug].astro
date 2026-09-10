@@ -22,12 +22,15 @@ export async function getStaticPaths() {
             month: "long",
             day: "numeric",
           }),
+          rawDate: article.fields.date
+            ? new Date(article.fields.date as any).toISOString().split("T")[0]
+            : "",
           image: {
-            width: (article.fields.image as any)?.fields.file.details.image.width,
-            height: (article.fields.image as any)?.fields.file.details.image.height,
-            url: (article.fields.image as any)?.fields?.file?.url || "",
+            width: (article.fields.image as any)?.fields?.file?.details?.image?.width || 800,
+            height: (article.fields.image as any)?.fields?.file?.details?.image?.height || 600,
+            url: ((article.fields.image as any)?.fields?.file?.url || "").replace(/^https?:?\/\//, ""),
           },
-          imageAlt: article.fields.imageAlt as string,
+          imageAlt: (article.fields.imageAlt as string) || (article.fields.heading as string),
           SEOtitle: article.fields.seOtitle as string,
           SEOdescription: article.fields.seOdescription as string,
         },
@@ -39,10 +42,32 @@ export async function getStaticPaths() {
   }
 }
 
-const { heading, content, date, image, SEOtitle, SEOdescription, imageAlt } = Astro.props;
+const { heading, content, date, rawDate, image, SEOtitle, SEOdescription, imageAlt } =
+  Astro.props;
+
+const pageTitle = SEOtitle || `${heading} | Sportuś Gdańsk`;
+const pageDescription =
+  SEOdescription ||
+  `Przeczytaj artykuł: ${heading}. Aktualności z życia Akademii Sportuś w Gdańsku.`;
+const postImage = {
+  src: image?.url ? `https://${image.url}` : "https://sportus.com.pl/social-media-card.webp",
+  alt: String(imageAlt || heading || "Sportuś Gdańsk"),
+};
 ---
 
-<Layout title={SEOtitle} description={SEOdescription}>
+<Layout
+  title={pageTitle}
+  description={pageDescription}
+  image={postImage}
+  jsonLDType="post"
+  post={{
+    title: heading,
+    description: pageDescription,
+    image: postImage,
+    date: rawDate,
+    author: "Krzysztof Iwanowski",
+  }}
+>
   <section class="article-container">
     <article>
       <header>
@@ -60,7 +85,7 @@ const { heading, content, date, image, SEOtitle, SEOdescription, imageAlt } = As
       <div class="content-wrapper">
         <slot set:html={content} />
       </div>
-      <time class="article-date" datetime={date}>Opublikowano: {date}</time>
+      <time class="article-date" datetime={rawDate || date}>Opublikowano: {date}</time>
     </article>
   </section>
 </Layout>

@@ -20,7 +20,14 @@ export function parseContentfulArticle(article: any) {
   return {
     heading: article.fields.heading,
     text: documentToHtmlString(article.fields.text, options),
-    date: new Date(article.fields.date).toLocaleDateString(),
+    date: new Date(article.fields.date).toLocaleDateString("pl-PL", {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    }),
+    rawDate: article.fields.date
+      ? new Date(article.fields.date).toISOString().split("T")[0]
+      : "",
     slug: article.fields.slug,
     authorImage: parseContentfulContentImage(article.fields.authorImage),
     image: parseContentfulContentImage(article.fields.image),

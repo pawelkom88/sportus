@@ -62,8 +62,8 @@ const tools: WebMCPTool[] = [
     },
     execute: async () => {
       return {
-        scheduleUrl: "https://sportus.com.pl/plan-zajec",
-        info: "Aktualny grafik zajęć dostępny na stronie /plan-zajec"
+        contactUrl: "https://sportus.com.pl/#contact-569",
+        info: "Grafik zajęć jest ustalany indywidualnie z przedszkolami i placówkami. Skontaktuj się z nami poprzez formularz kontaktowy."
       };
     }
   },
@@ -81,8 +81,8 @@ const tools: WebMCPTool[] = [
     },
     execute: async (params = {}) => {
       return {
-        message: "Aby zapisać dziecko na lekcję próbną, skorzystaj z formularza na stronie głównej lub napisz na kontakt@sportus.com.pl.",
-        contactEmail: "kontakt@sportus.com.pl",
+        message: "Aby zapisać dziecko na lekcję próbną, skorzystaj z formularza na stronie głównej lub napisz na kontakt.sportus@gmail.com.",
+        contactEmail: "kontakt.sportus@gmail.com",
         receivedParams: params
       };
     }

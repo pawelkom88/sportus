@@ -7,20 +7,25 @@ import Socials from "../socials/Socials.astro";
 
 <header id="cs-navigation">
   <div class="cs-container">
-    <a href="/" class="cs-logo" aria-label="back to home">
+    <a href="/" class="cs-logo" aria-label="Sportuś - Strona główna">
       <Picture
         formats={["avif", "webp"]}
         fallbackFormat="png"
         loading="eager"
         src={logo}
-        alt="SPORTUŚ logo"
+        alt="Sportuś - logo zajęć sportowych dla dzieci"
         width="348"
         height="292"
       />
     </a>
 
-    <nav class="cs-nav">
-      <button class="cs-toggle" aria-label="mobile menu toggle">
+    <nav class="cs-nav" aria-label="Główna nawigacja">
+      <button
+        class="cs-toggle"
+        aria-label="Menu nawigacyjne"
+        aria-expanded="false"
+        aria-controls="cs-expanded"
+      >
         <span class="cs-box" aria-hidden="true">
           <span class="cs-line cs-line1" aria-hidden="true"></span>
           <span class="cs-line cs-line2" aria-hidden="true"></span>
@@ -29,7 +34,7 @@ import Socials from "../socials/Socials.astro";
       </button>
       <!-- content collection map -->
       <div class="cs-ul-wrapper">
-        <ul id="cs-expanded" class="cs-ul" aria-expanded="false">
+        <ul id="cs-expanded" class="cs-ul">
           <!-- <li class="cs-li">
             <a href="/" class="cs-li-link cs-active"> Strona główna </a>
           </li> -->
@@ -37,13 +42,13 @@ import Socials from "../socials/Socials.astro";
             <a href="/" class="cs-li-link">Strona główna</a>
           </li>
           <li class="cs-li">
-            <a href="/o-nas" class="cs-li-link">O nas</a>
+            <a href="/o-nas/" class="cs-li-link">O nas</a>
           </li>
           <li class="cs-li">
-            <a href="/oferta" class="cs-li-link">Oferta</a>
+            <a href="/oferta/" class="cs-li-link">Oferta</a>
           </li>
           <li class="cs-li">
-            <a href="/aktualnosci" class="cs-li-link">Aktualności</a>
+            <a href="/aktualnosci/" class="cs-li-link">Aktualności</a>
           </li>
           <li class="cs-li">
             <a href="/#contact-569" class="cs-li-link">Kontakt</a>
@@ -64,24 +69,12 @@ import Socials from "../socials/Socials.astro";
     ) as HTMLElement;
 
     CShamburgerMenu.addEventListener("click", function () {
+      const isExpanded = CShamburgerMenu.getAttribute("aria-expanded") === "true";
+      CShamburgerMenu.setAttribute("aria-expanded", String(!isExpanded));
       CShamburgerMenu.classList.toggle("cs-active");
       CSnavbarMenu.classList.toggle("cs-active");
       CSbody.classList.toggle("cs-open");
-      // run the function to check the aria-expanded value
-      ariaExpanded();
     });
-
-    // checks the value of aria expanded on the cs-ul and changes it accordingly whether it is expanded or not
-    function ariaExpanded() {
-      const csUL = document.querySelector("#cs-expanded") as HTMLElement;
-      const csExpanded = csUL.getAttribute("aria-expanded");
-
-      if (csExpanded === "false") {
-        csUL.setAttribute("aria-expanded", "true");
-      } else {
-        csUL.setAttribute("aria-expanded", "false");
-      }
-    }
 
     document.addEventListener("scroll", () => {
       const scroll = document.documentElement.scrollTop;

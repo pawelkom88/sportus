@@ -1,4 +1,5 @@
 ---
+import { getCollection } from "astro:content";
 import Faq from "../components/faq/Faq.astro";
 import Form from "../components/form/Form.astro";
 import GetStarted from "../components/get-started/GetStarted.astro";
@@ -6,11 +7,15 @@ import Hero from "../components/hero/Hero.astro";
 import Reviews from "../components/reviews/Reviews.astro";
 import WhyUs from "../components/why-us/WhyUs.astro";
 import Layout from "../layouts/Layout.astro";
+
+const faqItems = await getCollection("faq");
+const sortedFaqItems = faqItems.sort((a, b) => (a.data.order || 0) - (b.data.order || 0));
 ---
 
 <Layout
   title="Sportuś - Zajęcia sportowe dla dzieci w Gdańsku"
-  description="Sportuś to profesjonalne zajęcia sportowe dla dzieci w Gdańsku, które rozwijają sprawność fizyczną, koordynację i umiejętności zespołowe. Zapisz swoje dziecko na sportowe przygody z najlepszymi instruktorami w Gdańsku!"
+  description="Sportuś oferuje ogólnorozwojowe zajęcia sportowe dla dzieci w Gdańsku. Rozwijamy sprawność fizyczną i pasję do ruchu przez radosną zabawę. Zapisz dziecko!"
+  faqData={sortedFaqItems}
 >
   <Hero />
   <WhyUs />
