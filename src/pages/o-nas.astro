@@ -1,9 +1,10 @@
 ---
 import { Picture } from "astro:assets";
 import image from "../assets/images/Krzysztof-Iwanowski.jpg";
-import image3 from "../assets/images/Krzysztof-Iwanowski-1.webp";
-import image4 from "../assets/images/Krzysztof-Iwanowski-2.jpg";
-import image5 from "../assets/images/Krzysztof-Iwanowski-3.jpg";
+import imageTrain1 from "../assets/images/zajecia-sportowe-dzieci-trener-pilka-siadanie.webp";
+import imageTrain2 from "../assets/images/trener-pieczatki-nagradzanie-dzieci-krag.webp";
+import imageTrain3 from "../assets/images/odprawa-dzieci-z-trenerem-kregielka.webp";
+import imageTrain4 from "../assets/images/cwiczenia-koordynacyjne-tor-przeszkod-bramka.webp";
 import Layout from "../layouts/Layout.astro";
 import "../styles/trener.css";
 
@@ -17,8 +18,6 @@ const calculateAge = (birthDate: Date) => {
   return age;
 };
 
-// Maja: 7 lat w 2026 r. (ur. 2019)
-// Marika: 2 lata w 2026 r. (ur. wiosna 2024)
 const majaAge = calculateAge(new Date("2019-05-01"));
 const marikaAge = calculateAge(new Date("2024-04-01"));
 ---
@@ -40,54 +39,84 @@ const marikaAge = calculateAge(new Date("2024-04-01"));
             height="1000"
             src={image}
             formats={["avif", "webp"]}
-            alt="Piłkarz w zielonym stroju z numerem 4 (Krzysztof Iwanowsk), wykonujący wysoki kopnięcie podczas meczu na trawiastym boisku. Piłka jest w powietrzu, a w tle widoczny jest rozmazany przeciwnik w niebieskim stroju. Trybuny są w większości puste, z kilkoma kibicami obserwującymi mecz."
+            loading="eager"
+            fetchpriority="high"
+            decoding="async"
+            alt="Krzysztof Iwanowski podczas meczu piłkarskiego w barwach Lechii Gdańsk"
           />
         </div>
 
         <div class="cs-bottom-group">
           <button
-            aria-label="kliknij aby powiększyć"
-            title="kliknij aby powiększyć"
+            type="button"
+            aria-label="Powiększ zdjęcie: Trener wręcza piłkę dzieciom siedzącym w rzędzie podczas zajęć sportowych"
+            title="Kliknij, aby powiększyć zdjęcie"
             class="cs-image-btn"
           >
             <Picture
               fallbackFormat="jpg"
               class="cs-bottom-small"
               formats={["avif", "webp"]}
-              src={image5}
-              width="1080"
-              height="720"
-              alt="Piłkarz w czerwono-białym pasiastym stroju (Krzysztof Iwanowsk) próbujący wykonać kopnięcie podczas meczu. Zbliża się zawodnik przeciwnika w zielonym stroju. Akcja rozgrywa się na trawiastym boisku, z bramką i rozmytymi kibicami w tle."
+              src={imageTrain1}
+              width="600"
+              height="450"
+              loading="lazy"
+              decoding="async"
+              alt="Trener wręcza piłkę dzieciom siedzącym w rzędzie podczas zajęć sportowych Sportuś"
             />
           </button>
           <button
-            aria-label="kliknij aby powiększyć"
-            title="kliknij aby powiekszyc"
+            type="button"
+            aria-label="Powiększ zdjęcie: Trener przybija nagradzające pieczątki dzieciom siedzącym w kole"
+            title="Kliknij, aby powiększyć zdjęcie"
             class="cs-image-btn"
           >
             <Picture
               fallbackFormat="jpg"
               class="cs-bottom-small"
               formats={["avif", "webp"]}
-              src={image4}
-              width="1079"
-              height="720"
-              alt="Grupa piłkarzy i sędziów stojących na boisku przed rozpoczęciem meczu. Dwóch zawodników, jeden w żółtym (Krzysztof Iwanowsk), drugi w czerwono-białych pasach, stoi obok trzech sędziów w żółtych koszulkach. W tle widać drzewa i jasną, plenerową atmosferę."
+              src={imageTrain2}
+              width="600"
+              height="450"
+              loading="lazy"
+              decoding="async"
+              alt="Trener przybija nagradzające pieczątki dzieciom zebranym w kręgu po treningu Sportuś"
             />
           </button>
           <button
-            aria-label="kliknij aby powiększyć"
-            title="kliknij aby powiekszyc"
+            type="button"
+            aria-label="Powiększ zdjęcie: Odprawa i wspólne omówienie ćwiczeń trenera z dziećmi"
+            title="Kliknij, aby powiększyć zdjęcie"
             class="cs-image-btn"
           >
             <Picture
               fallbackFormat="jpg"
-              class="cs-bottom-small last"
+              class="cs-bottom-small"
               formats={["avif", "webp"]}
-              src={image3}
-              width="1024"
-              height="623"
-              alt="Piłkarz w żółtym stroju (Krzysztof Iwanowsk) prowadzący piłkę podczas meczu, z naciskiem na jego ruch. W tle widać boisko i kilku kibiców, a słoneczna pogoda dodaje jasności do sceny."
+              src={imageTrain3}
+              width="600"
+              height="450"
+              loading="lazy"
+              decoding="async"
+              alt="Trener rozmawia i tłumaczy zasady zabawy dzieciom siedzącym na dywanie w sali"
+            />
+          </button>
+          <button
+            type="button"
+            aria-label="Powiększ zdjęcie: Ćwiczenia koordynacyjne i tor przeszkód z mini bramką dla dzieci"
+            title="Kliknij, aby powiększyć zdjęcie"
+            class="cs-image-btn"
+          >
+            <Picture
+              fallbackFormat="jpg"
+              class="cs-bottom-small"
+              formats={["avif", "webp"]}
+              src={imageTrain4}
+              width="600"
+              height="450"
+              loading="lazy"
+              decoding="async"
+              alt="Dzieci pokonują kolorowy tor przeszkód z mini bramką na zajęciach ogólnorozwojowych"
             />
           </button>
         </div>
@@ -124,13 +153,41 @@ const marikaAge = calculateAge(new Date("2024-04-01"));
       </div>
     </div>
 
-    <dialog aria-hidden="true" class="cs-dialog">
-      <div class="cs-dialog-content">
-        <button class="cs-dialog-close">Zamknij</button>
-        <img class="cs-dialog-img" src="" alt="" />
+    <dialog aria-label="Galeria zdjęć" class="cs-dialog">
+      <div class="cs-dialog-shell">
+        <header class="cs-dialog-header">
+          <span class="cs-dialog-counter" aria-live="polite">Zdjęcie 1 z 4</span>
+          <button type="button" class="cs-dialog-close" aria-label="Zamknij podgląd zdjęcia">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <line x1="18" y1="6" x2="6" y2="18"></line>
+              <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+          </button>
+        </header>
+
+        <div class="cs-dialog-stage">
+          <figure class="cs-dialog-figure">
+            <img class="cs-dialog-img" src="" alt="" />
+            <figcaption class="cs-dialog-caption"></figcaption>
+          </figure>
+        </div>
+
+        <footer class="cs-dialog-footer">
+          <button type="button" class="cs-nav-btn cs-nav-prev" aria-label="Poprzednie zdjęcie">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <polyline points="15 18 9 12 15 6"></polyline>
+            </svg>
+            <span class="cs-nav-btn-text">Poprzednie</span>
+          </button>
+
+          <button type="button" class="cs-nav-btn cs-nav-next" aria-label="Następne zdjęcie">
+            <span class="cs-nav-btn-text">Następne</span>
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+          </button>
+        </footer>
       </div>
-      <button class="left">Poprzedni</button>
-      <button class="right">Następny</button>
     </dialog>
   </section>
   <!-- <History /> -->
@@ -138,81 +195,96 @@ const marikaAge = calculateAge(new Date("2024-04-01"));
 
 <script>
   document.addEventListener("DOMContentLoaded", () => {
-    const imagesContainer = document.querySelector(".cs-bottom-group") as HTMLElement;
-    const images = Array.from(
-      imagesContainer.querySelectorAll(".cs-bottom-small")
-    ) as HTMLImageElement[];
+    const imagesContainer = document.querySelector(".cs-bottom-group");
+    const modalDialog = document.querySelector<HTMLDialogElement>(".cs-dialog");
+    if (!imagesContainer || !modalDialog) return;
 
-    imagesContainer.addEventListener("click", (event: MouseEvent) => {
-      (event.target as HTMLElement).classList.add("active");
+    const thumbnails = Array.from(
+      imagesContainer.querySelectorAll<HTMLImageElement>(".cs-bottom-small")
+    );
+    const dialogImg = modalDialog.querySelector<HTMLImageElement>(".cs-dialog-img");
+    const dialogCaption = modalDialog.querySelector<HTMLElement>(".cs-dialog-caption");
+    const dialogCounter = modalDialog.querySelector<HTMLElement>(".cs-dialog-counter");
+    const closeButton = modalDialog.querySelector<HTMLButtonElement>(".cs-dialog-close");
+    const prevButton = modalDialog.querySelector<HTMLButtonElement>(".cs-nav-prev");
+    const nextButton = modalDialog.querySelector<HTMLButtonElement>(".cs-nav-next");
 
-      const dialog = document.querySelector(".cs-dialog") as HTMLDialogElement;
-      dialog.setAttribute("aria-hidden", "false");
-      const dialogImg = dialog.querySelector("img") as HTMLImageElement;
-      const csDialogClose = document.querySelector(
-        ".cs-dialog-close"
-      ) as HTMLButtonElement;
+    let currentIndex = 0;
 
-      if ((event.target as HTMLElement)?.classList.contains("active")) {
-        dialogImg.src = (event.target as HTMLImageElement).src;
-        dialog.showModal();
-        csDialogClose.focus();
+    function renderImage(index: number) {
+      if (index < 0 || index >= thumbnails.length) return;
+      currentIndex = index;
+      const targetImg = thumbnails[currentIndex];
 
-        csDialogClose.addEventListener("click", () => {
-          dialog.close();
-          (event.target as HTMLElement)?.classList.remove("active");
-        });
-
-        let currentImage = images.indexOf(event.target as HTMLImageElement);
-        const nextButton = dialog.querySelector(".right") as HTMLButtonElement;
-        const prevButton = dialog.querySelector(".left") as HTMLButtonElement;
-
-        document.addEventListener("keydown", (e) => {
-          if (e.key === "ArrowRight") {
-            currentImage++;
-            dialogImg.src = images[currentImage].src;
-            updateButtonStates(currentImage, images, nextButton, prevButton);
-          } else if (e.key === "ArrowLeft") {
-            currentImage--;
-            dialogImg.src = images[currentImage].src;
-            updateButtonStates(currentImage, images, nextButton, prevButton);
-          }
-        });
-
-        updateButtonStates(currentImage, images, nextButton, prevButton);
-
-        nextButton.addEventListener("click", () => {
-          currentImage++;
-          dialogImg.src = images[currentImage].src;
-          updateButtonStates(currentImage, images, nextButton, prevButton);
-        });
-
-        prevButton.addEventListener("click", () => {
-          currentImage--;
-          dialogImg.src = images[currentImage].src;
-          updateButtonStates(currentImage, images, nextButton, prevButton);
-        });
+      if (dialogImg) {
+        dialogImg.src = targetImg.currentSrc || targetImg.src;
+        dialogImg.alt = targetImg.alt || "";
+      }
+      if (dialogCaption) {
+        dialogCaption.textContent = targetImg.alt || "";
+      }
+      if (dialogCounter) {
+        dialogCounter.textContent = `Zdjęcie ${currentIndex + 1} z ${thumbnails.length}`;
       }
 
-      document.addEventListener("click", (e) => {
-        if (e.target === dialog) {
-          dialog.close();
-          (event.target as HTMLElement)?.classList.remove("active");
-        }
-      });
+      if (prevButton) {
+        prevButton.disabled = currentIndex <= 0;
+        prevButton.setAttribute("aria-disabled", String(currentIndex <= 0));
+      }
+      if (nextButton) {
+        nextButton.disabled = currentIndex >= thumbnails.length - 1;
+        nextButton.setAttribute("aria-disabled", String(currentIndex >= thumbnails.length - 1));
+      }
+    }
+
+    function openModal(index: number) {
+      renderImage(index);
+      modalDialog?.showModal();
+      closeButton?.focus();
+    }
+
+    function closeModal() {
+      modalDialog?.close();
+    }
+
+    // Click handler for thumbnails
+    imagesContainer.addEventListener("click", (event) => {
+      const button = (event.target as HTMLElement).closest(".cs-image-btn");
+      if (!button) return;
+      const img = button.querySelector<HTMLImageElement>(".cs-bottom-small");
+      if (!img) return;
+      const index = thumbnails.indexOf(img);
+      if (index !== -1) {
+        openModal(index);
+      }
+    });
+
+    closeButton?.addEventListener("click", closeModal);
+
+    prevButton?.addEventListener("click", () => {
+      if (currentIndex > 0) renderImage(currentIndex - 1);
+    });
+
+    nextButton?.addEventListener("click", () => {
+      if (currentIndex < thumbnails.length - 1) renderImage(currentIndex + 1);
+    });
+
+    // Keyboard navigation when dialog is open
+    modalDialog.addEventListener("keydown", (e: KeyboardEvent) => {
+      if (e.key === "ArrowRight") {
+        e.preventDefault();
+        if (currentIndex < thumbnails.length - 1) renderImage(currentIndex + 1);
+      } else if (e.key === "ArrowLeft") {
+        e.preventDefault();
+        if (currentIndex > 0) renderImage(currentIndex - 1);
+      }
+    });
+
+    // Close when clicking outside content (on backdrop)
+    modalDialog.addEventListener("click", (e: MouseEvent) => {
+      if (e.target === modalDialog) {
+        closeModal();
+      }
     });
   });
-
-  function updateButtonStates(
-    currentImage: number,
-    images: HTMLImageElement[],
-    nextButton: HTMLButtonElement,
-    prevButton: HTMLButtonElement
-  ) {
-    const hasNext = currentImage < images.length - 1;
-    const hasPrev = currentImage > 0;
-
-    nextButton.disabled = !hasNext;
-    prevButton.disabled = !hasPrev;
-  }
 </script>

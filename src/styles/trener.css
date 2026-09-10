@@ -33,40 +33,45 @@
     margin-bottom: 2rem;
   }
   #sbs-1125 .cs-image-group {
-    font-size: min(1.9vw, 0.64em);
-    width: 41.0625em;
-    height: 42.25em;
+    width: 100%;
+    max-width: 100%;
     position: relative;
     z-index: 1;
+    margin: 0 auto;
   }
   #sbs-1125 .cs-picture {
-    width: 41.0625em;
-    height: 42.25em;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1 / 1;
     overflow: hidden;
     display: block;
-    position: absolute;
-    top: 0;
-    right: 0;
     border-radius: var(--radius);
     object-fit: cover;
-    object-position: right;
+    object-position: center;
   }
 
   .football {
     animation: rotate 10s linear infinite;
   }
 
-  .cs-bottom-small {
-    width: 100%;
-    height: 4rem;
+  .cs-bottom-group {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.5rem;
     margin-top: 1rem;
-    border-radius: 1rem;
+    width: 100%;
   }
 
   .cs-image-btn {
     border: none;
     background: none;
-    transition: transform 0.3s ease;
+    padding: 0;
+    margin: 0;
+    border-radius: 0.75rem;
+    overflow: hidden;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
   }
 
   .cs-image-btn:focus {
@@ -77,67 +82,202 @@
   }
 
   .cs-image-btn:hover {
-    cursor: pointer;
-    transform: scale(1.1);
-    transition: transform 0.3s ease;
+    transform: translateY(-3px) scale(1.03);
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.15);
   }
+
+  .cs-bottom-small {
+    width: 100%;
+    height: 100%;
+    aspect-ratio: 4 / 3;
+    display: block;
+    border-radius: 0.75rem;
+    object-fit: cover;
+  }
+
+  /* Modal Lightbox */
   .cs-dialog[closed] {
     display: none;
   }
+
   .cs-dialog[open] {
+    position: fixed;
+    inset: 0;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    border-radius: 1.25rem;
+    padding: 0;
+    background: #ffffff;
+    max-width: min(94vw, 56rem);
+    max-height: 94vh;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4);
+    overflow: hidden;
+    animation: modalScaleIn 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  @keyframes modalScaleIn {
+    from {
+      opacity: 0;
+      transform: scale(0.96);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  .cs-dialog::backdrop {
+    background: rgba(15, 23, 42, 0.75);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+
+  .cs-dialog-shell {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
     position: relative;
-    display: block;
-    border: none;
-    border-radius: 1rem;
-    padding: 0.5rem;
-    padding-bottom: 3rem;
+    padding: 0.75rem 0.75rem 0.875rem;
+    box-sizing: border-box;
   }
-  .left,
-  .right {
-    position: absolute;
-    top: 87%;
-    border: none;
-    background: var(--primary);
-    color: var(--white);
-    padding: 0.5rem;
-    border-radius: 0.5rem;
-    cursor: pointer;
+
+  .cs-dialog-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 0 0.25rem 0.5rem;
+    border-bottom: 1px solid #f1f5f9;
   }
-  .left:hover,
-  .right:hover {
-    background: var(--primaryDark);
+
+  .cs-dialog-counter {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #64748b;
+    letter-spacing: 0.02em;
   }
-  .left:disabled,
-  .right:disabled {
-    background: grey;
-    cursor: not-allowed;
-  }
-  .right {
-    right: 0.5rem;
-  }
-  .left {
-    left: 0.5rem;
-  }
-  .cs-dialog-img {
-    border-radius: 1rem;
-    max-width: 100%;
-  }
-  ::backdrop {
-    background: rgba(0, 0, 0, 0.5);
-    opacity: 0.75;
-  }
+
   .cs-dialog-close {
-    position: absolute;
-    top: 0.6rem;
-    right: 0.6rem;
-    font-size: 1rem;
-    font-weight: bold;
+    background: #f1f5f9;
     border: none;
-    background: none;
+    color: #334155;
+    width: 2.25rem;
+    height: 2.25rem;
+    border-radius: 9999px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     cursor: pointer;
+    transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
   }
+
   .cs-dialog-close:hover {
-    text-decoration: underline;
+    background: #e2e8f0;
+    color: #0f172a;
+    transform: rotate(90deg);
+  }
+
+  .cs-dialog-close:focus-visible {
+    outline: 2px solid var(--primaryDark);
+    outline-offset: 2px;
+  }
+
+  .cs-dialog-stage {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    width: 100%;
+    margin-top: 0.5rem;
+    flex: 1;
+  }
+
+  .cs-dialog-figure {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
+  }
+
+  .cs-dialog-img {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    max-height: 65vh;
+    object-fit: contain;
+    border-radius: 0.75rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  }
+
+  /* No caption on mobile for maximum image size and focus */
+  .cs-dialog-caption {
+    display: none;
+  }
+
+  /* Navigation footer at the bottom */
+  .cs-dialog-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.75rem;
+    width: 100%;
+    margin-top: 0.75rem;
+    padding-top: 0.5rem;
+    border-top: 1px solid #f1f5f9;
+  }
+
+  .cs-nav-btn {
+    flex: 1;
+    height: 2.75rem;
+    padding: 0 1rem;
+    border-radius: 0.75rem;
+    border: 1px solid #e2e8f0;
+    background: #ffffff;
+    color: var(--primary);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.35rem;
+    cursor: pointer;
+    font-size: 0.9375rem;
+    font-weight: 600;
+    font-family: inherit;
+    transition: all 0.2s ease;
+  }
+
+  .cs-nav-btn-text {
+    display: inline;
+  }
+
+  .cs-nav-btn:hover:not(:disabled) {
+    background: var(--primary);
+    color: #ffffff;
+    border-color: var(--primary);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+  }
+
+  .cs-nav-btn:disabled,
+  .cs-nav-btn[aria-disabled="true"] {
+    opacity: 0.35;
+    cursor: not-allowed;
+    box-shadow: none;
+  }
+
+  .cs-nav-btn:focus-visible {
+    outline: 2px solid var(--primaryDark);
+    outline-offset: 2px;
   }
 }
 
@@ -158,7 +298,14 @@
   }
   #sbs-1125 .cs-image-group {
     font-size: min(1.2vw, 1em);
+    width: 41.0625em;
+    height: auto;
     margin: 0;
+  }
+  #sbs-1125 .cs-picture {
+    width: 41.0625em;
+    height: 42.25em;
+    aspect-ratio: auto;
   }
   #sbs-1125 .cs-content {
     width: 45%;
@@ -167,36 +314,53 @@
   }
 
   .cs-bottom-group {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 2rem;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.875rem;
+    margin-top: 1.5rem;
+    width: 100%;
+    max-width: 41.0625em;
+  }
+
+  .cs-image-btn {
+    border-radius: 1rem;
   }
 
   .cs-bottom-small {
-    display: block;
-    width: 15em;
-    height: 13.5em;
-    border-radius: var(--radius);
+    width: 100%;
+    height: 6.75rem;
+    aspect-ratio: 4 / 3;
+    border-radius: 1rem;
     object-fit: cover;
   }
 
   .cs-dialog[open] {
-    padding: 3rem;
+    padding: 0;
   }
 
-  .left,
-  .right {
-    top: 95%;
-  }
-}
-
-@media only screen and (min-width: 1024px) and (max-width: 1288px) {
-  .last {
-    display: none;
+  .cs-dialog-shell {
+    padding: 1rem 1.5rem 1.25rem;
   }
 
-  .cs-bottom-small {
-    width: 93%;
+  .cs-dialog-caption {
+    display: block;
+    margin-top: 0.75rem;
+    font-size: 0.875rem;
+    color: #475569;
+    text-align: center;
+    line-height: 1.4;
+    max-width: 90%;
+  }
+
+  .cs-dialog-footer {
+    justify-content: flex-end;
+    gap: 1rem;
+    padding-top: 0.75rem;
+  }
+
+  .cs-nav-btn {
+    flex: none;
+    width: auto;
+    padding: 0.65rem 1.25rem;
   }
 }
