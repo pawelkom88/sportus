@@ -28,11 +28,16 @@
   transform: translateY(-5px);
 }
 .cs-social-icon {
-  filter: grayscale(1) brightness(1000%);
   width: 1rem;
   height: auto;
   display: block;
   transition: transform 0.3s;
+  filter: brightness(0) invert(1);
+}
+
+.cs-instagram-icon {
+  width: 1.2rem;
+  height: 1.2rem;
 }
 
 @media only screen and (min-width: 1024px) {
